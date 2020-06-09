@@ -1,0 +1,31 @@
+1. get refresh-token + save as static variable:
+    user_token = tk.prompt_for_user_token(
+        client_id,
+        client_secret,
+        redirect_uri,
+        scope=tk.scope.every
+    )
+    print(user_token.refresh_token)
+
+auch möglich nach isrc zu suchen (falls die mpd tags das hergeben)
+
+nächste Schritte:
+1. Kleine Testliste anlegen
+2. extrahieren in liste aus dict, damit in json abgespeichert werden kann -> Hier dünni fragen was am besten ist: DB/csv/json etc
+3. immer in 100er chunks teilen
+4. abfangen wenn api limit erreicht
+5. mehrdimensionalen vektor bilden (wie man besten in python?)
+6. wahrscheinlich reicht es diesen Vektor für jedes lied zu speichern (+ doc wie aufgebaut)
+
+"""
+If Web API returns status code 429, it means that you have sent too many requests.
+When this happens, check the Retry-After header, where you will see a number displayed.
+This is the number of seconds that you need to wait, before you try your request again.
+"""
+
+Cases songname parsing:
+ * more than one interpret:
+    -> with ""&" or "," or "and" or "-"
+    -> Sarah, Hannah and Leah Peasall == the presall sisters
+
+
