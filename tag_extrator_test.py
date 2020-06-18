@@ -27,8 +27,6 @@ for track in tracks.items:
 """
 tracks_without_artist, = spotify.search("house of the rising sun", limit = 1)
 tracks, = spotify.search("house of the rising sun, Five finger death punch", types=("track",), limit = 1)
-for track in tracks.items:
-    print(track)
 #spotify.playback_start_tracks(['4ZmX8elKMkH0MfniNi0Adu'])
-print(spotify.track_audio_features(track.id))
-print(spotify.track_audio_analysis(track.id))
+print(tracks.items[0])
+print(spotify.track_audio_features(tracks.items[0].id))

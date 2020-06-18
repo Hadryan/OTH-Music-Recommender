@@ -1,5 +1,7 @@
 import tekore as tk
 import parse_songnames
+import json
+#import metadata_reader
 
 client_id = "08fce4b3fb2144838c7f65133d289fbc"
 client_secret = "9011cc6827684eb783288bd04147140b"
@@ -8,8 +10,12 @@ refresh_token = "AQD2gsLOa6g984Kvt62WR2rT2rqJVzHIEN7GZWq23915TiKQQNpBKSQMTqoow11
 
 
 def main():
+    #parse_songnames.parse_songlist_new("songList.txt")
     spotify = init()
-    get_spotify_ids("songList.txt", spotify)
+    id_name_list = get_spotify_ids("songList.txt", spotify)
+    list_with_high_level_tags = match_high_level_tags(id_name_list, spotify)
+    save_as_json(list_with_high_level_tags)
+
 
 def init():
     """
@@ -26,33 +32,68 @@ def init():
 
 def get_spotify_ids(path_songlist, spotify):
     track_list = parse_songnames.parse_songlist(path_songlist)
-    print(track_list)
+    print("starting api calls....")
     spotify_id_list = []
     error_list = []
     for single_track_info in track_list:
         track_paging_object, = spotify.search(single_track_info[0] + " " + single_track_info[1], limit=1)
         if len(track_paging_object.items) != 0:
-            spotify_id_list.append((single_track_info, track_paging_object.items[0].id))
+            spotify_id_list.append(
+                (single_track_info[0], single_track_info[1], single_track_info[2], track_paging_object.items[0].id))
         else:
             error_list.append(single_track_info)
 
-#    print(spotify_id_list)
+    #    print(spotify_id_list)
     print("correct:", len(spotify_id_list))
     print("false:", len(error_list))
- #   for error in error_list:
-  #      print(error)
+    #   for error in error_list:
+    #      print(error)
 
-  #try getting more results by omitting the interpreter
+    # try getting more results by omitting the interpreter
     for single_track_info in error_list:
         track_paging_object, = spotify.search(single_track_info[1], limit=1)
         if len(track_paging_object.items) != 0:
-            spotify_id_list.append((single_track_info, track_paging_object.items[0].id))
+            spotify_id_list.append(
+                (single_track_info[0], single_track_info[1], single_track_info[2], track_paging_object.items[0].id))
             error_list.remove(single_track_info)
     print("After second iteration:")
     print("correct:", len(spotify_id_list))
     print("false:", len(error_list))
-    for error in error_list:
-        print(error)
+    # for error in error_list:
+    # print(error)
+    print(spotify_id_list)
+    return spotify_id_list
+
+
+def match_high_level_tags(id_name_list, spotify):
+    """
+    :param id_name_list: list of tuples: [(interpreter, songname, orginal_path, spoitfy_id), ...] from get_spotify_ids
+    :return: list of dict
+    """
+    high_level_dict_list = []
+    for song_info in id_name_list:
+        audio_features = spotify.track_audio_features(song_info[3])
+        reduced_audio_features = AudioFeatures(audio_features.valence, audio_features.danceability,
+                                               audio_features.energy)
+        high_level_dict_list.append(
+            {"song_name": song_info[1], "interpreter": song_info[0], "audio_features": reduced_audio_features.asdict()})
+    print(high_level_dict_list)
+    return high_level_dict_list
+
+def save_as_json(high_level_dict_list):
+    with open("song_tags.json", "w") as file_name:
+        json.dump(high_level_dict_list, file_name)
+
+
+
+class AudioFeatures:
+    def __init__(self, valence, danceability, energy):
+        self.valence = valence
+        self.danceability = danceability
+        self.energy = energy
+
+    def asdict(self):
+        return {"valence": self.valence, "danceability": self.danceability, "energy": self.energy}
 
 
 if __name__ == '__main__':
