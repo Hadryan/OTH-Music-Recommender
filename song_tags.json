@@ -1,1 +1,281 @@
-[{"song_name": "When I'm Gone", "interpreter": "3 Doors Down", "audio_features": {"valence": 0.374, "danceability": 0.53, "energy": 0.768}}, {"song_name": "Away From The Sun", "interpreter": "3 Doors Down", "audio_features": {"valence": 0.237, "danceability": 0.541, "energy": 0.677}}, {"song_name": "The Road I'm On", "interpreter": "3 Doors Down", "audio_features": {"valence": 0.34, "danceability": 0.467, "energy": 0.713}}, {"song_name": "Toys In The Attic", "interpreter": "Aerosmith", "audio_features": {"valence": 0.446, "danceability": 0.219, "energy": 0.928}}, {"song_name": "Uncle Salty", "interpreter": "Aerosmith", "audio_features": {"valence": 0.468, "danceability": 0.453, "energy": 0.587}}, {"song_name": "Adam's Apple", "interpreter": "Aerosmith", "audio_features": {"valence": 0.669, "danceability": 0.534, "energy": 0.878}}, {"song_name": "Walk This Way", "interpreter": "Aerosmith", "audio_features": {"valence": 0.894, "danceability": 0.653, "energy": 0.73}}, {"song_name": "Big Ten Inch Record", "interpreter": "Aerosmith", "audio_features": {"valence": 0.821, "danceability": 0.436, "energy": 0.68}}, {"song_name": "Sweet Emotion", "interpreter": "Aerosmith", "audio_features": {"valence": 0.491, "danceability": 0.38, "energy": 0.76}}, {"song_name": "No More No More", "interpreter": "Aerosmith", "audio_features": {"valence": 0.713, "danceability": 0.444, "energy": 0.862}}, {"song_name": "Round And Round", "interpreter": "Aerosmith", "audio_features": {"valence": 0.398, "danceability": 0.357, "energy": 0.617}}, {"song_name": "You See Me Crying", "interpreter": "Aerosmith", "audio_features": {"valence": 0.222, "danceability": 0.293, "energy": 0.478}}, {"song_name": "Mama Kin", "interpreter": "Aerosmith", "audio_features": {"valence": 0.889, "danceability": 0.426, "energy": 0.751}}, {"song_name": "Dream On", "interpreter": "Aerosmith", "audio_features": {"valence": 0.224, "danceability": 0.307, "energy": 0.433}}, {"song_name": "Same Old Song And Dance", "interpreter": "Aerosmith", "audio_features": {"valence": 0.706, "danceability": 0.565, "energy": 0.628}}, {"song_name": "Seasons Of Wither", "interpreter": "Aerosmith", "audio_features": {"valence": 0.314, "danceability": 0.242, "energy": 0.791}}, {"song_name": "Walk This Way", "interpreter": "Aerosmith", "audio_features": {"valence": 0.894, "danceability": 0.653, "energy": 0.73}}, {"song_name": "Big Ten Inch Record", "interpreter": "Aerosmith", "audio_features": {"valence": 0.821, "danceability": 0.436, "energy": 0.68}}, {"song_name": "Sweet Emotion", "interpreter": "Aerosmith", "audio_features": {"valence": 0.491, "danceability": 0.38, "energy": 0.76}}, {"song_name": "Last Child", "interpreter": "Aerosmith", "audio_features": {"valence": 0.741, "danceability": 0.517, "energy": 0.504}}, {"song_name": "Back In The Saddle", "interpreter": "Aerosmith", "audio_features": {"valence": 0.762, "danceability": 0.426, "energy": 0.903}}, {"song_name": "Draw The Line", "interpreter": "Aerosmith", "audio_features": {"valence": 0.626, "danceability": 0.334, "energy": 0.957}}, {"song_name": "Dude (Looks Like A Lady)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.91, "danceability": 0.54, "energy": 0.982}}, {"song_name": "Angel", "interpreter": "Aerosmith", "audio_features": {"valence": 0.439, "danceability": 0.239, "energy": 0.819}}, {"song_name": "Rag Doll", "interpreter": "Aerosmith", "audio_features": {"valence": 0.583, "danceability": 0.579, "energy": 0.954}}, {"song_name": "Janie's Got A Gun", "interpreter": "Aerosmith", "audio_features": {"valence": 0.387, "danceability": 0.631, "energy": 0.763}}, {"song_name": "Love In An Elevator", "interpreter": "Aerosmith", "audio_features": {"valence": 0.557, "danceability": 0.451, "energy": 0.965}}, {"song_name": "What It Takes", "interpreter": "Aerosmith", "audio_features": {"valence": 0.347, "danceability": 0.528, "energy": 0.729}}, {"song_name": "The Other Side", "interpreter": "Aerosmith", "audio_features": {"valence": 0.826, "danceability": 0.554, "energy": 0.939}}, {"song_name": "Livin' On The Edge", "interpreter": "Aerosmith", "audio_features": {"valence": 0.272, "danceability": 0.399, "energy": 0.881}}, {"song_name": "Cryin'", "interpreter": "Aerosmith", "audio_features": {"valence": 0.486, "danceability": 0.445, "energy": 0.856}}, {"song_name": "Amazing", "interpreter": "Aerosmith", "audio_features": {"valence": 0.278, "danceability": 0.308, "energy": 0.747}}, {"song_name": "Deuces Are Wild", "interpreter": "Aerosmith", "audio_features": {"valence": 0.328, "danceability": 0.494, "energy": 0.769}}, {"song_name": "Crazy", "interpreter": "Aerosmith", "audio_features": {"valence": 0.427, "danceability": 0.37, "energy": 0.866}}, {"song_name": "Falling In Love (Is Hard On The Knees)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.89, "danceability": 0.612, "energy": 0.862}}, {"song_name": "Pink (The South Beach Mix)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.8, "danceability": 0.495, "energy": 0.689}}, {"song_name": "I Don't Want To Miss A Thing", "interpreter": "Aerosmith", "audio_features": {"valence": 0.138, "danceability": 0.383, "energy": 0.662}}, {"song_name": "Jaded", "interpreter": "Aerosmith", "audio_features": {"valence": 0.632, "danceability": 0.517, "energy": 0.89}}, {"song_name": "Just Push Play (Radio Remix)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.651, "danceability": 0.675, "energy": 0.938}}, {"song_name": "Walk This Way", "interpreter": "Aerosmith", "audio_features": {"valence": 0.894, "danceability": 0.653, "energy": 0.73}}, {"song_name": "Girls Of Summer", "interpreter": "Aerosmith", "audio_features": {"valence": 0.645, "danceability": 0.536, "energy": 0.839}}, {"song_name": "Lay It Down", "interpreter": "Aerosmith", "audio_features": {"valence": 0.409, "danceability": 0.405, "energy": 0.605}}, {"song_name": "The Other Side", "interpreter": "Aerosmith", "audio_features": {"valence": 0.826, "danceability": 0.554, "energy": 0.939}}, {"song_name": "Livin' On The Edge", "interpreter": "Aerosmith", "audio_features": {"valence": 0.272, "danceability": 0.399, "energy": 0.881}}, {"song_name": "Cryin'", "interpreter": "Aerosmith", "audio_features": {"valence": 0.486, "danceability": 0.445, "energy": 0.856}}, {"song_name": "Amazing", "interpreter": "Aerosmith", "audio_features": {"valence": 0.278, "danceability": 0.308, "energy": 0.747}}, {"song_name": "Deuces Are Wild", "interpreter": "Aerosmith", "audio_features": {"valence": 0.328, "danceability": 0.494, "energy": 0.769}}, {"song_name": "Crazy", "interpreter": "Aerosmith", "audio_features": {"valence": 0.427, "danceability": 0.37, "energy": 0.866}}, {"song_name": "Falling In Love (Is Hard On The Knees)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.89, "danceability": 0.612, "energy": 0.862}}, {"song_name": "Pink (The South Beach Mix)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.8, "danceability": 0.495, "energy": 0.689}}, {"song_name": "I Don't Want To Miss A Thing", "interpreter": "Aerosmith", "audio_features": {"valence": 0.138, "danceability": 0.383, "energy": 0.662}}, {"song_name": "Jaded", "interpreter": "Aerosmith", "audio_features": {"valence": 0.632, "danceability": 0.517, "energy": 0.89}}, {"song_name": "Just Push Play (Radio Remix)", "interpreter": "Aerosmith", "audio_features": {"valence": 0.651, "danceability": 0.675, "energy": 0.938}}, {"song_name": "Walk This Way", "interpreter": "Aerosmith", "audio_features": {"valence": 0.894, "danceability": 0.653, "energy": 0.73}}, {"song_name": "Girls Of Summer", "interpreter": "Aerosmith", "audio_features": {"valence": 0.645, "danceability": 0.536, "energy": 0.839}}, {"song_name": "Lay It Down", "interpreter": "Aerosmith", "audio_features": {"valence": 0.409, "danceability": 0.405, "energy": 0.605}}, {"song_name": "San Marco (Moderna)", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.828, "danceability": 0.478, "energy": 0.81}}, {"song_name": "Turquoise", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.305, "danceability": 0.496, "energy": 0.696}}, {"song_name": "Tao", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.692, "danceability": 0.311, "energy": 0.781}}, {"song_name": "Azucar", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.411, "danceability": 0.62, "energy": 0.563}}, {"song_name": "Tempest", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.459, "danceability": 0.471, "energy": 0.561}}, {"song_name": "Zona Desperata", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.594, "danceability": 0.354, "energy": 0.771}}, {"song_name": "Innamorata", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.429, "danceability": 0.367, "energy": 0.639}}, {"song_name": "Meninas", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.039, "danceability": 0.387, "energy": 0.185}}, {"song_name": "Flesh on Flesh", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.594, "danceability": 0.354, "energy": 0.771}}, {"song_name": "Fugata", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.888, "danceability": 0.576, "energy": 0.736}}, {"song_name": "Deep and Madly", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.914, "danceability": 0.627, "energy": 0.531}}, {"song_name": "Odyssey", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.169, "danceability": 0.721, "energy": 0.593}}, {"song_name": "Hypnose", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.265, "danceability": 0.776, "energy": 0.712}}, {"song_name": "Cry For You", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.961, "danceability": 0.767, "energy": 0.881}}, {"song_name": "Storm Off Shore", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.436, "danceability": 0.54, "energy": 0.735}}, {"song_name": "Africana Suite", "interpreter": "Al Di Meola", "audio_features": {"valence": 0.366, "danceability": 0.505, "energy": 0.0104}}]
+[
+  {
+    "song_name": "If I Told You Who It Was",
+    "interpreter": "Johnny Cash",
+    "audio_features": {
+      "valence": 0.789,
+      "danceability": 0.63,
+      "energy": 0.657
+    }
+  },
+  {
+    "song_name": "Grind",
+    "interpreter": "Tangerine Dream",
+    "audio_features": {
+      "valence": 0.0888,
+      "danceability": 0.391,
+      "energy": 0.292
+    }
+  },
+  {
+    "song_name": "Thing Called Love",
+    "interpreter": "Land Of Giants",
+    "audio_features": {
+      "valence": 0.363,
+      "danceability": 0.643,
+      "energy": 0.605
+    }
+  },
+  {
+    "song_name": "The Needle and the Spoon",
+    "interpreter": "Lynyrd Skynyrd",
+    "audio_features": {
+      "valence": 0.638,
+      "danceability": 0.53,
+      "energy": 0.614
+    }
+  },
+  {
+    "song_name": "Offertorium - Sanctus",
+    "interpreter": "Wolfgang Amadeus MOZART",
+    "audio_features": {
+      "valence": 0.157,
+      "danceability": 0.224,
+      "energy": 0.291
+    }
+  },
+  {
+    "song_name": "Too Long / Steam Machine",
+    "interpreter": "Daft Punk",
+    "audio_features": {
+      "valence": 0.225,
+      "danceability": 0.381,
+      "energy": 0.721
+    }
+  },
+  {
+    "song_name": "Something About Us",
+    "interpreter": "Daft Punk",
+    "audio_features": {
+      "valence": 0.384,
+      "danceability": 0.875,
+      "energy": 0.475
+    }
+  },
+  {
+    "song_name": "Don't You Think It's Come Our Time",
+    "interpreter": "Johnny Cash",
+    "audio_features": {
+      "valence": 0.663,
+      "danceability": 0.64,
+      "energy": 0.48
+    }
+  },
+  {
+    "song_name": "For All My Niggaz & Bitches (Feat. Tha Dogg Pound & The Lady Of Rage)",
+    "interpreter": "Snoop Doggy Dogg",
+    "audio_features": {
+      "valence": 0.626,
+      "danceability": 0.545,
+      "energy": 0.966
+    }
+  },
+  {
+    "song_name": "The World",
+    "interpreter": "Empire Of The Sun",
+    "audio_features": {
+      "valence": 0.153,
+      "danceability": 0.539,
+      "energy": 0.5
+    }
+  },
+  {
+    "song_name": "She Used To Love Me A Lot",
+    "interpreter": "Johnny Cash",
+    "audio_features": {
+      "valence": 0.46,
+      "danceability": 0.556,
+      "energy": 0.438
+    }
+  },
+  {
+    "song_name": "The Final Countdown",
+    "interpreter": "Europe",
+    "audio_features": {
+      "valence": 0.185,
+      "danceability": 0.536,
+      "energy": 0.844
+    }
+  },
+  {
+    "song_name": "Fire With Fire",
+    "interpreter": "Land Of Giants",
+    "audio_features": {
+      "valence": 0.658,
+      "danceability": 0.826,
+      "energy": 0.58
+    }
+  },
+  {
+    "song_name": "Offertorium - Domine Jesu",
+    "interpreter": "Wolfgang Amadeus MOZART",
+    "audio_features": {
+      "valence": 0.176,
+      "danceability": 0.357,
+      "energy": 0.241
+    }
+  },
+  {
+    "song_name": "Crescendolls",
+    "interpreter": "Daft Punk",
+    "audio_features": {
+      "valence": 0.937,
+      "danceability": 0.696,
+      "energy": 0.75
+    }
+  },
+  {
+    "song_name": "EZ Come, EZ Go",
+    "interpreter": "Cypress Hill",
+    "audio_features": {
+      "valence": 0.576,
+      "danceability": 0.79,
+      "energy": 0.561
+    }
+  },
+  {
+    "song_name": "Voyager",
+    "interpreter": "Daft Punk",
+    "audio_features": {
+      "valence": 0.279,
+      "danceability": 0.669,
+      "energy": 0.743
+    }
+  },
+  {
+    "song_name": "Doggy Dogg World (Feat. Tha Dogg Pound & The Dramatics)",
+    "interpreter": "Snoop Doggy Dogg",
+    "audio_features": {
+      "valence": 0.682,
+      "danceability": 0.685,
+      "energy": 0.686
+    }
+  },
+  {
+    "song_name": "People Get Ready",
+    "interpreter": "One Love",
+    "audio_features": {
+      "valence": 0.95,
+      "danceability": 0.725,
+      "energy": 0.523
+    }
+  },
+  {
+    "song_name": "Short Circuit",
+    "interpreter": "Daft Punk",
+    "audio_features": {
+      "valence": 0.215,
+      "danceability": 0.535,
+      "energy": 0.558
+    }
+  },
+  {
+    "song_name": "Man for All Seasons",
+    "interpreter": "Billy Idol",
+    "audio_features": {
+      "valence": 0.468,
+      "danceability": 0.524,
+      "energy": 0.952
+    }
+  },
+  {
+    "song_name": "18",
+    "interpreter": "David Gilmour",
+    "audio_features": {
+      "valence": 0.0833,
+      "danceability": 0.292,
+      "energy": 0.19
+    }
+  },
+  {
+    "song_name": "I Ain't Goin' Out Like That",
+    "interpreter": "Cypress Hill",
+    "audio_features": {
+      "valence": 0.437,
+      "danceability": 0.768,
+      "energy": 0.533
+    }
+  },
+  {
+    "song_name": "Future",
+    "interpreter": "Dub Fx",
+    "audio_features": {
+      "valence": 0.921,
+      "danceability": 0.691,
+      "energy": 0.863
+    }
+  },
+  {
+    "song_name": "Lodi Dodi (Feat. Nancy Fletcher)",
+    "interpreter": "Snoop Doggy Dogg",
+    "audio_features": {
+      "valence": 0.632,
+      "danceability": 0.49,
+      "energy": 0.763
+    }
+  },
+  {
+    "song_name": "Latin Thugs",
+    "interpreter": "Cypress Hill",
+    "audio_features": {
+      "valence": 0.711,
+      "danceability": 0.66,
+      "energy": 0.839
+    }
+  },
+  {
+    "song_name": "I Guess He'd Rather Be In Colorado",
+    "interpreter": "John Denver",
+    "audio_features": {
+      "valence": 0.524,
+      "danceability": 0.475,
+      "energy": 0.188
+    }
+  },
+  {
+    "song_name": "Jah",
+    "interpreter": "M.A.N.D.Y.",
+    "audio_features": {
+      "valence": 0.286,
+      "danceability": 0.303,
+      "energy": 0.121
+    }
+  },
+  {
+    "song_name": "Workin' for MCA",
+    "interpreter": "Lynyrd Skynyrd",
+    "audio_features": {
+      "valence": 0.847,
+      "danceability": 0.276,
+      "energy": 0.837
+    }
+  },
+  {
+    "song_name": "Around And Around",
+    "interpreter": "John Denver",
+    "audio_features": {
+      "valence": 0.61,
+      "danceability": 0.52,
+      "energy": 0.28
+    }
+  },
+  {
+    "song_name": "Wooden Indian",
+    "interpreter": "John Denver",
+    "audio_features": {
+      "valence": 0.952,
+      "danceability": 0.71,
+      "energy": 0.465
+    }
+  }
+]
