@@ -1,0 +1,28 @@
+{
+    "total_songs_played": 9,
+    "vector_total": [
+        [
+            1.279,
+            3.969,
+            99.743
+        ]
+    ],
+    "vector_avg": [
+        [
+            0.5,
+            0.1,
+            9.0
+        ]
+    ],
+    "genres_total": [
+        [
+            "Electro",
+            1
+        ],
+        [
+            "Daft Punk",
+            1
+        ]
+    ],
+    "artists_total": []
+}

@@ -28,4 +28,11 @@ Cases songname parsing:
     -> with ""&" or "," or "and" or "-"
     -> Sarah, Hannah and Leah Peasall == the presall sisters
 
+##RECOMMENDER:
+* Serialization and deserialization done, not tested properly (didnt test genres and artists)
+* Created song vector Creation [NOT TESTED]
+* Created Update after song played [NOT TESTED]
+
+
+
 

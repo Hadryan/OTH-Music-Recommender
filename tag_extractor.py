@@ -18,8 +18,8 @@ MEDIA_PATH = os.path.expanduser('~/Music/Lieder_HighResolutionAudio')
 def main():
     # parse_songnames.parse_songlist_new("songList.txt")
     spotify = init()
-    id_name_list = get_spotify_ids("songList_alt.txt", spotify)
-    #id_name_list = get_spotify_ids_metadata(metadata_reader.read_metadata(MEDIA_PATH), spotify)
+    #id_name_list = get_spotify_ids("songList_alt.txt", spotify)
+    id_name_list = get_spotify_ids_metadata(metadata_reader.read_metadata(MEDIA_PATH), spotify)
     list_with_high_level_tags = match_high_level_tags(id_name_list, spotify)
     save_as_json(list_with_high_level_tags)
 
