@@ -29,12 +29,17 @@ Cases songname parsing:
     -> Sarah, Hannah and Leah Peasall == the presall sisters
 
 ##RECOMMENDER:
-* Serialization and deserialization done, not tested properly (didnt test genres and artists)
-* Created song vector Creation [NOT TESTED]
-* Created Update after song played [NOT TESTED]
+* Serialization and deserialization done, not tested properly
+* Created song vector Creation
+* Created Update after song played
+* Created functions to return the percentage of genres and artists [TO TEST]
+* Created extra class to store user information
 
+ ###TODO
+ choose_recommended_song()
+ Method to weight the session
 
-    ###Notes:
+ ###Notes:
         - always check if not comparing to an empty vector (init with [0,0,0]) before using vectors
 
 

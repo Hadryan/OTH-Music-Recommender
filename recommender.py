@@ -1,7 +1,9 @@
+import copy
 import json
+import os.path
+
 # from utils import NumpyEncoder
 import numpy as np
-import os.path
 
 PATH_SONGTAGS = "song_tags.json"
 
@@ -54,34 +56,37 @@ def choose_recommended_song():
     :return: next recommended song
     """
 
-class UserData:
+
+class UserDataContainer:
     """
     This class is used to store the preferences of the user.
-    Uses high level tags as vector. (e.g. danceability)
+    """
+
+    def __init__(self):
+        self.song_count = 0
+        self.vector_total = np.array([0, 0, 0], dtype=float)  # (valence, danceability, energy)
+        self.vector_avg = np.array([0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
+        self.genres = []  # [("genre_name", times_played)]
+        self.artists = []  # [("artist_name", times_played)
+
+
+class UserController:  # TODO CHange doc string
+    """
+    THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
     display listened genres as percentages, otherwise, if a user has lots of music, the most prevalent genre will always
     be recommended, since each song only has 1 genre at a time.
-    Session should be more weighted more than overall tastes, since moods can greatly influence music tastes
+    Session should be weighted more than overall tastes, since moods can greatly influence music tastes
     (TODO: function that increases the weight of the session, the longer it has been going)
-
-    Also tracks the listened to artists and recommends songs of often heard artists more frequently.
-
     :param path_serialization: path to the json file the user profile is saved in
     """
+    stats_all_time: UserDataContainer
 
     def __init__(self, path_serialization):
         self.path_serialization = path_serialization
         self.song_data = SongData()
 
-        self.total_songs_played = 0
-        self.vector_total = np.array([0, 0, 0], dtype=float)  # (valence, danceability, energy)
-        self.vector_avg = np.array([0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
-        self.genres_total = []  # [("genre_name", times_played)]
-        self.artists_total = []  # [("artist_name", times_played)
-
-        self.vector_session = np.array([0,0,0], dtype=float)  # TODO perhaps use a subclass to represent session
-        self.session_songs_played = 0
-        self.genres_session = []
-        self.artists_session = []
+        self.stats_all_time = UserDataContainer()
+        self.stats_session = UserDataContainer()
 
         self.deserialize()
 
@@ -93,72 +98,103 @@ class UserData:
         if os.path.exists(self.path_serialization):
             with open(self.path_serialization, 'r') as json_file:
                 serialized_class = json.load(json_file)
-            self.total_songs_played = serialized_class["total_songs_played"]
-            self.vector_total = np.array(serialized_class["vector_total"])
-            self.vector_avg = np.array(serialized_class["vector_avg"])
-            self.genres_total = serialized_class["genres_total"]
-            self.artists_total = serialized_class["artists_total"]
+            self.stats_all_time.song_count = serialized_class["total_songs_played"]
+            self.stats_all_time.vector_total = np.array(serialized_class["vector_total"])
+            self.stats_all_time.vector_avg = np.array(serialized_class["vector_avg"])
+            self.stats_all_time.genres = serialized_class["genres_total"]
+            self.stats_all_time.artists = serialized_class["artists_total"]
         else:
             print("No user data found.")  # for testing
 
-    def serialize_user_data(self):
-        class_as_dict = {"total_songs_played": self.total_songs_played, "vector_total": self.vector_total.tolist(),
-                         "vector_avg": self.vector_avg.tolist(), "genres_total": self.genres_total,
-                         "artists_total": self.artists_total}
+    def serialize_stats_all_time(self):
+        stats_as_dict = {"total_songs_played": self.stats_all_time.song_count,
+                         "vector_total": self.stats_all_time.vector_total.tolist(),
+                         "vector_avg": self.stats_all_time.vector_avg.tolist(),
+                         "genres_total": self.stats_all_time.genres,
+                         "artists_total": self.stats_all_time.artists}
 
         with open(self.path_serialization, 'w') as json_file:
-            json.dump(class_as_dict, json_file, indent=4)
+            json.dump(stats_as_dict, json_file, indent=4)
 
     def update_preferences(self, currently_played_song):
         """
-        updates preferences after every played song
+        updates user preferences after every played song
+        :param: currently_played_song: a dict that contains information about the current song.
+                {"title": "", "artist": "", "genre": ""}
         :return:
         """
         matched_song = None
         for song in self.song_data.song_vectors:
             if song[1] == currently_played_song["title"] and song[2] == currently_played_song["artist"]:
-                matched_song = song
+                matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
                 break
         if matched_song is None:
             print(currently_played_song, "has no matching song vector!")
             return  # ignore this song for the recommender
-        self.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]], dtype=float)
-        self.total_songs_played += 1
-        self.vector_avg = self.vector_total / self.total_songs_played
-        self._update_genre_and_artist(currently_played_song)
+        self.stats_all_time.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]],
+                                                     dtype=float)
+        self.stats_all_time.song_count += 1
+        self.stats_all_time.vector_avg = self.stats_all_time.vector_total / self.stats_all_time.song_count
+        self.stats_session.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]],
+                                                    dtype=float)
+        self.stats_session.song_count += 1
+        self.stats_session.vector_avg = self.stats_session.vector_total / self.stats_session.song_count
+        self._update_artists_or_genres(self.stats_all_time.genres, currently_played_song["genre"])
+        self._update_artists_or_genres(self.stats_session.genres, currently_played_song["genre"])
+        self._update_artists_or_genres(self.stats_all_time.artists, currently_played_song["artist"])
+        self._update_artists_or_genres(self.stats_session.artists, currently_played_song["artist"])
 
-    def _update_genre_and_artist(self, currently_played_song):
+    def _update_artists_or_genres(self, target_list, feature):
         """
-        updates the genres and artists list depending on the currently_played_song
-        :param currently_played_song: dict object that stores artist and genre #TODO check if most songs have the genre tag set, otherwise will have to get this from spotify
+        Updates the genres or artists list.
+        :param target_list: the to be updated list, e.g. self.stats_session.artists
+        :param feature: the song feature that fits to the selected list , e.g. the artists name
         :return:
         """
-        new_genre = currently_played_song["genre"]
-        genre_existing = False
-        new_artist = currently_played_song["artist"]
-        artist_existing = False
-        if new_genre is not None or "":
-            for genre in self.genres_total:
-                if genre[0].strip().lower() == new_genre.strip().lower():
-                    genre[1] += 1
-                    genre_existing = True
-                    break
-            if not genre_existing:
-                self.genres_total.append(
-                    (new_genre, 1))  # perhaps use a set list of genres instead of adding genres automatically
-        if new_artist.lower() is not None or "" or "various artists":
-            for artist in self.artists_total:
-                if artist[0].strip().lower() == new_artist.strip().lower():
-                    artist[1] += 1
-                    artist_existing = True
-                    break
-            if not artist_existing:
-                self.artists_total.append((new_artist, 1))
+        for entry in target_list:
+            if entry[0].strip().lower() == feature.strip().lower():
+                entry[1] += 1
+                return True
+        target_list.append((feature, 1))
+        return False
 
-    def get_artist_percentages(self):
+    def get_artist_percentages(self, scope):
         """
-        :return: List of artists with the percentage of how often it was played compared to the total amount of played songs
+        :param scope: Can either be "session" or "all_time"
+        :return:List of artists with the percentage of how often it was played compared to the total amount of played songs
         """
+        if scope == "session":
+            artist_list = copy.deepcopy(self.stats_session.artists)
+            total_number = self.stats_session.song_count
+        elif scope == "all_time":
+            artist_list = copy.deepcopy(self.stats_all_time.artists)
+            total_number = self.stats_all_time.song_count
+        else:
+            print("Unknown Scope. Please Use \"session\" or \"all_time\"")
+            return
+        for artist in artist_list:  # workinglist[artist_name, count], ...]
+            artist[1] = (artist[1] / total_number) * 100
+
+        return artist_list
+
+    def get_genre_percentages(self, scope):
+        """
+        :param scope: Can either be "session" or "all_time"
+        :return:List of genres with the percentage of how often it was played compared to the total amount of played songs
+        """
+        if scope == "session":
+            genre_list = copy.deepcopy(self.stats_session.genres)
+            total_number = self.stats_session.song_count
+        elif scope == "all_time":
+            genre_list = copy.deepcopy(self.stats_all_time.genres)
+            total_number = self.stats_all_time.song_count
+        else:
+            print("Unknown Scope. Please Use \"session\" or \"all_time\"")
+            return
+        for genre in genre_list:  # workinglist[genre_name, count], ...]
+            genre[1] = (genre[1] / total_number) * 100
+
+        return genre_list
 
     def get_genre_percentages(self):
         """
