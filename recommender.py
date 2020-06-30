@@ -54,7 +54,6 @@ def choose_recommended_song():
     :return: next recommended song
     """
 
-
 class UserData:
     """
     This class is used to store the preferences of the user.
@@ -72,14 +71,15 @@ class UserData:
     def __init__(self, path_serialization):
         self.path_serialization = path_serialization
         self.song_data = SongData()
+
         self.total_songs_played = 0
-        self.vector_total = np.array([],
-                                     dtype=float)  # (valence, danceability, energy) added over up over all listend songs
-        self.vector_avg = 0  # self.vector_total / self.total_songs_played
+        self.vector_total = np.array([0, 0, 0], dtype=float)  # (valence, danceability, energy)
+        self.vector_avg = np.array([0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
         self.genres_total = []  # [("genre_name", times_played)]
         self.artists_total = []  # [("artist_name", times_played)
 
-        self.vector_session = np.array([], dtype=float)  # TODO perhaps use a subclass to represent session
+        self.vector_session = np.array([0,0,0], dtype=float)  # TODO perhaps use a subclass to represent session
+        self.session_songs_played = 0
         self.genres_session = []
         self.artists_session = []
 
@@ -122,9 +122,9 @@ class UserData:
         if matched_song is None:
             print(currently_played_song, "has no matching song vector!")
             return  # ignore this song for the recommender
-
         self.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]], dtype=float)
         self.total_songs_played += 1
+        self.vector_avg = self.vector_total / self.total_songs_played
         self._update_genre_and_artist(currently_played_song)
 
     def _update_genre_and_artist(self, currently_played_song):
@@ -146,14 +146,14 @@ class UserData:
             if not genre_existing:
                 self.genres_total.append(
                     (new_genre, 1))  # perhaps use a set list of genres instead of adding genres automatically
-        if new_genre.lower() is not None or "" or "various artists":
+        if new_artist.lower() is not None or "" or "various artists":
             for artist in self.artists_total:
-                if artist[0].strip().to_lower() == new_artist.strip().lower():
+                if artist[0].strip().lower() == new_artist.strip().lower():
                     artist[1] += 1
                     artist_existing = True
                     break
             if not artist_existing:
-                self.genres_total.append((new_artist, 1))
+                self.artists_total.append((new_artist, 1))
 
     def get_artist_percentages(self):
         """

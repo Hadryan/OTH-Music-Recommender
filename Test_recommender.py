@@ -9,8 +9,10 @@ def main():
 
 def test_updating_user_informatiion():
     currently_played_song = {"title": "Voyager", "artist": "Daft Punk", "genre": "Electro"}
+    currently_played_song2 ={"title": "People Get Ready", "artist": "One Love","genre":"Raggea" }
     user_data = recommender.UserData("user_data.json")
     user_data.update_preferences(currently_played_song)
+    user_data.update_preferences(currently_played_song2)
     user_data.serialize_user_data()
 
 def test_serialization():
