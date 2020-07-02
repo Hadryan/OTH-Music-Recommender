@@ -1,9 +1,9 @@
 {
-    "total_songs_played": 6,
+    "total_songs_played": 12,
     "vector_total": [
-        3.6870000000000003,
-        4.182,
-        3.798
+        7.3740000000000006,
+        8.364,
+        7.596
     ],
     "vector_avg": [
         0.6145,
@@ -13,21 +13,21 @@
     "genres_total": [
         [
             "Electro",
-            3
+            6
         ],
         [
             "Raggea",
-            3
+            6
         ]
     ],
     "artists_total": [
         [
             "Daft Punk",
-            3
+            6
         ],
         [
             "One Love",
-            3
+            6
         ]
     ]
 }

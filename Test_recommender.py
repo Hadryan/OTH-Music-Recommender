@@ -2,9 +2,10 @@ import pytest
 import recommender
 import numpy as np
 import json
+from scipy.spatial import distance
 
 def main():
-    print("Unknown Scope. Please Use \"session\" or \"all_time\"")
+    #test_vectors_temp()
     test_updating_user_informatiion()
     #test_serialization()
 
@@ -22,11 +23,9 @@ def test_serialization():
 def test_vectors_temp():
     test_vector = np.array([8.0, 3.0, 4.2, 9.8])
     # print(test_vector)
-    test_vector = test_vector + np.array([1, 3, 5, 4])
+    test_vector2 = test_vector + np.array([1, 3, 5, 4])
     # print(test_vector)
-    test_list = [3, 5, 7, 8]
-    test_list = test_list / 2
-    print(test_list)
+    print(distance.euclidean([0,0,1], [1,0,0]))
 
 if __name__ == '__main__':
     main()

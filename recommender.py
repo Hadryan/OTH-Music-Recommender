@@ -1,16 +1,41 @@
 import copy
 import json
 import os.path
-
-# from utils import NumpyEncoder
 import numpy as np
+from scipy.spatial import distance
+import math
 
 PATH_SONGTAGS = "song_tags.json"
+PATH_USER_DATA = "user_data.json"
 
 
-def main():
-    song_data = SongData()
-    print(song_data.song_vectors)
+def recommend_song_v1():
+    """
+    recommend a song solely based on the song vectors, not taking into account the genres or artists
+    :return: (str) songname + interpreter of recommended song
+    """
+    user_vector = UserController(PATH_USER_DATA).get_user_vector()
+    min_dist = float("inf")
+    min_track = None
+    for song in SongData().song_vectors:
+        eukl_dist = distance.euclidean(song[0], user_vector)
+        print(eukl_dist)
+        if eukl_dist < min_dist:
+            min_dist = eukl_dist
+            min_track = (song[1], song[2])  # (name, interpreter)
+            # TODO if song not already recommended this session
+    return min_track
+
+
+def choose_recommended_song():
+    """
+    compare the song vector with the user vector and get the n best matches.
+    Take into account the genres
+    Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
+    since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
+
+    :return: next recommended song
+    """
 
 
 class SongData:
@@ -19,7 +44,7 @@ class SongData:
 
     def __init__(self):
         self.json_data = self.read_tags_from_json(PATH_SONGTAGS)
-        self.song_vectors = self.create_song_feature_vectors()
+        self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), name, interpreter]
 
     def read_tags_from_json(self, path):
         """
@@ -44,17 +69,6 @@ class SongData:
                                       song["audio_features"]["energy"]]), song["song_name"], song["interpreter"])
             song_vector_list.append(single_entry)
         return song_vector_list
-
-
-def choose_recommended_song():
-    """
-    compare the song vector with the user vector and get the n best matches.
-    Take into account the genres
-    Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
-    since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
-
-    :return: next recommended song
-    """
 
 
 class UserDataContainer:
@@ -202,19 +216,12 @@ class UserController:  # TODO CHange doc string
         :return: List of genres with the percentage they were played compared to the total amount of played songs
         """
 
-    def calculate_user_vector(self):
+    def get_user_vector(self):
         """
-        Calculate the non normalized user vector, taking into account the session values.
-        :return: non normalized user vector
+        Calculate the averaged user vector, weighting the session values according to how long that session is.
+        This is done by the Formula: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:
+        x = 1: 0.13 ; x = 2: 0.3; x = 3: 0.49; x = 6: 0.84; x = 10: 0.89
+        :return: user vector [valence, danceability, energy]
         """
+        session_factor = -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
 
-    def get_normalized_user_vector(self):
-        """
-        normalize the user vector, so it is comparable to the song vectors
-        :return: user vector
-        """
-        self.calculate_user_vector()
-
-
-if __name__ == '__main__':
-    main()
