@@ -1,33 +1,57 @@
 {
-    "total_songs_played": 12,
+    "total_songs_played": 43,
     "vector_total": [
-        7.3740000000000006,
-        8.364,
-        7.596
+        22.267799999999998,
+        26.254000000000016,
+        21.866000000000003
     ],
     "vector_avg": [
-        0.6145,
-        0.6970000000000001,
-        0.633
+        0.5178558139534883,
+        0.6105581395348841,
+        0.5085116279069768
     ],
     "genres_total": [
         [
             "Electro",
-            6
+            7
         ],
         [
             "Raggea",
+            13
+        ],
+        [
+            "Country",
+            13
+        ],
+        [
+            "Testgenre",
             6
+        ],
+        [
+            "????",
+            4
         ]
     ],
     "artists_total": [
         [
             "Daft Punk",
-            6
+            7
         ],
         [
             "One Love",
+            13
+        ],
+        [
+            "Johnny Cash",
+            13
+        ],
+        [
+            "Tangerine Dream",
             6
+        ],
+        [
+            "Land Of Giants",
+            4
         ]
     ]
 }

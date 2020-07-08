@@ -5,27 +5,27 @@ import json
 from scipy.spatial import distance
 
 def main():
-    #test_vectors_temp()
-    test_updating_user_informatiion()
+    user_controller = recommender.UserController("user_data.json")
+    test_updating_user_information(user_controller)
+    test_recommender_v1(user_controller)
+
     #test_serialization()
 
-def test_updating_user_informatiion():
-    currently_played_song = {"title": "Voyager", "artist": "Daft Punk", "genre": "Electro"}
+def test_updating_user_information(user_controller):
+    currently_played_song = {"title": "Grind", "artist": "Tangerine Dream", "genre": "Testgenre"}
     currently_played_song2 ={"title": "People Get Ready", "artist": "One Love","genre":"Raggea" }
-    user_data = recommender.UserController("user_data.json")
-    user_data.update_preferences(currently_played_song)
-    user_data.update_preferences(currently_played_song2)
-    user_data.serialize_stats_all_time()
+    currently_played_song3 ={"title": "She Used To Love Me A Lot", "artist": "Johnny Cash","genre":"Country" }
+    currently_played_song4 ={"title": " Thing Called Love", "artist": "Land of Giants","genre":"????" }
+    user_controller.update_preferences(currently_played_song)
+    user_controller.update_preferences(currently_played_song2)
+    user_controller.update_preferences(currently_played_song3)
+    user_controller.update_preferences(currently_played_song4)
+    user_controller.serialize_stats_all_time()
 
-def test_serialization():
-    user_data = recommender.UserController("user_data.json")
 
-def test_vectors_temp():
-    test_vector = np.array([8.0, 3.0, 4.2, 9.8])
-    # print(test_vector)
-    test_vector2 = test_vector + np.array([1, 3, 5, 4])
-    # print(test_vector)
-    print(distance.euclidean([0,0,1], [1,0,0]))
+def test_recommender_v1(user_controller):
+    print(recommender.recommend_song_v1(user_controller))
+
 
 if __name__ == '__main__':
     main()

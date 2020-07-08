@@ -9,12 +9,22 @@ PATH_SONGTAGS = "song_tags.json"
 PATH_USER_DATA = "user_data.json"
 
 
-def recommend_song_v1():
+def recommend_song_v1(user_controller):
     """
     recommend a song solely based on the song vectors, not taking into account the genres or artists
     :return: (str) songname + interpreter of recommended song
     """
-    user_vector = UserController(PATH_USER_DATA).get_user_vector()
+    if user_controller.is_cold_start():
+        # Take a guess based on popularity
+        most_popular_song = ((), 0)
+        for song in SongData().json_data:
+            if most_popular_song[1] < song["popularity"]:
+                most_popular_song = ((song["song_name"], song["interpreter"]), song["popularity"])
+                if most_popular_song[1] == 100:  # 100 is the max value
+                    return most_popular_song
+        return most_popular_song[0]
+
+    user_vector = user_controller.get_user_vector()
     min_dist = float("inf")
     min_track = None
     for song in SongData().song_vectors:
@@ -46,7 +56,8 @@ class SongData:
         self.json_data = self.read_tags_from_json(PATH_SONGTAGS)
         self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), name, interpreter]
 
-    def read_tags_from_json(self, path):
+    @staticmethod
+    def read_tags_from_json(path):
         """
         TODO specify how that json has to look
         :param path: path to json file
@@ -87,10 +98,9 @@ class UserDataContainer:
 class UserController:  # TODO CHange doc string
     """
     THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
-    display listened genres as percentages, otherwise, if a user has lots of music, the most prevalent genre will always
-    be recommended, since each song only has 1 genre at a time.
+    Genres and Artits can be returned as percentages, because displaying them as vectors would cause the most prevalent
+    genre/artist to always be recommended.
     Session should be weighted more than overall tastes, since moods can greatly influence music tastes
-    (TODO: function that increases the weight of the session, the longer it has been going)
     :param path_serialization: path to the json file the user profile is saved in
     """
     stats_all_time: UserDataContainer
@@ -139,7 +149,7 @@ class UserController:  # TODO CHange doc string
         """
         matched_song = None
         for song in self.song_data.song_vectors:
-            if song[1] == currently_played_song["title"] and song[2] == currently_played_song["artist"]:
+            if song[1].strip().casefold() == currently_played_song["title"].strip().casefold() and song[2].strip().casefold() == currently_played_song["artist"].strip().casefold():
                 matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
                 break
         if matched_song is None:
@@ -216,12 +226,29 @@ class UserController:  # TODO CHange doc string
         :return: List of genres with the percentage they were played compared to the total amount of played songs
         """
 
-    def get_user_vector(self):
+    def get_session_weight(self):  # TOTEST
         """
-        Calculate the averaged user vector, weighting the session values according to how long that session is.
+        weighting the session values according to how long that session is.
         This is done by the Formula: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:
         x = 1: 0.13 ; x = 2: 0.3; x = 3: 0.49; x = 6: 0.84; x = 10: 0.89
+        :return: weight_session : {0 <= weight_session <= 1}
+        """
+        return -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
+
+    def get_user_vector(self):  # TOTEST
+        """
+        Calculate the averaged user vector, weighting the session values according to how long that session is.
         :return: user vector [valence, danceability, energy]
         """
-        session_factor = -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
+        weight_session = self.get_session_weight()
+        weight_all_time = 1 - weight_session
+        weighted_vector_session = self.stats_session.vector_avg * weight_session
+        weighted_vector_all_time = self.stats_all_time.vector_avg * weight_all_time
+        return weighted_vector_all_time + weighted_vector_session
 
+    def is_cold_start(self):
+        """
+        Its a cold start, if there is no user data present.
+        :return: True if this is a cold start. Otherwise False
+        """
+        return (self.stats_all_time.song_count + self.stats_session.song_count) <= 0

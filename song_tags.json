@@ -2,280 +2,417 @@
   {
     "song_name": "If I Told You Who It Was",
     "interpreter": "Johnny Cash",
+    "popularity": 47,
     "audio_features": {
       "valence": 0.789,
       "danceability": 0.63,
-      "energy": 0.657
+      "energy": 0.657,
+      "tempo": 92.015,
+      "acousticness": 0.778,
+      "speechiness": 0.115
     }
   },
   {
     "song_name": "Grind",
     "interpreter": "Tangerine Dream",
+    "popularity": 12,
     "audio_features": {
       "valence": 0.0888,
       "danceability": 0.391,
-      "energy": 0.292
+      "energy": 0.292,
+      "tempo": 138.003,
+      "acousticness": 0.0957,
+      "speechiness": 0.0354
     }
   },
   {
     "song_name": "Thing Called Love",
     "interpreter": "Land Of Giants",
+    "popularity": 1,
     "audio_features": {
       "valence": 0.363,
       "danceability": 0.643,
-      "energy": 0.605
+      "energy": 0.605,
+      "tempo": 121.603,
+      "acousticness": 0.00175,
+      "speechiness": 0.03
     }
   },
   {
     "song_name": "The Needle and the Spoon",
     "interpreter": "Lynyrd Skynyrd",
+    "popularity": 54,
     "audio_features": {
       "valence": 0.638,
       "danceability": 0.53,
-      "energy": 0.614
+      "energy": 0.614,
+      "tempo": 115.329,
+      "acousticness": 0.283,
+      "speechiness": 0.0408
     }
   },
   {
     "song_name": "Offertorium - Sanctus",
     "interpreter": "Wolfgang Amadeus MOZART",
+    "popularity": 1,
     "audio_features": {
       "valence": 0.157,
       "danceability": 0.224,
-      "energy": 0.291
+      "energy": 0.291,
+      "tempo": 100.032,
+      "acousticness": 0.991,
+      "speechiness": 0.0324
     }
   },
   {
     "song_name": "Too Long / Steam Machine",
     "interpreter": "Daft Punk",
+    "popularity": 29,
     "audio_features": {
       "valence": 0.225,
       "danceability": 0.381,
-      "energy": 0.721
+      "energy": 0.721,
+      "tempo": 125.603,
+      "acousticness": 0.000605,
+      "speechiness": 0.0464
     }
   },
   {
     "song_name": "Something About Us",
     "interpreter": "Daft Punk",
+    "popularity": 68,
     "audio_features": {
       "valence": 0.384,
       "danceability": 0.875,
-      "energy": 0.475
+      "energy": 0.475,
+      "tempo": 99.958,
+      "acousticness": 0.44,
+      "speechiness": 0.0986
     }
   },
   {
     "song_name": "Don't You Think It's Come Our Time",
     "interpreter": "Johnny Cash",
+    "popularity": 32,
     "audio_features": {
       "valence": 0.663,
       "danceability": 0.64,
-      "energy": 0.48
+      "energy": 0.48,
+      "tempo": 98.025,
+      "acousticness": 0.839,
+      "speechiness": 0.0276
+    }
+  },
+  {
+    "song_name": "Wherever I May Roam",
+    "interpreter": "Metallica",
+    "popularity": 63,
+    "audio_features": {
+      "valence": 0.332,
+      "danceability": 0.55,
+      "energy": 0.824,
+      "tempo": 131.387,
+      "acousticness": 0.000362,
+      "speechiness": 0.0347
     }
   },
   {
     "song_name": "For All My Niggaz & Bitches (Feat. Tha Dogg Pound & The Lady Of Rage)",
     "interpreter": "Snoop Doggy Dogg",
+    "popularity": 50,
     "audio_features": {
       "valence": 0.626,
       "danceability": 0.545,
-      "energy": 0.966
+      "energy": 0.966,
+      "tempo": 87.867,
+      "acousticness": 0.0162,
+      "speechiness": 0.264
     }
   },
   {
     "song_name": "The World",
     "interpreter": "Empire Of The Sun",
+    "popularity": 31,
     "audio_features": {
       "valence": 0.153,
       "danceability": 0.539,
-      "energy": 0.5
+      "energy": 0.5,
+      "tempo": 101.965,
+      "acousticness": 0.304,
+      "speechiness": 0.0365
     }
   },
   {
     "song_name": "She Used To Love Me A Lot",
     "interpreter": "Johnny Cash",
+    "popularity": 56,
     "audio_features": {
       "valence": 0.46,
       "danceability": 0.556,
-      "energy": 0.438
+      "energy": 0.438,
+      "tempo": 94.911,
+      "acousticness": 0.708,
+      "speechiness": 0.0522
     }
   },
   {
     "song_name": "The Final Countdown",
     "interpreter": "Europe",
+    "popularity": 75,
     "audio_features": {
       "valence": 0.185,
       "danceability": 0.536,
-      "energy": 0.844
+      "energy": 0.844,
+      "tempo": 117.652,
+      "acousticness": 0.0628,
+      "speechiness": 0.058
     }
   },
   {
     "song_name": "Fire With Fire",
     "interpreter": "Land Of Giants",
+    "popularity": 1,
     "audio_features": {
       "valence": 0.658,
       "danceability": 0.826,
-      "energy": 0.58
+      "energy": 0.58,
+      "tempo": 127.656,
+      "acousticness": 0.348,
+      "speechiness": 0.133
     }
   },
   {
     "song_name": "Offertorium - Domine Jesu",
     "interpreter": "Wolfgang Amadeus MOZART",
+    "popularity": 36,
     "audio_features": {
-      "valence": 0.176,
-      "danceability": 0.357,
-      "energy": 0.241
+      "valence": 0.252,
+      "danceability": 0.32,
+      "energy": 0.257,
+      "tempo": 93.834,
+      "acousticness": 0.981,
+      "speechiness": 0.0367
     }
   },
   {
     "song_name": "Crescendolls",
     "interpreter": "Daft Punk",
+    "popularity": 54,
     "audio_features": {
       "valence": 0.937,
       "danceability": 0.696,
-      "energy": 0.75
+      "energy": 0.75,
+      "tempo": 124.048,
+      "acousticness": 0.0035,
+      "speechiness": 0.0721
     }
   },
   {
     "song_name": "EZ Come, EZ Go",
     "interpreter": "Cypress Hill",
+    "popularity": 19,
     "audio_features": {
       "valence": 0.576,
       "danceability": 0.79,
-      "energy": 0.561
+      "energy": 0.561,
+      "tempo": 97.369,
+      "acousticness": 0.00861,
+      "speechiness": 0.349
     }
   },
   {
     "song_name": "Voyager",
     "interpreter": "Daft Punk",
+    "popularity": 60,
     "audio_features": {
       "valence": 0.279,
       "danceability": 0.669,
-      "energy": 0.743
+      "energy": 0.743,
+      "tempo": 119.882,
+      "acousticness": 0.282,
+      "speechiness": 0.0494
     }
   },
   {
     "song_name": "Doggy Dogg World (Feat. Tha Dogg Pound & The Dramatics)",
     "interpreter": "Snoop Doggy Dogg",
+    "popularity": 54,
     "audio_features": {
       "valence": 0.682,
       "danceability": 0.685,
-      "energy": 0.686
+      "energy": 0.686,
+      "tempo": 94.188,
+      "acousticness": 0.0036,
+      "speechiness": 0.292
     }
   },
   {
     "song_name": "People Get Ready",
     "interpreter": "One Love",
+    "popularity": 75,
     "audio_features": {
       "valence": 0.95,
       "danceability": 0.725,
-      "energy": 0.523
+      "energy": 0.523,
+      "tempo": 76.292,
+      "acousticness": 0.0783,
+      "speechiness": 0.324
     }
   },
   {
     "song_name": "Short Circuit",
     "interpreter": "Daft Punk",
+    "popularity": 51,
     "audio_features": {
       "valence": 0.215,
       "danceability": 0.535,
-      "energy": 0.558
+      "energy": 0.558,
+      "tempo": 109.69,
+      "acousticness": 0.00461,
+      "speechiness": 0.0741
     }
   },
   {
     "song_name": "Man for All Seasons",
     "interpreter": "Billy Idol",
+    "popularity": 31,
     "audio_features": {
       "valence": 0.468,
       "danceability": 0.524,
-      "energy": 0.952
+      "energy": 0.952,
+      "tempo": 92.236,
+      "acousticness": 0.0329,
+      "speechiness": 0.0522
     }
   },
   {
     "song_name": "18",
     "interpreter": "David Gilmour",
+    "popularity": 4,
     "audio_features": {
       "valence": 0.0833,
       "danceability": 0.292,
-      "energy": 0.19
+      "energy": 0.19,
+      "tempo": 67.054,
+      "acousticness": 0.819,
+      "speechiness": 0.0345
     }
   },
   {
     "song_name": "I Ain't Goin' Out Like That",
     "interpreter": "Cypress Hill",
+    "popularity": 54,
     "audio_features": {
       "valence": 0.437,
       "danceability": 0.768,
-      "energy": 0.533
+      "energy": 0.533,
+      "tempo": 100.839,
+      "acousticness": 0.00252,
+      "speechiness": 0.147
     }
   },
   {
     "song_name": "Future",
     "interpreter": "Dub Fx",
+    "popularity": 30,
     "audio_features": {
       "valence": 0.921,
       "danceability": 0.691,
-      "energy": 0.863
+      "energy": 0.863,
+      "tempo": 79.998,
+      "acousticness": 0.109,
+      "speechiness": 0.0583
     }
   },
   {
     "song_name": "Lodi Dodi (Feat. Nancy Fletcher)",
     "interpreter": "Snoop Doggy Dogg",
+    "popularity": 55,
     "audio_features": {
       "valence": 0.632,
       "danceability": 0.49,
-      "energy": 0.763
+      "energy": 0.763,
+      "tempo": 79.015,
+      "acousticness": 0.0114,
+      "speechiness": 0.108
     }
   },
   {
     "song_name": "Latin Thugs",
     "interpreter": "Cypress Hill",
+    "popularity": 43,
     "audio_features": {
       "valence": 0.711,
       "danceability": 0.66,
-      "energy": 0.839
+      "energy": 0.839,
+      "tempo": 92.974,
+      "acousticness": 0.0608,
+      "speechiness": 0.304
     }
   },
   {
     "song_name": "I Guess He'd Rather Be In Colorado",
     "interpreter": "John Denver",
+    "popularity": 44,
     "audio_features": {
       "valence": 0.524,
       "danceability": 0.475,
-      "energy": 0.188
+      "energy": 0.188,
+      "tempo": 136.925,
+      "acousticness": 0.941,
+      "speechiness": 0.0312
     }
   },
   {
     "song_name": "Jah",
     "interpreter": "M.A.N.D.Y.",
+    "popularity": 24,
     "audio_features": {
-      "valence": 0.286,
-      "danceability": 0.303,
-      "energy": 0.121
+      "valence": 0.727,
+      "danceability": 0.482,
+      "energy": 0.579,
+      "tempo": 189.457,
+      "acousticness": 0.238,
+      "speechiness": 0.16
     }
   },
   {
     "song_name": "Workin' for MCA",
     "interpreter": "Lynyrd Skynyrd",
+    "popularity": 44,
     "audio_features": {
       "valence": 0.847,
       "danceability": 0.276,
-      "energy": 0.837
+      "energy": 0.837,
+      "tempo": 169.67,
+      "acousticness": 0.000883,
+      "speechiness": 0.0554
     }
   },
   {
     "song_name": "Around And Around",
     "interpreter": "John Denver",
+    "popularity": 31,
     "audio_features": {
       "valence": 0.61,
       "danceability": 0.52,
-      "energy": 0.28
+      "energy": 0.28,
+      "tempo": 76.636,
+      "acousticness": 0.836,
+      "speechiness": 0.0334
     }
   },
   {
     "song_name": "Wooden Indian",
     "interpreter": "John Denver",
+    "popularity": 29,
     "audio_features": {
       "valence": 0.952,
       "danceability": 0.71,
-      "energy": 0.465
+      "energy": 0.465,
+      "tempo": 114.732,
+      "acousticness": 0.753,
+      "speechiness": 0.035
     }
   }
 ]

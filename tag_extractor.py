@@ -18,7 +18,7 @@ MEDIA_PATH = os.path.expanduser('~/Music/Lieder_HighResolutionAudio')
 def main():
     # parse_songnames.parse_songlist_new("songList.txt")
     spotify = init()
-    #id_name_list = get_spotify_ids("songList_alt.txt", spotify)
+    # id_name_list = get_spotify_ids("songList_alt.txt", spotify)
     id_name_list = get_spotify_ids_metadata(metadata_reader.read_metadata(MEDIA_PATH), spotify)
     list_with_high_level_tags = match_high_level_tags(id_name_list, spotify)
     save_as_json(list_with_high_level_tags)
@@ -38,6 +38,12 @@ def init():
 
 
 def get_spotify_ids(path_songlist, spotify):
+    """
+    Getting the psotify ids from the songnames parsed from the filenames
+    :param path_songlist: file with parsed names
+    :param spotify: object on which the spotify api calls are made
+    :return:
+    """
     track_list = parse_songnames.parse_songlist(path_songlist)
     print("starting api calls....")
     spotify_id_list = []
@@ -51,7 +57,7 @@ def get_spotify_ids(path_songlist, spotify):
             else:
                 error_list.append(single_track_info)
         except Exception as e:
-            print("asdasd")
+            print("Exception while getting spotifyIDs")
             time.sleep(1)
             print("wait 1s")
     #    print(spotify_id_list)
@@ -67,7 +73,7 @@ def get_spotify_ids(path_songlist, spotify):
             spotify_id_list.append(
                 (single_track_info[0], single_track_info[1], single_track_info[2], track_paging_object.items[0].id))
             error_list.remove(single_track_info)
-    
+
     print("After second iteration:")
     print("correct:", len(spotify_id_list))
     print("false:", len(error_list))
@@ -81,6 +87,12 @@ def get_spotify_ids(path_songlist, spotify):
 
 
 def get_spotify_ids_metadata(songnames_dict, spotify):
+    """
+    Getting the spotify ids by searching for artists and songnames parsed from the matadata
+    :param songnames_dict:
+    :param spotify:
+    :return:
+    """
     print("starting api calls....")
     spotify_id_list = []
     no_metadata_list = []
@@ -89,13 +101,13 @@ def get_spotify_ids_metadata(songnames_dict, spotify):
         if not single_track_info["success"]:
             no_metadata_list.append(single_track_info)
             continue
-        try: # to catch all api exceptions
+        try:  # to catch all api exceptions
             track_paging_object, = spotify.search(single_track_info["name"] + " " + single_track_info["artist"],
                                                   limit=1)
             if len(track_paging_object.items) != 0:
                 spotify_id_list.append((
-                    single_track_info["artist"], single_track_info["name"],
-                    single_track_info["path"], track_paging_object.items[0].id))
+                    single_track_info["artist"], single_track_info["name"], track_paging_object.items[0].popularity,
+                    track_paging_object.items[0].id))
             else:
                 error_list.append(single_track_info)
         except Exception as e:
@@ -123,23 +135,25 @@ def get_spotify_ids_metadata(songnames_dict, spotify):
     """
     # for error in error_list:
     # print(error)
-    #print(spotify_id_list)
-    print(*error_list, sep = "\n")
+    # print(spotify_id_list)
+    print(*error_list, sep="\n")
     return spotify_id_list
 
 
 def match_high_level_tags(id_name_list, spotify):
     """
-    :param id_name_list: list of tuples: [(interpreter, songname, orginal_path, spoitfy_id), ...] from get_spotify_ids
+    :param id_name_list: list of tuples: [(interpreter, songname, orginal_path, spoitfy_id, popularity), ...] from get_spotify_ids
     :return: list of dict
     """
     high_level_dict_list = []
     for song_info in id_name_list:
         audio_features = spotify.track_audio_features(song_info[3])
         reduced_audio_features = AudioFeatures(audio_features.valence, audio_features.danceability,
-                                               audio_features.energy)
+                                               audio_features.energy, audio_features.tempo, audio_features.acousticness,
+                                               audio_features.speechiness)
         high_level_dict_list.append(
-            {"song_name": song_info[1], "interpreter": song_info[0], "audio_features": reduced_audio_features.asdict()})
+            {"song_name": song_info[1], "interpreter": song_info[0], "popularity": song_info[2],
+             "audio_features": reduced_audio_features.asdict()})
     print(high_level_dict_list)
     return high_level_dict_list
 
@@ -150,13 +164,17 @@ def save_as_json(high_level_dict_list):
 
 
 class AudioFeatures:
-    def __init__(self, valence, danceability, energy):
+    def __init__(self, valence, danceability, energy, tempo, acousticness, speechiness):
         self.valence = valence
         self.danceability = danceability
         self.energy = energy
+        self.tempo = tempo
+        self.acousticness = acousticness
+        self.speechiness = speechiness
 
     def asdict(self):
-        return {"valence": self.valence, "danceability": self.danceability, "energy": self.energy}
+        return {"valence": self.valence, "danceability": self.danceability, "energy": self.energy, "tempo": self.tempo,
+                "acousticness": self.acousticness, "speechiness": self.speechiness}
 
 
 if __name__ == '__main__':
