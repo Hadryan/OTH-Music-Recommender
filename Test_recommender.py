@@ -26,6 +26,10 @@ def test_updating_user_information(user_controller):
 def test_recommender_v1(user_controller):
     print(recommender.recommend_song_v1(user_controller))
 
+def test_session_veighting(number_session):
+    result = -1 / (1 + np.math.exp(0.8 * number_session - 2)) + 0.9
+    print(result)
+
 
 if __name__ == '__main__':
     main()

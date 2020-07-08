@@ -76,8 +76,7 @@ class SongData:
         """
         song_vector_list = []
         for song in self.json_data:
-            single_entry = (np.array([song["audio_features"]["valence"], song["audio_features"]["danceability"],
-                                      song["audio_features"]["energy"]]), song["song_name"], song["interpreter"])
+            single_entry = (np.array([v for v in song["audio_features"].values()], dtype=float), song["song_name"], song["interpreter"])
             song_vector_list.append(single_entry)
         return song_vector_list
 
@@ -89,8 +88,9 @@ class UserDataContainer:
 
     def __init__(self):
         self.song_count = 0
-        self.vector_total = np.array([0, 0, 0], dtype=float)  # (valence, danceability, energy)
-        self.vector_avg = np.array([0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
+        self.vector_total = np.array([0, 0, 0, 0, 0, 0],
+                                     dtype=float)  # (valence, danceability, energy, tempo, acousticness, speechiness)
+        self.vector_avg = np.array([0, 0, 0, 0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
         self.genres = []  # [("genre_name", times_played)]
         self.artists = []  # [("artist_name", times_played)
 
@@ -149,18 +149,20 @@ class UserController:  # TODO CHange doc string
         """
         matched_song = None
         for song in self.song_data.song_vectors:
-            if song[1].strip().casefold() == currently_played_song["title"].strip().casefold() and song[2].strip().casefold() == currently_played_song["artist"].strip().casefold():
+            if song[1].strip().casefold() == currently_played_song["title"].strip().casefold() and song[
+                2].strip().casefold() == currently_played_song["artist"].strip().casefold():
                 matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
                 break
         if matched_song is None:
             print(currently_played_song, "has no matching song vector!")
             return  # ignore this song for the recommender
-        self.stats_all_time.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]],
-                                                     dtype=float)
+        new_song_vector = np.array(
+            [matched_song[0][0], matched_song[0][1], matched_song[0][2], matched_song[0][3], matched_song[0][4],
+             matched_song[0][5]], dtype=float)
+        self.stats_all_time.vector_total += new_song_vector
         self.stats_all_time.song_count += 1
         self.stats_all_time.vector_avg = self.stats_all_time.vector_total / self.stats_all_time.song_count
-        self.stats_session.vector_total += np.array([matched_song[0][0], matched_song[0][1], matched_song[0][2]],
-                                                    dtype=float)
+        self.stats_session.vector_total += new_song_vector
         self.stats_session.song_count += 1
         self.stats_session.vector_avg = self.stats_session.vector_total / self.stats_session.song_count
         self._update_artists_or_genres(self.stats_all_time.genres, currently_played_song["genre"])
@@ -233,7 +235,10 @@ class UserController:  # TODO CHange doc string
         x = 1: 0.13 ; x = 2: 0.3; x = 3: 0.49; x = 6: 0.84; x = 10: 0.89
         :return: weight_session : {0 <= weight_session <= 1}
         """
-        return -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
+        if self.stats_session.song_count == 0:
+            return 0.0
+        else:
+            return -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
 
     def get_user_vector(self):  # TOTEST
         """
