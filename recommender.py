@@ -1,60 +1,31 @@
 import copy
 import json
 import os.path
+import math
+import threading
+import time
+from operator import itemgetter
+
 import numpy as np
 from scipy.spatial import distance
-import math
+
+import mpd_connector
 
 PATH_SONGTAGS = "song_tags.json"
 PATH_USER_DATA = "user_data.json"
+MPD_IP = "localhost"
+MPD_PORT = 6600
 
 
-def recommend_song_v1(user_controller):
-    """
-    recommend a song solely based on the song vectors, not taking into account the genres or artists
-    :return: (str) songname + interpreter of recommended song
-    """
-    if user_controller.is_cold_start():
-        # Take a guess based on popularity
-        most_popular_song = ((), 0)
-        for song in SongData().json_data:
-            if most_popular_song[1] < song["popularity"]:
-                most_popular_song = ((song["song_name"], song["interpreter"]), song["popularity"])
-                if most_popular_song[1] == 100:  # 100 is the max value
-                    return most_popular_song
-        return most_popular_song[0]
-
-    user_vector = user_controller.get_user_vector()
-    min_dist = float("inf")
-    min_track = None
-    for song in SongData().song_vectors:
-        eukl_dist = distance.euclidean(song[0], user_vector)
-        print(eukl_dist)
-        if eukl_dist < min_dist:
-            min_dist = eukl_dist
-            min_track = (song[1], song[2])  # (name, interpreter)
-            # TODO if song not already recommended this session
-    return min_track
-
-
-def choose_recommended_song():
-    """
-    compare the song vector with the user vector and get the n best matches.
-    Take into account the genres
-    Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
-    since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
-
-    :return: next recommended song
-    """
-
-
-class SongData:
-    """
-    """
-
+class Recommender:
     def __init__(self):
         self.json_data = self.read_tags_from_json(PATH_SONGTAGS)
-        self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), name, interpreter]
+        self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), title, interpreter]
+        self.played_songs_session = []
+        self.user_controller = UserController(PATH_USER_DATA, self.song_vectors)
+        self.mpd = mpd_connector.MpdConnector(MPD_IP, MPD_PORT)
+        t = threading.Thread(target=self._update_played_songs_session, daemon=True)
+        t.start
 
     @staticmethod
     def read_tags_from_json(path):
@@ -76,9 +47,89 @@ class SongData:
         """
         song_vector_list = []
         for song in self.json_data:
-            single_entry = (np.array([v for v in song["audio_features"].values()], dtype=float), song["song_name"], song["interpreter"])
+            single_entry = (
+                np.array([v for v in song["audio_features"].values()], dtype=float), song["song_name"],
+                song["interpreter"])
             song_vector_list.append(single_entry)
         return song_vector_list
+
+    def _update_played_songs_session(self): # TOTEST
+        """
+        Tracks all songs that were played this session. Only call this inside a thread.
+        Updates every 30s.
+        :return:
+        """
+        while True:
+            current_song = self.mpd.get_current_song()  # TODO input: ip and port from mpd
+            if self.played_songs_session:  # if list not empty
+                if self.played_songs_session[-1] is not current_song:
+                    self.played_songs_session.append(current_song)
+            else:
+                self.played_songs_session.append(current_song)
+            print("current song list:", self.played_songs_session)
+            print("sleeping 30s")
+            time.sleep(30)
+
+    def recommend_song_v1_old(self, user_controller):
+        cold_start_recommend = self.cold_start(user_controller)
+        if cold_start_recommend is not None:  # None if this is not a cold start
+            return cold_start_recommend
+
+        user_vector = user_controller.get_user_vector()
+        min_dist = float("inf")
+        min_track = None
+        for song in self.song_vectors:
+            eukl_dist = distance.euclidean(song[0], user_vector)
+            print(eukl_dist)
+            if eukl_dist < min_dist:
+                min_dist = eukl_dist
+                min_track = (song[1], song[2])  # (name, interpreter)
+                # TODO if song not already recommended this session
+        return min_track
+
+    def recommend_song_v1(self):
+        """
+        recommend a song solely based on the song vectors, not taking into account the genres or artists
+        :return: sorted list of euclidean distances with title and artist
+        """
+        cold_start_recommend = self.cold_start()
+        if cold_start_recommend is not None:  # None if this is not a cold start
+            return cold_start_recommend
+
+        user_vector = self.user_controller.get_user_vector()
+        euclidean_distance_list = []
+        for song in self.song_vectors:
+            eucl_dist = distance.euclidean(song[0], user_vector)
+            euclidean_distance_list.append((eucl_dist, song[1], song[2]))
+        return sorted(euclidean_distance_list, key=itemgetter(0))
+
+    def cold_start(self):
+        """
+        Return the most popular song in the library if this is a cold start.
+        It's a cold start, if there is no available user data.
+        :return: None, if no coldstart, otherwise, recomended song
+        """
+        if self.user_controller.is_cold_start():
+            # Take a guess based on popularity
+            most_popular_song = ((), 0)
+            for song in self.json_data:
+                if most_popular_song[1] < song["popularity"]:
+                    most_popular_song = ((song["song_name"], song["interpreter"]), song["popularity"])
+                    if most_popular_song[1] == 100:  # 100 is the max value
+                        return most_popular_song
+            return most_popular_song[0]
+        else:
+            return None
+
+    def choose_recommended_song(self):
+        """
+        compare the song vector with the user vector and get the n best matches.
+        Take into account the genres
+        Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
+        since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
+
+        :return: next recommended song
+        """
 
 
 class UserDataContainer:
@@ -95,7 +146,7 @@ class UserDataContainer:
         self.artists = []  # [("artist_name", times_played)
 
 
-class UserController:  # TODO CHange doc string
+class UserController:
     """
     THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
     Genres and Artits can be returned as percentages, because displaying them as vectors would cause the most prevalent
@@ -105,9 +156,9 @@ class UserController:  # TODO CHange doc string
     """
     stats_all_time: UserDataContainer
 
-    def __init__(self, path_serialization):
+    def __init__(self, path_serialization, song_vectors):
         self.path_serialization = path_serialization
-        self.song_data = SongData()
+        self.song_vectors = song_vectors
 
         self.stats_all_time = UserDataContainer()
         self.stats_session = UserDataContainer()
@@ -148,7 +199,7 @@ class UserController:  # TODO CHange doc string
         :return:
         """
         matched_song = None
-        for song in self.song_data.song_vectors:
+        for song in self.song_vectors:
             if song[1].strip().casefold() == currently_played_song["title"].strip().casefold() and song[
                 2].strip().casefold() == currently_played_song["artist"].strip().casefold():
                 matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
@@ -228,7 +279,7 @@ class UserController:  # TODO CHange doc string
         :return: List of genres with the percentage they were played compared to the total amount of played songs
         """
 
-    def get_session_weight(self):  # TOTEST
+    def get_session_weight(self):
         """
         weighting the session values according to how long that session is.
         This is done by the Formula: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:

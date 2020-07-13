@@ -3,12 +3,13 @@ import recommender
 import numpy as np
 import json
 from scipy.spatial import distance
+import mpd_connector
 
 def main():
-    user_controller = recommender.UserController("user_data.json")
-    test_updating_user_information(user_controller)
-    test_recommender_v1(user_controller)
-
+    recommender_object = recommender.Recommender()
+    test_updating_user_information(recommender_object.user_controller)
+    test_recommender_v1(recommender_object)
+    #mpd_connector.test_mpd()
     #test_serialization()
 
 def test_updating_user_information(user_controller):
@@ -23,8 +24,8 @@ def test_updating_user_information(user_controller):
     user_controller.serialize_stats_all_time()
 
 
-def test_recommender_v1(user_controller):
-    print(recommender.recommend_song_v1(user_controller))
+def test_recommender_v1(recommender_object):
+    print(recommender_object.recommend_song_v1())
 
 def test_session_veighting(number_session):
     result = -1 / (1 + np.math.exp(0.8 * number_session - 2)) + 0.9
