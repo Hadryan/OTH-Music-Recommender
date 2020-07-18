@@ -4,6 +4,8 @@ import os.path
 import math
 import threading
 import time
+import logging
+import termcolor
 from operator import itemgetter
 
 import numpy as np
@@ -11,6 +13,7 @@ from scipy.spatial import distance
 
 import mpd_connector
 
+FACTOR_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
 PATH_SONGTAGS = "song_tags.json"
 PATH_USER_DATA = "user_data.json"
 MPD_IP = "localhost"
@@ -25,7 +28,7 @@ class Recommender:
         self.user_controller = UserController(PATH_USER_DATA, self.song_vectors)
         self.mpd = mpd_connector.MpdConnector(MPD_IP, MPD_PORT)
         t = threading.Thread(target=self._update_played_songs_session, daemon=True)
-        t.start
+        t.start()
 
     @staticmethod
     def read_tags_from_json(path):
@@ -49,58 +52,47 @@ class Recommender:
         for song in self.json_data:
             single_entry = (
                 np.array([v for v in song["audio_features"].values()], dtype=float), song["song_name"],
-                song["interpreter"])
+                song["interpreter"], song["genre"])
             song_vector_list.append(single_entry)
         return song_vector_list
 
-    def _update_played_songs_session(self): # TOTEST
+    def _update_played_songs_session(self):
         """
         Tracks all songs that were played this session. Only call this inside a thread.
         Updates every 30s.
         :return:
         """
         while True:
-            current_song = self.mpd.get_current_song()  # TODO input: ip and port from mpd
-            if self.played_songs_session:  # if list not empty
-                if self.played_songs_session[-1] is not current_song:
+            time.sleep(10)
+            try:
+                current_song = self.mpd.get_current_song()
+                if self.played_songs_session and current_song:  # if list and current_song not empty
+                    if self.played_songs_session[-1] != current_song:
+                        self.played_songs_session.append(current_song)
+                        self.user_controller.update_preferences(current_song)
+                        self.user_controller.serialize_stats_all_time()
+                else:
                     self.played_songs_session.append(current_song)
-            else:
-                self.played_songs_session.append(current_song)
-            print("current song list:", self.played_songs_session)
-            print("sleeping 30s")
-            time.sleep(30)
+            except KeyError:
+                logging.debug("Couldn't get current song. Probably no song currently playing")
 
-    def recommend_song_v1_old(self, user_controller):
-        cold_start_recommend = self.cold_start(user_controller)
-        if cold_start_recommend is not None:  # None if this is not a cold start
-            return cold_start_recommend
-
-        user_vector = user_controller.get_user_vector()
-        min_dist = float("inf")
-        min_track = None
-        for song in self.song_vectors:
-            eukl_dist = distance.euclidean(song[0], user_vector)
-            print(eukl_dist)
-            if eukl_dist < min_dist:
-                min_dist = eukl_dist
-                min_track = (song[1], song[2])  # (name, interpreter)
-                # TODO if song not already recommended this session
-        return min_track
-
-    def recommend_song_v1(self):
+    def get_eucl_distance_list(self, song_vectors, user_vector):
         """
         recommend a song solely based on the song vectors, not taking into account the genres or artists
-        :return: sorted list of euclidean distances with title and artist
+        :return: sorted list of sublists consisting of euclidean distances with title and artist
         """
         cold_start_recommend = self.cold_start()
         if cold_start_recommend is not None:  # None if this is not a cold start
             return cold_start_recommend
 
-        user_vector = self.user_controller.get_user_vector()
         euclidean_distance_list = []
-        for song in self.song_vectors:
-            eucl_dist = distance.euclidean(song[0], user_vector)
-            euclidean_distance_list.append((eucl_dist, song[1], song[2]))
+        for song in song_vectors:
+            if not (string_in_list_of_dicts("title", song[1], self.played_songs_session) and string_in_list_of_dicts(
+                    "artist", song[2],
+                    self.played_songs_session)):  # dont recommend songs played this session! TOTEST: what happens if played_songs_empty
+                eucl_dist = distance.euclidean(song[0], user_vector)
+                euclidean_distance_list.append([eucl_dist, song[1], song[2], song[3]])
+
         return sorted(euclidean_distance_list, key=itemgetter(0))
 
     def cold_start(self):
@@ -112,12 +104,10 @@ class Recommender:
         if self.user_controller.is_cold_start():
             # Take a guess based on popularity
             most_popular_song = ((), 0)
-            for song in self.json_data:
-                if most_popular_song[1] < song["popularity"]:
-                    most_popular_song = ((song["song_name"], song["interpreter"]), song["popularity"])
-                    if most_popular_song[1] == 100:  # 100 is the max value
-                        return most_popular_song
-            return most_popular_song[0]
+            songs_sorted_by_popularity = copy.deepcopy(self.json_data) # TODO test if not doing this has side effects
+            print("COLD:START")
+            print(sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True))
+            return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
         else:
             return None
 
@@ -128,8 +118,44 @@ class Recommender:
         Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
         since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
 
-        :return: next recommended song
+        :return: sorted list of songs, ordered from best match to worst
         """
+        distance_list = self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector())
+        percentages_genres = self.user_controller.get_percentages_genre_or_artist("genre")
+        percentages_artists = self.user_controller.get_percentages_genre_or_artist("artist")
+        for track in distance_list:
+            score_reduction = 0  # optimal score = 0 -> reducing it increases the chance it gets recommended
+            if track[3] in percentages_genres:  # if genre in listened to genres
+                score_reduction = track[0] * percentages_genres[track[3]]  # score = score - (score * genre percentage)
+            if track[2] in percentages_artists:  # if artist in listened to artists
+                score_reduction += track[0] * FACTOR_ARTISTS * percentages_artists[track[2]]
+            #print(track[0])
+            #print(score_reduction)
+            track[0] = track[0] - score_reduction
+            #print(track[0])
+            #print("___")
+        return sorted(distance_list, key=itemgetter(0))
+
+    def recommend_song_of_genre(self, genre):
+        """
+        recommend song of a specified genre
+        :param genre: genre as string
+        :return: sorted list of recommendations
+        """
+        score_list = self.choose_recommended_song()
+        genre_list = []
+        for song in score_list:
+            if equals(genre, song[3]):
+                genre_list.append(song)
+        return genre_list
+
+    def recommend_song_mood(self):
+        new_user_vector = copy.copy(self.user_controller.get_user_vector())
+        new_user_vector[0] = 1  # set valence to max
+        if new_user_vector[2] * 1.2 <= 1:
+            new_user_vector[2] = new_user_vector[2] * 1.2
+        score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
+        # TODO get recommended song refactor dass er scorelist als argument nimmt
 
 
 class UserDataContainer:
@@ -142,8 +168,8 @@ class UserDataContainer:
         self.vector_total = np.array([0, 0, 0, 0, 0, 0],
                                      dtype=float)  # (valence, danceability, energy, tempo, acousticness, speechiness)
         self.vector_avg = np.array([0, 0, 0, 0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
-        self.genres = []  # [("genre_name", times_played)]
-        self.artists = []  # [("artist_name", times_played)
+        self.genres = {}  # [("genre_name", times_played)]
+        self.artists = {}  # [("artist_name", times_played)
 
 
 class UserController:
@@ -199,14 +225,22 @@ class UserController:
         :return:
         """
         matched_song = None
-        for song in self.song_vectors:
-            if song[1].strip().casefold() == currently_played_song["title"].strip().casefold() and song[
-                2].strip().casefold() == currently_played_song["artist"].strip().casefold():
-                matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
-                break
+        try:
+            for song in self.song_vectors:
+                if equals(song[1], currently_played_song["title"]) and equals(song[2], currently_played_song["artist"]):
+                    matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
+                    break
+        except KeyError:
+            logging.error("currently_played_song is missing title or interpreter!")
+            return
         if matched_song is None:
-            print(currently_played_song, "has no matching song vector!")
+            logging.warning(termcolor.colored(currently_played_song["title"] + ", " + currently_played_song[
+                "artist"] + " has no matching song vector! Not adding this song to the user profile.", "yellow"))
             return  # ignore this song for the recommender
+        if "genre" not in currently_played_song:
+            logging.warning(termcolor.colored(currently_played_song["title"] + ", " + currently_played_song[
+                "artist"] + " has no genre! Not adding this song to the user profile.", "yellow"))
+            return
         new_song_vector = np.array(
             [matched_song[0][0], matched_song[0][1], matched_song[0][2], matched_song[0][3], matched_song[0][4],
              matched_song[0][5]], dtype=float)
@@ -221,19 +255,23 @@ class UserController:
         self._update_artists_or_genres(self.stats_all_time.artists, currently_played_song["artist"])
         self._update_artists_or_genres(self.stats_session.artists, currently_played_song["artist"])
 
-    def _update_artists_or_genres(self, target_list, feature):
+    @staticmethod
+    def _update_artists_or_genres(target_dict, feature):
         """
         Updates the genres or artists list.
-        :param target_list: the to be updated list, e.g. self.stats_session.artists
+        :param target_dict: the to be updated dict, e.g. self.stats_session.artists
         :param feature: the song feature that fits to the selected list , e.g. the artists name
-        :return:
         """
-        for entry in target_list:
-            if entry[0].strip().lower() == feature.strip().lower():
-                entry[1] += 1
-                return True
-        target_list.append((feature, 1))
-        return False
+        if target_dict:  # check if not empty
+            found = False
+            for key in target_dict.copy():  # copy to avoid RuntimeError: Dict changed size during iteration
+                if equals(str(key), feature):
+                    target_dict[key] += 1
+                    found = True
+            if not found:
+                target_dict[feature] = 1
+        else:
+            target_dict[feature] = 1
 
     def get_artist_percentages(self, scope):
         """
@@ -273,16 +311,52 @@ class UserController:
 
         return genre_list
 
-    def get_genre_percentages(self):
+    def get_percentages_genre_or_artist(self, genre_or_artist):
+        if genre_or_artist == "artist":
+            return self.calculate_weighted_percentages(self.stats_session.artists, self.stats_all_time.artists)
+        elif genre_or_artist == "genre":
+            return self.calculate_weighted_percentages(self.stats_session.genres, self.stats_all_time.genres)
+        else:
+            logging.error("Invalid parameter for get_percentages_genre_or_artist(genre_or_artist)."
+                          " genre_or_artist as to be \"artist\" or \"genre\"")
+            return None
+
+    def calculate_weighted_percentages(self, dict_session, dict_all_time):
         """
-        Take int account session_genre
-        :return: List of genres with the percentage they were played compared to the total amount of played songs
+        the weighted percantages are calculated by dividing the times an item is recorded (e.g. times a genre was played)
+        by the amount of songs played. This is done for the session and all time stats.
+        These 2 percentages for every genre are then each multiplied by their factor (calculated in get_session_factor())
+        and at last added up for a weighted percentage.
+        :return: {item: percentage, ...}
         """
+        weight_session = self.get_session_weight()
+        dict_session = copy.copy(dict_session)
+        dict_all_time = copy.copy(dict_all_time)
+
+        if dict_session:
+            for key, value in dict_session.items():
+                dict_session[key] = value / self.stats_session.song_count
+
+        if dict_all_time:
+            for key, value in dict_all_time.items():
+                dict_all_time[key] = value / self.stats_all_time.song_count
+        else:
+            logging.exception(
+                "Please check is_cold_start() before calling this method. This method should not be called"
+                "if is_cold_start() returns true")
+
+        for key, value in dict_all_time.items():
+            if key in dict_session:
+                dict_all_time[key] = (value * (1 - weight_session)) + (dict_session[key] * weight_session)
+            else:
+                dict_all_time[key] = (value * (1 - weight_session))
+
+        return dict_all_time
 
     def get_session_weight(self):
         """
         weighting the session values according to how long that session is.
-        This is done by the Formula: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:
+        This is done via the function: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:
         x = 1: 0.13 ; x = 2: 0.3; x = 3: 0.49; x = 6: 0.84; x = 10: 0.89
         :return: weight_session : {0 <= weight_session <= 1}
         """
@@ -308,3 +382,22 @@ class UserController:
         :return: True if this is a cold start. Otherwise False
         """
         return (self.stats_all_time.song_count + self.stats_session.song_count) <= 0
+
+
+def equals(str1, str2):
+    """
+    compares 2 Strings, case insensitive and without leading or trailing whitespaces.
+    """
+    return str1.strip().casefold() == str2.strip().casefold()
+
+
+def string_in_list_of_dicts(key, search_value, list_of_dicts):
+    """
+    Returns True if search_value is list of dictionaries at specified key.
+    Case insensitive and without leading or trailing whitespaces.
+    :return: True if found, else False
+    """
+    for item in list_of_dicts:
+        if equals(item[key], search_value):
+            return True
+    return False

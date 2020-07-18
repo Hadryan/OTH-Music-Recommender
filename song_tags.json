@@ -3,6 +3,7 @@
     "song_name": "People Get Ready",
     "interpreter": "One Love",
     "popularity": 74,
+    "genre": "Reggae",
     "audio_features": {
       "valence": 0.95,
       "danceability": 0.725,
@@ -13,22 +14,10 @@
     }
   },
   {
-    "song_name": "Wherever I May Roam",
-    "interpreter": "Metallica",
-    "popularity": 63,
-    "audio_features": {
-      "valence": 0.332,
-      "danceability": 0.55,
-      "energy": 0.824,
-      "tempo": 0.584,
-      "acousticness": 0.000362,
-      "speechiness": 0.0347
-    }
-  },
-  {
     "song_name": "Too Long / Steam Machine",
     "interpreter": "Daft Punk",
     "popularity": 29,
+    "genre": "Electronica",
     "audio_features": {
       "valence": 0.225,
       "danceability": 0.381,
@@ -42,6 +31,7 @@
     "song_name": "Thing Called Love",
     "interpreter": "Land Of Giants",
     "popularity": 1,
+    "genre": "Alternative",
     "audio_features": {
       "valence": 0.363,
       "danceability": 0.643,
@@ -54,7 +44,8 @@
   {
     "song_name": "Fire With Fire",
     "interpreter": "Land Of Giants",
-    "popularity": 1,
+    "popularity": 0,
+    "genre": "Alternative",
     "audio_features": {
       "valence": 0.658,
       "danceability": 0.826,
@@ -68,6 +59,7 @@
     "song_name": "Crescendolls",
     "interpreter": "Daft Punk",
     "popularity": 54,
+    "genre": "Electronic",
     "audio_features": {
       "valence": 0.937,
       "danceability": 0.696,
@@ -81,6 +73,7 @@
     "song_name": "Something About Us",
     "interpreter": "Daft Punk",
     "popularity": 68,
+    "genre": "Electronic",
     "audio_features": {
       "valence": 0.384,
       "danceability": 0.875,
@@ -94,6 +87,7 @@
     "song_name": "Voyager",
     "interpreter": "Daft Punk",
     "popularity": 60,
+    "genre": "Electronic",
     "audio_features": {
       "valence": 0.279,
       "danceability": 0.669,
@@ -107,6 +101,7 @@
     "song_name": "Short Circuit",
     "interpreter": "Daft Punk",
     "popularity": 51,
+    "genre": "Electronic",
     "audio_features": {
       "valence": 0.215,
       "danceability": 0.535,
@@ -120,6 +115,7 @@
     "song_name": "Lodi Dodi",
     "interpreter": "Snoop Doggy Dogg",
     "popularity": 55,
+    "genre": "Hip-Hop",
     "audio_features": {
       "valence": 0.632,
       "danceability": 0.49,
@@ -133,6 +129,7 @@
     "song_name": "For All My Niggaz & Bitches",
     "interpreter": "Snoop Doggy Dogg",
     "popularity": 50,
+    "genre": "Hip-Hop",
     "audio_features": {
       "valence": 0.626,
       "danceability": 0.545,
@@ -146,6 +143,7 @@
     "song_name": "Doggy Dogg World",
     "interpreter": "Snoop Doggy Dogg",
     "popularity": 54,
+    "genre": "Hip-Hop",
     "audio_features": {
       "valence": 0.682,
       "danceability": 0.685,
@@ -159,6 +157,7 @@
     "song_name": "Flow",
     "interpreter": "Dub Fx",
     "popularity": 39,
+    "genre": "Reggae/Hip-Hop",
     "audio_features": {
       "valence": 0.789,
       "danceability": 0.58,
@@ -172,6 +171,7 @@
     "song_name": "Future",
     "interpreter": "Dub Fx",
     "popularity": 30,
+    "genre": "Reggae/Hip-Hop",
     "audio_features": {
       "valence": 0.921,
       "danceability": 0.691,
@@ -185,6 +185,7 @@
     "song_name": "People Get Ready",
     "interpreter": "One Love",
     "popularity": 74,
+    "genre": "Reggae",
     "audio_features": {
       "valence": 0.95,
       "danceability": 0.725,
@@ -198,6 +199,7 @@
     "song_name": "Jah",
     "interpreter": "M.A.N.D.Y.",
     "popularity": 24,
+    "genre": "House",
     "audio_features": {
       "valence": 0.727,
       "danceability": 0.482,
@@ -211,6 +213,7 @@
     "song_name": "I Ain't Goin' Out Like That",
     "interpreter": "Cypress Hill",
     "popularity": 54,
+    "genre": "Gangsta Rap",
     "audio_features": {
       "valence": 0.437,
       "danceability": 0.768,
@@ -224,6 +227,7 @@
     "song_name": "Latin Thugs",
     "interpreter": "Cypress Hill",
     "popularity": 43,
+    "genre": "Gangsta Rap",
     "audio_features": {
       "valence": 0.711,
       "danceability": 0.66,
@@ -237,6 +241,7 @@
     "song_name": "EZ Come, EZ Go",
     "interpreter": "Cypress Hill",
     "popularity": 18,
+    "genre": "Gangsta Rap",
     "audio_features": {
       "valence": 0.576,
       "danceability": 0.79,
@@ -250,6 +255,7 @@
     "song_name": "If I Told You Who It Was",
     "interpreter": "Johnny Cash",
     "popularity": 47,
+    "genre": "Country",
     "audio_features": {
       "valence": 0.789,
       "danceability": 0.63,
@@ -263,6 +269,7 @@
     "song_name": "Don't You Think It's Come Our Time",
     "interpreter": "Johnny Cash",
     "popularity": 32,
+    "genre": "Country",
     "audio_features": {
       "valence": 0.663,
       "danceability": 0.64,
@@ -276,6 +283,7 @@
     "song_name": "She Used To Love Me A Lot",
     "interpreter": "Johnny Cash",
     "popularity": 56,
+    "genre": "Country",
     "audio_features": {
       "valence": 0.46,
       "danceability": 0.556,
@@ -286,61 +294,24 @@
     }
   },
   {
-    "song_name": "Wooden Indian",
-    "interpreter": "John Denver",
-    "popularity": 29,
-    "audio_features": {
-      "valence": 0.952,
-      "danceability": 0.71,
-      "energy": 0.465,
-      "tempo": 0.51,
-      "acousticness": 0.753,
-      "speechiness": 0.035
-    }
-  },
-  {
-    "song_name": "I Guess He'd Rather Be In Colorado",
-    "interpreter": "John Denver",
-    "popularity": 44,
-    "audio_features": {
-      "valence": 0.524,
-      "danceability": 0.475,
-      "energy": 0.188,
-      "tempo": 0.609,
-      "acousticness": 0.941,
-      "speechiness": 0.0312
-    }
-  },
-  {
-    "song_name": "Around And Around",
-    "interpreter": "John Denver",
-    "popularity": 31,
-    "audio_features": {
-      "valence": 0.61,
-      "danceability": 0.52,
-      "energy": 0.28,
-      "tempo": 0.341,
-      "acousticness": 0.836,
-      "speechiness": 0.0334
-    }
-  },
-  {
     "song_name": "Offertorium - Domine Jesu",
     "interpreter": "Wolfgang Amadeus MOZART",
-    "popularity": 36,
+    "popularity": 0,
+    "genre": "Classical",
     "audio_features": {
-      "valence": 0.252,
-      "danceability": 0.32,
-      "energy": 0.257,
-      "tempo": 0.417,
-      "acousticness": 0.981,
-      "speechiness": 0.0367
+      "valence": 0.124,
+      "danceability": 0.218,
+      "energy": 0.288,
+      "tempo": 0.615,
+      "acousticness": 0.954,
+      "speechiness": 0.0339
     }
   },
   {
     "song_name": "Offertorium - Sanctus",
     "interpreter": "Wolfgang Amadeus MOZART",
     "popularity": 1,
+    "genre": "Classical",
     "audio_features": {
       "valence": 0.157,
       "danceability": 0.224,
@@ -351,35 +322,10 @@
     }
   },
   {
-    "song_name": "Workin' for MCA",
-    "interpreter": "Lynyrd Skynyrd",
-    "popularity": 44,
-    "audio_features": {
-      "valence": 0.847,
-      "danceability": 0.276,
-      "energy": 0.837,
-      "tempo": 0.754,
-      "acousticness": 0.000883,
-      "speechiness": 0.0554
-    }
-  },
-  {
-    "song_name": "The Needle and the Spoon",
-    "interpreter": "Lynyrd Skynyrd",
-    "popularity": 54,
-    "audio_features": {
-      "valence": 0.638,
-      "danceability": 0.53,
-      "energy": 0.614,
-      "tempo": 0.513,
-      "acousticness": 0.283,
-      "speechiness": 0.0408
-    }
-  },
-  {
     "song_name": "Grind",
     "interpreter": "Tangerine Dream",
     "popularity": 12,
+    "genre": "Soundtrack",
     "audio_features": {
       "valence": 0.0888,
       "danceability": 0.391,
@@ -393,6 +339,7 @@
     "song_name": "The Final Countdown",
     "interpreter": "Europe",
     "popularity": 75,
+    "genre": "Hard Rock",
     "audio_features": {
       "valence": 0.185,
       "danceability": 0.536,
@@ -405,7 +352,8 @@
   {
     "song_name": "18",
     "interpreter": "David Gilmour",
-    "popularity": 4,
+    "popularity": 3,
+    "genre": "H\u00f6rbuch",
     "audio_features": {
       "valence": 0.0833,
       "danceability": 0.292,
@@ -419,6 +367,7 @@
     "song_name": "The World",
     "interpreter": "Empire Of The Sun",
     "popularity": 31,
+    "genre": "Electronic",
     "audio_features": {
       "valence": 0.153,
       "danceability": 0.539,
@@ -432,6 +381,7 @@
     "song_name": "Man for All Seasons",
     "interpreter": "Billy Idol",
     "popularity": 31,
+    "genre": "Punk",
     "audio_features": {
       "valence": 0.468,
       "danceability": 0.524,

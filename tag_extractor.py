@@ -57,7 +57,7 @@ def get_spotify_ids_mpd_tags(songnames_dict, spotify):
             if len(track_paging_object.items) != 0:
                 spotify_id_list.append((
                     single_track_info["artist"], single_track_info["title"], track_paging_object.items[0].popularity,
-                    track_paging_object.items[0].id))
+                    track_paging_object.items[0].id, single_track_info["genre"]))
             else:
                 error_list.append(single_track_info)
         except Exception as e:  # TODO check doc what specific exception is being thrown
@@ -95,7 +95,7 @@ def match_high_level_tags(id_name_list, spotify):
                                                audio_features.energy, _scale_tempo_down(audio_features.tempo), audio_features.acousticness,
                                                audio_features.speechiness)
         high_level_dict_list.append(
-            {"song_name": song_info[1], "interpreter": song_info[0], "popularity": song_info[2],
+            {"song_name": song_info[1], "interpreter": song_info[0], "popularity": song_info[2], "genre": song_info[4],
              "audio_features": reduced_audio_features.asdict()})
     print(high_level_dict_list)
     return high_level_dict_list
