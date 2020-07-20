@@ -20,10 +20,11 @@ def main():
     test_updating_user_information(recommender_object.user_controller)
     test_recommender_v1(recommender_object)
     # time.sleep(8)
-
+    test_genre_recommendation(recommender_object, "Classical")
+    test_mood_recommendation(recommender_object)
     print(recommender_object.user_controller.get_percentages_genre_or_artist("genre"))
     print(recommender_object.user_controller.get_percentages_genre_or_artist("artist"))
-    print(recommender_object.choose_recommended_song())
+    #print(recommender_object.choose_recommended_song())
     # mpd = recommender_object.mpd
     # mpd.add_all_to_queue()
     # mpd.play_specific_song(2)
@@ -60,6 +61,16 @@ def test_updating_user_information(user_controller):
 def test_session_veighting(number_session):
     result = -1 / (1 + np.math.exp(0.8 * number_session - 2)) + 0.9
     print(result)
+
+def test_mood_recommendation(recommender_object):
+    print("recommending Happy songs:")
+    print(recommender_object.recommend_song_mood())
+    print("___")
+
+def test_genre_recommendation(recommender_object, genre):
+    print("Recommending songs of genre:", genre)
+    print(recommender_object.recommend_song_genre(genre))
+    print("___")
 
 
 if __name__ == '__main__':

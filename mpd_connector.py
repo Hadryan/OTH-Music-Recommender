@@ -85,3 +85,20 @@ def _testing_mpd_commands():
     print("title:", current_song["title"])
     print("artist:", current_song["artist"])
     print("genre:", current_song["genre"])
+
+
+def main():
+    #mpd = MpdConnector("2003:e1:2723:8a00:ec09:d9f1:abf2:e80a", 6600)
+    client = MPDClient()
+    client.timeout = 10
+    client.idletimeout = None
+    client.connect("2003:e1:2723:8a00:ec09:d9f1:abf2:e80a", 6600)
+    #client.connect("localhost", 6600)
+    print(client.mpd_version)
+    print(client.listallinfo())
+    print(client.next())
+    print(client.add("asd"))
+
+
+if __name__ == '__main__':
+    main()

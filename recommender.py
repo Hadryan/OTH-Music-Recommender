@@ -81,9 +81,8 @@ class Recommender:
         recommend a song solely based on the song vectors, not taking into account the genres or artists
         :return: sorted list of sublists consisting of euclidean distances with title and artist
         """
-        cold_start_recommend = self.cold_start()
-        if cold_start_recommend is not None:  # None if this is not a cold start
-            return cold_start_recommend
+        if self.user_controller.is_cold_start():
+            return self.cold_start()
 
         euclidean_distance_list = []
         for song in song_vectors:
@@ -91,27 +90,23 @@ class Recommender:
                     "artist", song[2],
                     self.played_songs_session)):  # dont recommend songs played this session! TOTEST: what happens if played_songs_empty
                 eucl_dist = distance.euclidean(song[0], user_vector)
-                euclidean_distance_list.append([eucl_dist, song[1], song[2], song[3]])
 
-        return sorted(euclidean_distance_list, key=itemgetter(0))
+                euclidean_distance_list.append({"score": eucl_dist, "song_name": song[1], "interpreter": song[2], "genre": song[3]})
+        return sorted(euclidean_distance_list, key=itemgetter("score"))
 
     def cold_start(self):
         """
         Return the most popular song in the library if this is a cold start.
         It's a cold start, if there is no available user data.
-        :return: None, if no coldstart, otherwise, recomended song
+        :return: None, if no cold start, otherwise, recomended song
         """
-        if self.user_controller.is_cold_start():
-            # Take a guess based on popularity
-            most_popular_song = ((), 0)
-            songs_sorted_by_popularity = copy.deepcopy(self.json_data) # TODO test if not doing this has side effects
-            print("COLD:START")
-            print(sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True))
-            return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
-        else:
-            return None
+        # Take a guess based on popularity
+        songs_sorted_by_popularity = copy.deepcopy(self.json_data) # TODO test if not doing this has side effects
+        logging.info("Cold Start. Recommending by popularity")
+        print(sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True))
+        return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
 
-    def choose_recommended_song(self):
+    def choose_recommended_song(self, distance_list):
         """
         compare the song vector with the user vector and get the n best matches.
         Take into account the genres
@@ -120,43 +115,59 @@ class Recommender:
 
         :return: sorted list of songs, ordered from best match to worst
         """
-        distance_list = self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector())
+        if self.user_controller.is_cold_start():
+            return self.cold_start()
+
+        #distance_list = self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector())
         percentages_genres = self.user_controller.get_percentages_genre_or_artist("genre")
         percentages_artists = self.user_controller.get_percentages_genre_or_artist("artist")
         for track in distance_list:
             score_reduction = 0  # optimal score = 0 -> reducing it increases the chance it gets recommended
-            if track[3] in percentages_genres:  # if genre in listened to genres
-                score_reduction = track[0] * percentages_genres[track[3]]  # score = score - (score * genre percentage)
-            if track[2] in percentages_artists:  # if artist in listened to artists
-                score_reduction += track[0] * FACTOR_ARTISTS * percentages_artists[track[2]]
+            if track["genre"] in percentages_genres:  # if genre in listened to genres
+                score_reduction = track["score"] * percentages_genres[track["genre"]]  # score = score - (score * genre percentage)
+            if track["interpreter"] in percentages_artists:  # if artist in listened to artists
+                score_reduction += track["score"] * FACTOR_ARTISTS * percentages_artists[track["interpreter"]]
             #print(track[0])
             #print(score_reduction)
-            track[0] = track[0] - score_reduction
+            track["score"] = track["score"] - score_reduction
             #print(track[0])
             #print("___")
-        return sorted(distance_list, key=itemgetter(0))
+        return sorted(distance_list, key=itemgetter("score"))
 
-    def recommend_song_of_genre(self, genre):
+    def recommend_song_genre(self, genre):
         """
         recommend song of a specified genre
         :param genre: genre as string
         :return: sorted list of recommendations
         """
-        score_list = self.choose_recommended_song()
+        score_list = self.choose_recommended_song(self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector()))
         genre_list = []
         for song in score_list:
-            if equals(genre, song[3]):
+            if equals(genre, song["genre"]):
                 genre_list.append(song)
         return genre_list
+
+    def recommend_song_mood_old(self):
+        new_user_vector = copy.copy(self.user_controller.get_user_vector())
+        new_user_vector[0] = 1  # set valence to max
+        if new_user_vector[3] * 1.2 < 1: # also increase the energy value
+            new_user_vector[3] = new_user_vector[3] * 1.2
+        else:
+            new_user_vector[3] = 1
+        score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
+        return self.choose_recommended_song(score_list)
+        # TODO get recommended song refactor dass er scorelist als argument nimmt
 
     def recommend_song_mood(self):
         new_user_vector = copy.copy(self.user_controller.get_user_vector())
         new_user_vector[0] = 1  # set valence to max
-        if new_user_vector[2] * 1.2 <= 1:
-            new_user_vector[2] = new_user_vector[2] * 1.2
+        if new_user_vector[3] * 1.2 < 1: # also increase the energy value
+            new_user_vector[3] = new_user_vector[3] * 1.2
+        else:
+            new_user_vector[3] = 1
         score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
+        return self.choose_recommended_song(score_list)
         # TODO get recommended song refactor dass er scorelist als argument nimmt
-
 
 class UserDataContainer:
     """
