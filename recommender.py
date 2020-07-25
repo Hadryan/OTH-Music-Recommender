@@ -14,8 +14,8 @@ from scipy.spatial import distance
 import mpd_connector
 
 FACTOR_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
-PATH_SONGTAGS = "song_tags.json"
-PATH_USER_DATA = "user_data.json"
+PATH_SONGTAGS = "data/song_tags.json"
+PATH_USER_DATA = "data/user_data.json"
 MPD_IP = "localhost"
 MPD_PORT = 6600
 
@@ -90,7 +90,6 @@ class Recommender:
                     "artist", song[2],
                     self.played_songs_session)):  # dont recommend songs played this session! TOTEST: what happens if played_songs_empty
                 eucl_dist = distance.euclidean(song[0], user_vector)
-
                 euclidean_distance_list.append({"score": eucl_dist, "song_name": song[1], "interpreter": song[2], "genre": song[3]})
         return sorted(euclidean_distance_list, key=itemgetter("score"))
 
@@ -101,24 +100,22 @@ class Recommender:
         :return: None, if no cold start, otherwise, recomended song
         """
         # Take a guess based on popularity
-        songs_sorted_by_popularity = copy.deepcopy(self.json_data) # TODO test if not doing this has side effects
+        songs_sorted_by_popularity = copy.deepcopy(self.json_data)
         logging.info("Cold Start. Recommending by popularity")
         print(sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True))
         return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
 
-    def choose_recommended_song(self, distance_list):
+    def consider_genre_artist(self, distance_list):
         """
-        compare the song vector with the user vector and get the n best matches.
         Take into account the genres
         Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
         since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
-
+        :param: distance_list: eukl. distances of songvectors to the user vector. Created by calling get_eucl_distance_list()
         :return: sorted list of songs, ordered from best match to worst
         """
         if self.user_controller.is_cold_start():
             return self.cold_start()
 
-        #distance_list = self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector())
         percentages_genres = self.user_controller.get_percentages_genre_or_artist("genre")
         percentages_artists = self.user_controller.get_percentages_genre_or_artist("artist")
         for track in distance_list:
@@ -127,47 +124,68 @@ class Recommender:
                 score_reduction = track["score"] * percentages_genres[track["genre"]]  # score = score - (score * genre percentage)
             if track["interpreter"] in percentages_artists:  # if artist in listened to artists
                 score_reduction += track["score"] * FACTOR_ARTISTS * percentages_artists[track["interpreter"]]
-            #print(track[0])
-            #print(score_reduction)
             track["score"] = track["score"] - score_reduction
-            #print(track[0])
-            #print("___")
+
         return sorted(distance_list, key=itemgetter("score"))
+
+    def recommend_song(self):
+        """
+        recommend a song. No restrictions.
+        :return:
+        """
+        distance_list = self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector())
+        return self.consider_genre_artist(distance_list)
 
     def recommend_song_genre(self, genre):
         """
-        recommend song of a specified genre
+        recommend a song of a specified genre
         :param genre: genre as string
         :return: sorted list of recommendations
         """
-        score_list = self.choose_recommended_song(self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector()))
+        score_list = self.consider_genre_artist(self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector()))
         genre_list = []
         for song in score_list:
             if equals(genre, song["genre"]):
                 genre_list.append(song)
         return genre_list
 
-    def recommend_song_mood_old(self):
+    def recommend_song_mood(self, mood):
+        """
+        This is an experimental mood recommender.
+        The quality of the results is very dependant on the quality of the spotify tags.
+        :param mood: possible moods: positive, negative, angry
+        :return: sorted how recommended the songs are in descending order.
+        """
         new_user_vector = copy.copy(self.user_controller.get_user_vector())
-        new_user_vector[0] = 1  # set valence to max
-        if new_user_vector[3] * 1.2 < 1: # also increase the energy value
-            new_user_vector[3] = new_user_vector[3] * 1.2
-        else:
+        if mood == "positive": # energy + valence high
+            new_user_vector[0] = 1  # set valence to max
+            if new_user_vector[3] * 1.3 < 1:
+                new_user_vector[3] = new_user_vector[3] * 1.3 # also increase the energy value
+            else:
+                new_user_vector[3] = 1
+        elif mood == "negative": # low valence
+            new_user_vector[0] = 0  # set valence to min
+        elif mood == "angry": # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
+            new_user_vector[0] = 0
             new_user_vector[3] = 1
+        else:
+            raise ValueError('Unknown parameter for recommend_song_mood.', mood)
         score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
-        return self.choose_recommended_song(score_list)
-        # TODO get recommended song refactor dass er scorelist als argument nimmt
+        #print(score_list)
+        return self.consider_genre_artist(score_list)
 
-    def recommend_song_mood(self):
-        new_user_vector = copy.copy(self.user_controller.get_user_vector())
-        new_user_vector[0] = 1  # set valence to max
-        if new_user_vector[3] * 1.2 < 1: # also increase the energy value
-            new_user_vector[3] = new_user_vector[3] * 1.2
+    def recommend_genre_or_mood(self, input_value):
+        """
+        this method determines whether to call the genre or mood recommendation.
+        :return: recommended song
+        """
+        if input_value == ("postive" or "negative" or "angry"):
+            logging.info("calling mood recommender.")
+            return self.recommend_song_mood(input_value)
         else:
-            new_user_vector[3] = 1
-        score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
-        return self.choose_recommended_song(score_list)
-        # TODO get recommended song refactor dass er scorelist als argument nimmt
+            logging.info("calling genre recommender")
+            return self.recommend_song_genre(input_value)
+
 
 class UserDataContainer:
     """

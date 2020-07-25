@@ -15,7 +15,7 @@ refresh_token = "AQD2gsLOa6g984Kvt62WR2rT2rqJVzHIEN7GZWq23915TiKQQNpBKSQMTqoow11
 MEDIA_PATH = os.path.expanduser('~/Music/Lieder_HighResolutionAudio')
 MPD_IP = "localhost"
 MPD_PORT = 6600
-OUTPUT_PATH = "song_tags.json"
+OUTPUT_PATH = "data/song_tags.json"
 
 
 def main():
