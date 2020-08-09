@@ -1,9 +1,11 @@
 [
   {
-    "song_name": "People Get Ready",
-    "interpreter": "One Love",
-    "popularity": 74,
+    "artist": "One Love",
+    "title": "People Get Ready",
+    "popularity": 75,
     "genre": "Reggae",
+    "album": "Exodus (Remastered)",
+    "date": "1977",
     "audio_features": {
       "valence": 0.95,
       "danceability": 0.725,
@@ -14,10 +16,12 @@
     }
   },
   {
-    "song_name": "Too Long / Steam Machine",
-    "interpreter": "Daft Punk",
+    "artist": "Daft Punk",
+    "title": "Too Long / Steam Machine",
     "popularity": 29,
     "genre": "Electronica",
+    "album": "Alive 2007: Deluxe Edition",
+    "date": "2007",
     "audio_features": {
       "valence": 0.225,
       "danceability": 0.381,
@@ -28,10 +32,12 @@
     }
   },
   {
-    "song_name": "Thing Called Love",
-    "interpreter": "Land Of Giants",
-    "popularity": 1,
+    "artist": "Land Of Giants",
+    "title": "Thing Called Love",
+    "popularity": 2,
     "genre": "Alternative",
+    "album": "Cannibal Dolls / Seven Men",
+    "date": "2008",
     "audio_features": {
       "valence": 0.363,
       "danceability": 0.643,
@@ -42,10 +48,12 @@
     }
   },
   {
-    "song_name": "Fire With Fire",
-    "interpreter": "Land Of Giants",
-    "popularity": 0,
+    "artist": "Land Of Giants",
+    "title": "Fire With Fire",
+    "popularity": 1,
     "genre": "Alternative",
+    "album": "Cannibal Dolls / Seven Men",
+    "date": "2008",
     "audio_features": {
       "valence": 0.658,
       "danceability": 0.826,
@@ -56,10 +64,12 @@
     }
   },
   {
-    "song_name": "Crescendolls",
-    "interpreter": "Daft Punk",
-    "popularity": 54,
+    "artist": "Daft Punk",
+    "title": "Crescendolls",
+    "popularity": 55,
     "genre": "Electronic",
+    "album": "Discovery",
+    "date": "2001",
     "audio_features": {
       "valence": 0.937,
       "danceability": 0.696,
@@ -70,10 +80,12 @@
     }
   },
   {
-    "song_name": "Something About Us",
-    "interpreter": "Daft Punk",
-    "popularity": 68,
+    "artist": "Daft Punk",
+    "title": "Something About Us",
+    "popularity": 69,
     "genre": "Electronic",
+    "album": "Discovery",
+    "date": "2001",
     "audio_features": {
       "valence": 0.384,
       "danceability": 0.875,
@@ -84,10 +96,12 @@
     }
   },
   {
-    "song_name": "Voyager",
-    "interpreter": "Daft Punk",
-    "popularity": 60,
+    "artist": "Daft Punk",
+    "title": "Voyager",
+    "popularity": 61,
     "genre": "Electronic",
+    "album": "Discovery",
+    "date": "2001",
     "audio_features": {
       "valence": 0.279,
       "danceability": 0.669,
@@ -98,10 +112,12 @@
     }
   },
   {
-    "song_name": "Short Circuit",
-    "interpreter": "Daft Punk",
+    "artist": "Daft Punk",
+    "title": "Short Circuit",
     "popularity": 51,
     "genre": "Electronic",
+    "album": "Discovery",
+    "date": "2001",
     "audio_features": {
       "valence": 0.215,
       "danceability": 0.535,
@@ -112,10 +128,12 @@
     }
   },
   {
-    "song_name": "Lodi Dodi",
-    "interpreter": "Snoop Doggy Dogg",
-    "popularity": 55,
+    "artist": "Snoop Doggy Dogg",
+    "title": "Lodi Dodi",
+    "popularity": 56,
     "genre": "Hip-Hop",
+    "album": "Doggystyle",
+    "date": "1993",
     "audio_features": {
       "valence": 0.632,
       "danceability": 0.49,
@@ -126,10 +144,12 @@
     }
   },
   {
-    "song_name": "For All My Niggaz & Bitches",
-    "interpreter": "Snoop Doggy Dogg",
-    "popularity": 50,
+    "artist": "Snoop Doggy Dogg",
+    "title": "For All My Niggaz & Bitches",
+    "popularity": 51,
     "genre": "Hip-Hop",
+    "album": "Doggystyle",
+    "date": "1993",
     "audio_features": {
       "valence": 0.626,
       "danceability": 0.545,
@@ -140,10 +160,12 @@
     }
   },
   {
-    "song_name": "Doggy Dogg World",
-    "interpreter": "Snoop Doggy Dogg",
-    "popularity": 54,
+    "artist": "Snoop Doggy Dogg",
+    "title": "Doggy Dogg World",
+    "popularity": 55,
     "genre": "Hip-Hop",
+    "album": "Doggystyle",
+    "date": "1993",
     "audio_features": {
       "valence": 0.682,
       "danceability": 0.685,
@@ -154,10 +176,12 @@
     }
   },
   {
-    "song_name": "Flow",
-    "interpreter": "Dub Fx",
+    "artist": "Dub Fx",
+    "title": "Flow",
     "popularity": 39,
     "genre": "Reggae/Hip-Hop",
+    "album": "Everythinks A Ripple",
+    "date": "2009",
     "audio_features": {
       "valence": 0.789,
       "danceability": 0.58,
@@ -168,10 +192,12 @@
     }
   },
   {
-    "song_name": "Future",
-    "interpreter": "Dub Fx",
+    "artist": "Dub Fx",
+    "title": "Future",
     "popularity": 30,
     "genre": "Reggae/Hip-Hop",
+    "album": "Everythinks A Ripple",
+    "date": "2009",
     "audio_features": {
       "valence": 0.921,
       "danceability": 0.691,
@@ -182,10 +208,12 @@
     }
   },
   {
-    "song_name": "People Get Ready",
-    "interpreter": "One Love",
-    "popularity": 74,
+    "artist": "One Love",
+    "title": "People Get Ready",
+    "popularity": 75,
     "genre": "Reggae",
+    "album": "Exodus (Remastered)",
+    "date": "1977",
     "audio_features": {
       "valence": 0.95,
       "danceability": 0.725,
@@ -196,10 +224,12 @@
     }
   },
   {
-    "song_name": "Jah",
-    "interpreter": "M.A.N.D.Y.",
-    "popularity": 24,
+    "artist": "M.A.N.D.Y.",
+    "title": "Jah",
+    "popularity": 25,
     "genre": "House",
+    "album": "Fundacion",
+    "date": "2005",
     "audio_features": {
       "valence": 0.727,
       "danceability": 0.482,
@@ -210,10 +240,12 @@
     }
   },
   {
-    "song_name": "I Ain't Goin' Out Like That",
-    "interpreter": "Cypress Hill",
+    "artist": "Cypress Hill",
+    "title": "I Ain't Goin' Out Like That",
     "popularity": 54,
     "genre": "Gangsta Rap",
+    "album": "Greatest Hits from The Bong",
+    "date": "2005",
     "audio_features": {
       "valence": 0.437,
       "danceability": 0.768,
@@ -224,10 +256,12 @@
     }
   },
   {
-    "song_name": "Latin Thugs",
-    "interpreter": "Cypress Hill",
+    "artist": "Cypress Hill",
+    "title": "Latin Thugs",
     "popularity": 43,
     "genre": "Gangsta Rap",
+    "album": "Greatest Hits from The Bong",
+    "date": "2005",
     "audio_features": {
       "valence": 0.711,
       "danceability": 0.66,
@@ -238,10 +272,12 @@
     }
   },
   {
-    "song_name": "EZ Come, EZ Go",
-    "interpreter": "Cypress Hill",
+    "artist": "Cypress Hill",
+    "title": "EZ Come, EZ Go",
     "popularity": 18,
     "genre": "Gangsta Rap",
+    "album": "Greatest Hits from The Bong",
+    "date": "2005",
     "audio_features": {
       "valence": 0.576,
       "danceability": 0.79,
@@ -252,10 +288,12 @@
     }
   },
   {
-    "song_name": "If I Told You Who It Was",
-    "interpreter": "Johnny Cash",
+    "artist": "Johnny Cash",
+    "title": "If I Told You Who It Was",
     "popularity": 47,
     "genre": "Country",
+    "album": "Out Among The Stars",
+    "date": "2014",
     "audio_features": {
       "valence": 0.789,
       "danceability": 0.63,
@@ -266,10 +304,12 @@
     }
   },
   {
-    "song_name": "Don't You Think It's Come Our Time",
-    "interpreter": "Johnny Cash",
+    "artist": "Johnny Cash",
+    "title": "Don't You Think It's Come Our Time",
     "popularity": 32,
     "genre": "Country",
+    "album": "Out Among The Stars",
+    "date": "2014",
     "audio_features": {
       "valence": 0.663,
       "danceability": 0.64,
@@ -280,10 +320,12 @@
     }
   },
   {
-    "song_name": "She Used To Love Me A Lot",
-    "interpreter": "Johnny Cash",
-    "popularity": 56,
+    "artist": "Johnny Cash",
+    "title": "She Used To Love Me A Lot",
+    "popularity": 57,
     "genre": "Country",
+    "album": "Out Among The Stars",
+    "date": "2014",
     "audio_features": {
       "valence": 0.46,
       "danceability": 0.556,
@@ -294,24 +336,28 @@
     }
   },
   {
-    "song_name": "Offertorium - Domine Jesu",
-    "interpreter": "Wolfgang Amadeus MOZART",
-    "popularity": 0,
+    "artist": "Wolfgang Amadeus MOZART",
+    "title": "Offertorium - Domine Jesu",
+    "popularity": 36,
     "genre": "Classical",
+    "album": "REQUIEM d-moll, KV 626",
+    "date": "1995",
     "audio_features": {
-      "valence": 0.124,
-      "danceability": 0.218,
-      "energy": 0.288,
-      "tempo": 0.615,
-      "acousticness": 0.954,
-      "speechiness": 0.0339
+      "valence": 0.252,
+      "danceability": 0.32,
+      "energy": 0.257,
+      "tempo": 0.417,
+      "acousticness": 0.981,
+      "speechiness": 0.0367
     }
   },
   {
-    "song_name": "Offertorium - Sanctus",
-    "interpreter": "Wolfgang Amadeus MOZART",
+    "artist": "Wolfgang Amadeus MOZART",
+    "title": "Offertorium - Sanctus",
     "popularity": 1,
     "genre": "Classical",
+    "album": "REQUIEM d-moll, KV 626",
+    "date": "1995",
     "audio_features": {
       "valence": 0.157,
       "danceability": 0.224,
@@ -322,10 +368,12 @@
     }
   },
   {
-    "song_name": "Grind",
-    "interpreter": "Tangerine Dream",
+    "artist": "Tangerine Dream",
+    "title": "Grind",
     "popularity": 12,
     "genre": "Soundtrack",
+    "album": "Sorcerer 2014 - Cinematographic Score CD1",
+    "date": "2014",
     "audio_features": {
       "valence": 0.0888,
       "danceability": 0.391,
@@ -336,10 +384,12 @@
     }
   },
   {
-    "song_name": "The Final Countdown",
-    "interpreter": "Europe",
-    "popularity": 75,
+    "artist": "Europe",
+    "title": "The Final Countdown",
+    "popularity": 76,
     "genre": "Hard Rock",
+    "album": "The Final Countdown",
+    "date": "1986",
     "audio_features": {
       "valence": 0.185,
       "danceability": 0.536,
@@ -350,10 +400,12 @@
     }
   },
   {
-    "song_name": "18",
-    "interpreter": "David Gilmour",
-    "popularity": 3,
+    "artist": "David Gilmour",
+    "title": "18",
+    "popularity": 4,
     "genre": "H\u00f6rbuch",
+    "album": "Unser allerbestes Jahr CD2",
+    "date": "2010",
     "audio_features": {
       "valence": 0.0833,
       "danceability": 0.292,
@@ -364,10 +416,12 @@
     }
   },
   {
-    "song_name": "The World",
-    "interpreter": "Empire Of The Sun",
-    "popularity": 31,
+    "artist": "Empire Of The Sun",
+    "title": "The World",
+    "popularity": 32,
     "genre": "Electronic",
+    "album": "Walking On A Dream",
+    "date": "2008",
     "audio_features": {
       "valence": 0.153,
       "danceability": 0.539,
@@ -378,10 +432,12 @@
     }
   },
   {
-    "song_name": "Man for All Seasons",
-    "interpreter": "Billy Idol",
-    "popularity": 31,
+    "artist": "Billy Idol",
+    "title": "Man for All Seasons",
+    "popularity": 32,
     "genre": "Punk",
+    "album": "Whiplash Smile",
+    "date": "1986",
     "audio_features": {
       "valence": 0.468,
       "danceability": 0.524,

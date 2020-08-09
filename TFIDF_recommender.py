@@ -4,8 +4,6 @@ import logging
 import nltk
 import math
 import numpy as np
-import \
-    sklearn.metrics.pairwise  # Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
 import mpd_connector
 
 IP_MPD = "localhost"
@@ -25,7 +23,6 @@ class TFIDF:
             logging.info("No user profile for TFIDF recommender found!")
 
     def update_user_vector(self, song_title):
-
         song_obj = next((item for item in self.song_vectors if item[0] == song_title), None)
         if not song_obj:
             print("No matching song found. Please update your tfidf vectors.")
@@ -43,7 +40,6 @@ class TFIDF:
         recommend_list = []
         for song in self.song_vectors:
             similarity = np.dot(self.user_vector, song[1]) / (np.linalg.norm(self.user_vector) * np.linalg.norm(song[1]))
-            #similarity = sklearn.metrics.pairwise.cosine_similarity(self.user_vector, song[1])
             recommend_list.append({"title": song[0], "rating": similarity})
         return sorted(recommend_list, key=itemgetter("rating"), reverse=True)
 
@@ -64,7 +60,6 @@ class TFIDFInitializer:
     def initialize(self):
         """
         initialize the tf-idf recommender.
-        :return:
         """
         new_song_list = self.remove_punctuation(self.title_list)
         token_list = self.tokenize(new_song_list)
@@ -74,8 +69,8 @@ class TFIDFInitializer:
 
     def remove_punctuation(self, song_list):
         """
-        Remove the punctation and call lower() on the new title
-        :param song_list:
+        Remove the punctuation and call lower() on the new title
+        :param song_list: list of dicts with ["title"] as the relevant key
         """
         punctuation_to_remove = [",", ".", "(", ")", "[", "]", "!", "?", "\\", "/", "\"", "+", "*", "&", "|", "'", "-"]
         new_song_list = []
@@ -89,7 +84,7 @@ class TFIDFInitializer:
     def tokenize(self, song_list):
         """
         Splits the title into tokens
-        :return:
+        :param: song_list: Returned by remove_punctuation()
         """
         token_list = []
         for song in song_list:
@@ -101,7 +96,7 @@ class TFIDFInitializer:
         """
         lemmatizes the tokens. This means reducing words to their base forms,
         e.g. houses -> house or ran -> running
-        :param token_list:
+        :param: token_list: returned from tokenize()
         :return:
         """
         lemmatizer = nltk.stem.WordNetLemmatizer()
@@ -117,7 +112,7 @@ class TFIDFInitializer:
         calculates the TF-IDF value for every token in every song.
         Its calculated by the following formula:
         (nbr of term t in document / total nbr of terms in document) * log10(nbr documents / nbr docs with term t)
-        :return:returns list of dicts with the original title and the tf-idf values as a vector for each song
+        :return: returns list of dicts with the original title and the tf-idf values as a vector for each song
         """
         total_occurences_term_dict = {}
         for song in token_list:

@@ -26,12 +26,12 @@ class MpdConnector:
         """
         :return: List of all songs: ["title": song["title"], "artist": song["artist"]}, {...}]
         """
-        all_songs = self.client.listallinfo()  ##CARE THIS MAY BREAK FOR LARGE DATABASES(according to doc) TOTEST
+        all_songs = self.client.listallinfo()  # TOTEST for large database
         reduced_dict_list = []
         incomplete_metadata = []
         for song in all_songs:
             try:
-                reduced_dict_list.append({"title": song["title"], "artist": song["artist"], "genre": song["genre"]})
+                reduced_dict_list.append({"title": song["title"], "artist": song["artist"], "genre": song["genre"], "date": song["date"], "album": song["album"]})
             except KeyError:
                 if "directory" not in song:  # filter out directories
                     incomplete_metadata.append(song)
@@ -88,16 +88,20 @@ def _testing_mpd_commands():
 
 
 def main():
-    #mpd = MpdConnector("2003:e1:2723:8a00:ec09:d9f1:abf2:e80a", 6600)
+    mpd = MpdConnector()
+    mpd.pause()
+    print("mpd paused")
+    """
     client = MPDClient()
     client.timeout = 10
     client.idletimeout = None
-    client.connect("2003:e1:2723:8a00:ec09:d9f1:abf2:e80a", 6600)
+    #client.connect("2003:e1:2723:8a00:ec09:d9f1:abf2:e80a", 6600)
     #client.connect("localhost", 6600)
     print(client.mpd_version)
     print(client.listallinfo())
     print(client.next())
     print(client.add("asd"))
+    """
 
 
 if __name__ == '__main__':

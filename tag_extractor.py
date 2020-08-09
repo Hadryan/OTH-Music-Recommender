@@ -2,26 +2,26 @@ import os
 import time
 
 import tekore as tk
-import parse_songnames
 import json
 import re
-import metadata_reader
 import mpd_connector
 
 client_id = "08fce4b3fb2144838c7f65133d289fbc"
 client_secret = "9011cc6827684eb783288bd04147140b"
 redirect_uri = "http://localhost:8888"
 refresh_token = "AQD2gsLOa6g984Kvt62WR2rT2rqJVzHIEN7GZWq23915TiKQQNpBKSQMTqoow11IoWRst3mBVbyh2GUKLrB6Us7AhNl25KWozaJpGIi2-WkUqUloiKmBsNTEG0da7b4wOcc"
-MEDIA_PATH = os.path.expanduser('~/Music/Lieder_HighResolutionAudio')
 MPD_IP = "localhost"
 MPD_PORT = 6600
 OUTPUT_PATH = "data/song_tags.json"
+RELATED_ARTISTS_PATH = "data/related_artists.json"
 
 
 def main():
+
     spotify = init()
     song_list = mpd_connector.MpdConnector(MPD_IP, MPD_PORT).get_all_songs()
-    id_name_list = get_spotify_ids_mpd_tags(song_list, spotify)
+    id_name_list = get_spotify_data(song_list, spotify)
+    get_similiar_artists(id_name_list, spotify, RELATED_ARTISTS_PATH)
     list_with_high_level_tags = match_high_level_tags(id_name_list, spotify)
     save_as_json(list_with_high_level_tags, OUTPUT_PATH)
 
@@ -39,7 +39,7 @@ def init():
     return spotify
 
 
-def get_spotify_ids_mpd_tags(songnames_dict, spotify):
+def get_spotify_data(songnames_dict, spotify):
     """
     Getting the spotify ids by searching for artists and songnames parsed from the mpd tags
     :param songnames_dict:
@@ -55,19 +55,20 @@ def get_spotify_ids_mpd_tags(songnames_dict, spotify):
             track_paging_object, = spotify.search(single_track_info["title"] + " " + single_track_info["artist"],
                                                   limit=1)
             if len(track_paging_object.items) != 0:
-                spotify_id_list.append((
-                    single_track_info["artist"], single_track_info["title"], track_paging_object.items[0].popularity,
-                    track_paging_object.items[0].id, single_track_info["genre"]))
+                spotify_id_list.append({"artist": single_track_info["artist"], "title": single_track_info["title"],
+                                        "popularity": track_paging_object.items[0].popularity,
+                                        "id": track_paging_object.items[0].id, "genre": single_track_info["genre"],
+                                        "album": single_track_info["album"], "date": single_track_info["date"],
+                                        "artist_id": track_paging_object.items[0].artists[0].id})
             else:
                 error_list.append(single_track_info)
-        except Exception as e:  # TODO check doc what specific exception is being thrown
+        except Exception as e:
             print(e)
             time.sleep(1)
             print("wait 1s, api exception")
             error_list.append(single_track_info)
-    print("correct:", len(spotify_id_list))
-    print("false:", len(error_list))
-    print(*error_list, sep="\n")
+    print("Found on Spotify:", len(spotify_id_list), "/", len(songnames_dict))
+    print(*error_list)
     return spotify_id_list
 
 
@@ -83,22 +84,37 @@ def _remove_brackets(dict_list):
     return dict_list
 
 
+def get_similiar_artists(spotify_data, spotify, json_path):
+    artist_dict = {}
+    for song_info in spotify_data:
+        related_artists = spotify.artist_related_artists(song_info["artist_id"])
+        artists_realted = []
+        for i in range(0, 3):  # just append the first 3 related artists
+            artists_realted.append(related_artists[i].name)
+        artist_dict[song_info["artist"]] = artists_realted
+    print(artist_dict)
+    save_as_json(artist_dict, json_path)
+    return artist_dict
+
+
+
 def match_high_level_tags(id_name_list, spotify):
     """
-    :param id_name_list: list of tuples: [(interpreter, songname, popularity, spoitfy_id), ...] from get_spotify_ids
+    :param id_name_list: from get_spotify_data
     :return: list of dict
     """
-    high_level_dict_list = []
     for song_info in id_name_list:
-        audio_features = spotify.track_audio_features(song_info[3])
+        audio_features = spotify.track_audio_features(song_info["id"])
         reduced_audio_features = AudioFeatures(audio_features.valence, audio_features.danceability,
-                                               audio_features.energy, _scale_tempo_down(audio_features.tempo), audio_features.acousticness,
+                                               audio_features.energy, _scale_tempo_down(audio_features.tempo),
+                                               audio_features.acousticness,
                                                audio_features.speechiness)
-        high_level_dict_list.append(
-            {"song_name": song_info[1], "interpreter": song_info[0], "popularity": song_info[2], "genre": song_info[4],
-             "audio_features": reduced_audio_features.asdict()})
-    print(high_level_dict_list)
-    return high_level_dict_list
+        song_info["audio_features"] = reduced_audio_features.asdict()
+        song_info.pop("id", None)
+        song_info.pop("artist_id", None)
+    print(id_name_list)
+    return id_name_list
+
 
 def _scale_tempo_down(tempo_in_bpm):
     """
@@ -109,6 +125,7 @@ def _scale_tempo_down(tempo_in_bpm):
     if tempo_in_bpm > max_bpm:
         tempo_in_bpm = max_bpm
     return round(tempo_in_bpm / max_bpm, 3)
+
 
 def save_as_json(high_level_dict_list, save_path):
     with open(save_path, "w") as file_name:

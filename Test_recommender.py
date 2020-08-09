@@ -12,9 +12,6 @@ import TFIDF_recommender
 
 
 def main():
-    test_tfidf()
-    return
-
     recommender_object = recommender.Recommender()
     """
     recommender_object.played_songs_session = [
@@ -24,12 +21,15 @@ def main():
         {'title': 'Thing Called Love', 'artist': 'Land Of Giants',
          'genre': 'Alternative'}]
     """
+
     test_updating_user_information(recommender_object.user_controller)
-    test_recommender_v1(recommender_object)
-    # time.sleep(8)
+    print("Recommend a song:")
+    print(recommender_object.recommend_song())
+    print("___")
+    test_genre_recommendation(recommender_object, "Reggae")
     test_mood_recommendation_complete(recommender_object)
-    print(recommender_object.user_controller.get_percentages_genre_or_artist("genre"))
-    print(recommender_object.user_controller.get_percentages_genre_or_artist("artist"))
+    #print(recommender_object.user_controller.get_percentages_genre_or_artist("genre"))
+    #print(recommender_object.user_controller.get_percentages_genre_or_artist("artist"))
     # print(recommender_object.choose_recommended_song())
     # mpd = recommender_object.mpd
     # mpd.add_all_to_queue()
@@ -61,6 +61,7 @@ def test_tfidf():
     tfidf.update_user_vector("Grind")
     tfidf.update_user_vector("Too Long / Steam Machine")
     print(tfidf.rank_by_cosine_similiarity())
+
 def test_updating_user_information(user_controller):
     currently_played_song = {"title": "Grind", "artist": "Tangerine Dream", "genre": "Testgenre"}
     currently_played_song2 = {"title": "People Get Ready", "artist": "One Love", "genre": "Raggea"}
@@ -80,13 +81,13 @@ def test_session_weighting(number_session):
 
 def test_mood_recommendation_complete(recommender_object):
     def test_mood_recommendation(mood):
-        print("recommending", mood, " songs:")
+        print("recommending", mood, "songs:")
         print(recommender_object.recommend_song_mood(mood))
         print("___")
 
     test_mood_recommendation("positive")
     test_mood_recommendation("negative")
-    test_mood_recommendation("angry")
+    #test_mood_recommendation("angry")
     #test_mood_recommendation("invalid_input")
 
 

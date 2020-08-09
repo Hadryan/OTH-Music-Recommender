@@ -33,8 +33,7 @@ class Recommender:
     @staticmethod
     def read_tags_from_json(path):
         """
-        TODO specify how that json has to look
-        :param path: path to json file
+        :param path: path to json file that was created using tag_extractor.py
         :return: returns a list of dicts as seen in json
          """
         with open(path, "r") as json_file:
@@ -88,7 +87,7 @@ class Recommender:
         for song in song_vectors:
             if not (string_in_list_of_dicts("title", song[1], self.played_songs_session) and string_in_list_of_dicts(
                     "artist", song[2],
-                    self.played_songs_session)):  # dont recommend songs played this session! TOTEST: what happens if played_songs_empty
+                    self.played_songs_session)):  # dont recommend songs played this session!
                 eucl_dist = distance.euclidean(song[0], user_vector)
                 euclidean_distance_list.append({"score": eucl_dist, "song_name": song[1], "interpreter": song[2], "genre": song[3]})
         return sorted(euclidean_distance_list, key=itemgetter("score"))
@@ -102,7 +101,6 @@ class Recommender:
         # Take a guess based on popularity
         songs_sorted_by_popularity = copy.deepcopy(self.json_data)
         logging.info("Cold Start. Recommending by popularity")
-        print(sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True))
         return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
 
     def consider_genre_artist(self, distance_list):
@@ -119,7 +117,7 @@ class Recommender:
         percentages_genres = self.user_controller.get_percentages_genre_or_artist("genre")
         percentages_artists = self.user_controller.get_percentages_genre_or_artist("artist")
         for track in distance_list:
-            score_reduction = 0  # optimal score = 0 -> reducing it increases the chance it gets recommended
+            score_reduction = 0  # optimal score = 0 -> reducing the score increases the chance it gets recommended
             if track["genre"] in percentages_genres:  # if genre in listened to genres
                 score_reduction = track["score"] * percentages_genres[track["genre"]]  # score = score - (score * genre percentage)
             if track["interpreter"] in percentages_artists:  # if artist in listened to artists
@@ -185,6 +183,7 @@ class Recommender:
         else:
             logging.info("calling genre recommender")
             return self.recommend_song_genre(input_value)
+
 
 
 class UserDataContainer:

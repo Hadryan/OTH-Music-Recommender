@@ -31,13 +31,13 @@ This is the number of seconds that you need to wait, before you try your request
 * Created extra class to store user information
 
  ###TODO_General
- * in ersten Iteration genre und artist ignorieren, nur mit vektoren arbeiten
- * probieren wie metadaten infos über mpd-schnittstelle kriegen
+ * in ersten Iteration genre und artist ignorieren, nur mit vektoren arbeiten [DONE]
+ * probieren wie metadaten infos über mpd-schnittstelle kriegen[DONE]
  * Integration in speech processing (vmlt wichtiger als in anothrclient)
  
  
 
- ###TODO_concrete
+ ###TODO_concrete [DONE]
  choose_recommended_song() {Scoring functions: "statistical methods for recommender systems - 2.3"
  Method to weight the session -> z.B. einfach durchnschnitt bilden aus 6x session vector, 4x total vector
  
@@ -45,6 +45,11 @@ This is the number of seconds that you need to wait, before you try your request
  ###Notes:
   - always check if not comparing to an empty vector (bc. init with [0,0,0]) before using vectors
   - nehme euklidische distanz statt cos, da damit infos verloren gehen würden, e.g. [1,1] und [0.2,0.2] gleicher winkel
+  
+  
+TODO NEU: 
+ - in tag_extractor mediapath rausnehmen und durch was allgemeines erstetzen
+ - doc schreiben wie spotify referesh-token ersetzt werden kann  
 
 
 
