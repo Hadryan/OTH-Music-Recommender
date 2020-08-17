@@ -13,9 +13,11 @@ from scipy.spatial import distance
 
 import mpd_connector
 
-FACTOR_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
+WEIGHT_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
+WEIGHT_RELATED_ARTISTS = 0.33
 PATH_SONGTAGS = "data/song_tags.json"
 PATH_USER_DATA = "data/user_data.json"
+PATH_RELATED_ARTISTS = "data/related_artists.json"
 MPD_IP = "localhost"
 MPD_PORT = 6600
 
@@ -50,8 +52,8 @@ class Recommender:
         song_vector_list = []
         for song in self.json_data:
             single_entry = (
-                np.array([v for v in song["audio_features"].values()], dtype=float), song["song_name"],
-                song["interpreter"], song["genre"])
+                np.array([v for v in song["audio_features"].values()], dtype=float), song["title"],
+                song["artist"], song["genre"])
             song_vector_list.append(single_entry)
         return song_vector_list
 
@@ -89,7 +91,8 @@ class Recommender:
                     "artist", song[2],
                     self.played_songs_session)):  # dont recommend songs played this session!
                 eucl_dist = distance.euclidean(song[0], user_vector)
-                euclidean_distance_list.append({"score": eucl_dist, "song_name": song[1], "interpreter": song[2], "genre": song[3]})
+                euclidean_distance_list.append(
+                    {"score": eucl_dist, "title": song[1], "interpreter": song[2], "genre": song[3]})
         return sorted(euclidean_distance_list, key=itemgetter("score"))
 
     def cold_start(self):
@@ -119,9 +122,10 @@ class Recommender:
         for track in distance_list:
             score_reduction = 0  # optimal score = 0 -> reducing the score increases the chance it gets recommended
             if track["genre"] in percentages_genres:  # if genre in listened to genres
-                score_reduction = track["score"] * percentages_genres[track["genre"]]  # score = score - (score * genre percentage)
+                score_reduction = track["score"] * percentages_genres[
+                    track["genre"]]  # score = score - (score * genre percentage)
             if track["interpreter"] in percentages_artists:  # if artist in listened to artists
-                score_reduction += track["score"] * FACTOR_ARTISTS * percentages_artists[track["interpreter"]]
+                score_reduction += track["score"] * WEIGHT_ARTISTS * percentages_artists[track["interpreter"]]
             track["score"] = track["score"] - score_reduction
 
         return sorted(distance_list, key=itemgetter("score"))
@@ -140,7 +144,8 @@ class Recommender:
         :param genre: genre as string
         :return: sorted list of recommendations
         """
-        score_list = self.consider_genre_artist(self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector()))
+        score_list = self.consider_genre_artist(
+            self.get_eucl_distance_list(self.song_vectors, self.user_controller.get_user_vector()))
         genre_list = []
         for song in score_list:
             if equals(genre, song["genre"]):
@@ -155,21 +160,21 @@ class Recommender:
         :return: sorted how recommended the songs are in descending order.
         """
         new_user_vector = copy.copy(self.user_controller.get_user_vector())
-        if mood == "positive": # energy + valence high
+        if mood == "positive":  # energy + valence high
             new_user_vector[0] = 1  # set valence to max
             if new_user_vector[3] * 1.3 < 1:
-                new_user_vector[3] = new_user_vector[3] * 1.3 # also increase the energy value
+                new_user_vector[3] = new_user_vector[3] * 1.3  # also increase the energy value
             else:
                 new_user_vector[3] = 1
-        elif mood == "negative": # low valence
+        elif mood == "negative":  # low valence
             new_user_vector[0] = 0  # set valence to min
-        elif mood == "angry": # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
+        elif mood == "angry":  # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
             new_user_vector[0] = 0
             new_user_vector[3] = 1
         else:
             raise ValueError('Unknown parameter for recommend_song_mood.', mood)
         score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
-        #print(score_list)
+        # print(score_list)
         return self.consider_genre_artist(score_list)
 
     def recommend_genre_or_mood(self, input_value):
@@ -183,7 +188,6 @@ class Recommender:
         else:
             logging.info("calling genre recommender")
             return self.recommend_song_genre(input_value)
-
 
 
 class UserDataContainer:
@@ -203,16 +207,16 @@ class UserDataContainer:
 class UserController:
     """
     THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
-    Genres and Artits can be returned as percentages, because displaying them as vectors would cause the most prevalent
+    Genres and Artists can be returned as percentages, because displaying them as vectors would cause the most prevalent
     genre/artist to always be recommended.
     Session should be weighted more than overall tastes, since moods can greatly influence music tastes
     :param path_serialization: path to the json file the user profile is saved in
     """
-    stats_all_time: UserDataContainer
 
     def __init__(self, path_serialization, song_vectors):
         self.path_serialization = path_serialization
         self.song_vectors = song_vectors
+        self.related_artists = {}
 
         self.stats_all_time = UserDataContainer()
         self.stats_session = UserDataContainer()
@@ -233,7 +237,12 @@ class UserController:
             self.stats_all_time.genres = serialized_class["genres_total"]
             self.stats_all_time.artists = serialized_class["artists_total"]
         else:
-            print("No user data found.")  # for testing
+            logging.error("No user data found.")
+        if os.path.exists(PATH_RELATED_ARTISTS):
+            with open(PATH_RELATED_ARTISTS, 'r') as json_file:
+                self.related_artists = json.load(json_file)
+        else:
+            logging.error("Related artists file not found")
 
     def serialize_stats_all_time(self):
         stats_as_dict = {"total_songs_played": self.stats_all_time.song_count,
@@ -278,13 +287,13 @@ class UserController:
         self.stats_session.vector_total += new_song_vector
         self.stats_session.song_count += 1
         self.stats_session.vector_avg = self.stats_session.vector_total / self.stats_session.song_count
-        self._update_artists_or_genres(self.stats_all_time.genres, currently_played_song["genre"])
-        self._update_artists_or_genres(self.stats_session.genres, currently_played_song["genre"])
-        self._update_artists_or_genres(self.stats_all_time.artists, currently_played_song["artist"])
-        self._update_artists_or_genres(self.stats_session.artists, currently_played_song["artist"])
+        self._update_genres(self.stats_all_time.genres, currently_played_song["genre"])
+        self._update_genres(self.stats_session.genres, currently_played_song["genre"])
+        self._update_artists(self.stats_all_time.artists, currently_played_song["artist"])
+        self._update_artists(self.stats_session.artists, currently_played_song["artist"])
 
     @staticmethod
-    def _update_artists_or_genres(target_dict, feature):
+    def _update_genres(target_dict, feature):
         """
         Updates the genres or artists list.
         :param target_dict: the to be updated dict, e.g. self.stats_session.artists
@@ -300,6 +309,42 @@ class UserController:
                 target_dict[feature] = 1
         else:
             target_dict[feature] = 1
+
+    def _update_artists(self, target_dict, artist_name):
+        """
+        Updates the artists and the related_artists, taken from the spotify api. The Weight of those realted_artists is
+        determined by the global variable WEIGHT_RELATED_ARTISTS.
+        :param target_dict: the to be updated dict, e.g. self.stats_session.artists
+        :param artist_name: the song feature that fits to the selected list , e.g. the artists name
+        """
+        try:
+            related_artists_selection = copy.copy(self.related_artists[str(artist_name)])
+            for i in range(len(related_artists_selection)):
+                related_artists_selection[i] = [related_artists_selection[i], False] # false for not found yet
+        except KeyError:
+            logging.warning("No related artists found for", artist_name)
+
+        if target_dict:  # check if not empty
+            found = False
+            for key in target_dict.copy():  # copy to avoid RuntimeError: Dict changed size during iteration
+                for related_artist in related_artists_selection:
+                    print(str(key), related_artist[0])
+                    if related_artist[1]:
+                        continue
+                    elif equals(str(key), related_artist[0]):
+                        target_dict[key] += WEIGHT_RELATED_ARTISTS
+                        related_artist[1] = True
+                        break
+                if equals(str(key), artist_name):
+                    target_dict[key] += 1
+                    found = True
+            if not found:
+                target_dict[artist_name] = 1
+            for related_artist in related_artists_selection:
+                if not related_artist[1]:
+                    target_dict[related_artist[0]] = WEIGHT_RELATED_ARTISTS
+        else:
+            target_dict[artist_name] = 1
 
     def get_artist_percentages(self, scope):
         """

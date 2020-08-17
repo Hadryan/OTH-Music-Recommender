@@ -1,31 +1,43 @@
 {
-    "total_songs_played": 164,
+    "total_songs_played": 12,
     "vector_total": [
-        76.33380000000004,
-        94.91499999999998,
-        76.17800000000011,
-        78.47399999999992,
-        36.233749999999986,
-        18.105599999999964
+        5.5854,
+        6.945,
+        5.574,
+        5.742000000000001,
+        2.6512499999999997,
+        1.3248
     ],
     "vector_avg": [
-        0.46545000000000025,
-        0.5787499999999999,
-        0.4645000000000007,
-        0.4784999999999995,
-        0.22093749999999993,
-        0.11039999999999978
+        0.46545,
+        0.57875,
+        0.46449999999999997,
+        0.4785000000000001,
+        0.22093749999999998,
+        0.1104
     ],
     "genres_total": {
-        "Testgenre": 41,
-        "Raggea": 41,
-        "Country": 41,
-        "Alternative": 41
+        "Testgenre": 3,
+        "Raggea": 3,
+        "Country": 3,
+        "Alternative": 3
     },
     "artists_total": {
-        "Tangerine Dream": 41,
-        "One Love": 41,
-        "Johnny Cash": 41,
-        "Land of Giants": 41
+        "Tangerine Dream": 3,
+        "One Love": 3,
+        "Steel Pulse": 0.99,
+        "The Wailers": 0.99,
+        "Ziggy Marley": 0.99,
+        "Johnny Cash": 3,
+        "The Highwaymen": 0.99,
+        "Waylon Jennings": 0.99,
+        "Hank Williams": 0.99,
+        "Land Of Giants": 3,
+        "Bal Par": 0.99,
+        "Das Ding": 0.99,
+        "Position Parallele": 0.99,
+        "Klaus Schulze": 0.66,
+        "Edgar Froese": 0.66,
+        "Isao Tomita": 0.66
     }
 }

@@ -1,9 +1,12 @@
 import json
 from operator import itemgetter
 import logging
-import nltk
 import math
+import os.path
 import numpy as np
+
+import nltk
+
 import mpd_connector
 
 IP_MPD = "localhost"
@@ -14,6 +17,8 @@ PATH_USER_VECTOR = "data/tfidf_user_vector"
 
 class TFIDF:
     def __init__(self):
+        if not os.path.exists(PATH_SONG_VECTORS):
+            TFIDFInitializer()
         self.song_vectors = TFIDFInitializer.read_vectors_from_json(PATH_SONG_VECTORS)
         self.user_vector = np.zeros(len(self.song_vectors[0][1]))
         try:
@@ -22,10 +27,15 @@ class TFIDF:
         except FileNotFoundError:
             logging.info("No user profile for TFIDF recommender found!")
 
+    @staticmethod
+    def update_song_vectors():
+        """Update the song vectors. This should be run, once you update your mpd library"""
+        TFIDFInitializer()
+
     def update_user_vector(self, song_title):
         song_obj = next((item for item in self.song_vectors if item[0] == song_title), None)
         if not song_obj:
-            print("No matching song found. Please update your tfidf vectors.")
+            print("No matching song found. Please update your tf-idf vectors.")
             return
         else:
             self.user_vector += song_obj[1]
@@ -39,7 +49,8 @@ class TFIDF:
     def rank_by_cosine_similiarity(self):
         recommend_list = []
         for song in self.song_vectors:
-            similarity = np.dot(self.user_vector, song[1]) / (np.linalg.norm(self.user_vector) * np.linalg.norm(song[1]))
+            similarity = np.dot(self.user_vector, song[1]) / (
+                    np.linalg.norm(self.user_vector) * np.linalg.norm(song[1]))
             recommend_list.append({"title": song[0], "rating": similarity})
         return sorted(recommend_list, key=itemgetter("rating"), reverse=True)
 
@@ -52,7 +63,7 @@ class TFIDFInitializer:
 
     def __init__(self):
         # self.user_vector = np.array()
-        self.title_list = mpd_connector.MpdConnector(IP_MPD, PORT_MPD).get_all_songs()
+        self.song_list = mpd_connector.MpdConnector(IP_MPD, PORT_MPD).get_all_songs()
         nltk.download('punkt')
         nltk.download("wordnet")
         self.initialize()
@@ -61,34 +72,45 @@ class TFIDFInitializer:
         """
         initialize the tf-idf recommender.
         """
-        new_song_list = self.remove_punctuation(self.title_list)
+        new_song_list = self.remove_punctuation(self.join_song_data())
         token_list = self.tokenize(new_song_list)
         token_list_lemmatized = self.lemmanization(token_list)
         list_with_vectors = self.calculate_tfidf(token_list_lemmatized)
-        self.vectors_to_json(list_with_vectors, "data/tfidf_data.json")
+        self.vectors_to_json(list_with_vectors, PATH_SONG_VECTORS)
 
-    def remove_punctuation(self, song_list):
+    def join_song_data(self):
+        """Joins title. album name, year and interpreter to a single string"""
+        joined_song_list = []
+        for song_entry in self.song_list:
+            merged_entry = song_entry["title"] + " " + song_entry["artist"].replace(" ", "") + " " + song_entry[
+                "album"].replace(" ", "") + " " + song_entry["date"] + " " + song_entry["genre"].replace(" ", "")
+
+            joined_song_list.append({"title": song_entry["title"], "body": merged_entry})
+        return joined_song_list
+
+    def remove_punctuation(self, joined_song_list):
         """
         Remove the punctuation and call lower() on the new title
         :param song_list: list of dicts with ["title"] as the relevant key
         """
-        punctuation_to_remove = [",", ".", "(", ")", "[", "]", "!", "?", "\\", "/", "\"", "+", "*", "&", "|", "'", "-"]
+        punctuation_to_remove = [",", ".", "(", ")", "[", "]", "!", "?", "\\", "/", "\"", "+", "*", "&", "|", "'", "-",
+                                 ":"]
         new_song_list = []
-        for song_entry in song_list:
-            song_title = song_entry["title"]
+        for song_entry in joined_song_list:
             for punctuation in punctuation_to_remove:
-                song_title = str(song_title).replace(punctuation, "")
-            new_song_list.append({"title_original": song_entry["title"], "title_modified": song_title.lower()})
+                song_entry["body"] = str(song_entry["body"]).replace(punctuation, "")
+            new_song_list.append({"title_original": song_entry["title"], "body": song_entry["body"].lower()})
         return new_song_list
 
     def tokenize(self, song_list):
         """
-        Splits the title into tokens
+        Splits the title into tokens and removes single letters
         :param: song_list: Returned by remove_punctuation()
         """
         token_list = []
         for song in song_list:
-            tokens = nltk.word_tokenize(song["title_modified"])
+            tokens = nltk.word_tokenize(song["body"])
+            tokens = [x for x in tokens if len(x) > 1]  # Remove single letters
             token_list.append({"title": song["title_original"], "tokens": tokens})
         return token_list
 
@@ -142,7 +164,7 @@ class TFIDFInitializer:
                         break
                 if token_index is None:
                     print("TOKEN NOT FOUND! ERROR")
-                ##tfidf bei index einfügen
+                # tf-idf bei index einfügen
                 tf = song["token_dict"][token] / len(song["tokens"])
                 idf = math.log10(len(token_list) / total_occurences_term_dict[token])
                 tf_idf = tf * idf

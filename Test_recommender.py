@@ -66,7 +66,7 @@ def test_updating_user_information(user_controller):
     currently_played_song = {"title": "Grind", "artist": "Tangerine Dream", "genre": "Testgenre"}
     currently_played_song2 = {"title": "People Get Ready", "artist": "One Love", "genre": "Raggea"}
     currently_played_song3 = {"title": "She Used To Love Me A Lot", "artist": "Johnny Cash", "genre": "Country"}
-    currently_played_song4 = {"title": "Thing Called Love", "artist": "Land of Giants", "genre": "Alternative"}
+    currently_played_song4 = {"title": "Thing Called Love", "artist": "Land Of Giants", "genre": "Alternative"}
     user_controller.update_preferences(currently_played_song)
     user_controller.update_preferences(currently_played_song2)
     user_controller.update_preferences(currently_played_song3)
