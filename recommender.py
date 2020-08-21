@@ -7,28 +7,22 @@ import time
 import logging
 import termcolor
 from operator import itemgetter
-
 import numpy as np
 from scipy.spatial import distance
 
 import mpd_connector
+import config_project
 
 WEIGHT_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
 WEIGHT_RELATED_ARTISTS = 0.33
-PATH_SONGTAGS = "data/song_tags.json"
-PATH_USER_DATA = "data/user_data.json"
-PATH_RELATED_ARTISTS = "data/related_artists.json"
-MPD_IP = "localhost"
-MPD_PORT = 6600
-
 
 class Recommender:
     def __init__(self):
-        self.json_data = self.read_tags_from_json(PATH_SONGTAGS)
+        self.json_data = self.read_tags_from_json(config_project.PATH_SONG_DATA)
         self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), title, interpreter]
         self.played_songs_session = []
-        self.user_controller = UserController(PATH_USER_DATA, self.song_vectors)
-        self.mpd = mpd_connector.MpdConnector(MPD_IP, MPD_PORT)
+        self.user_controller = UserController(config_project.PATH_USER_DATA, self.song_vectors)
+        self.mpd = mpd_connector.MpdConnector(config_project.MPD_IP,config_project.MPD_PORT)
         t = threading.Thread(target=self._update_played_songs_session, daemon=True)
         t.start()
 
@@ -160,21 +154,21 @@ class Recommender:
         :return: sorted how recommended the songs are in descending order.
         """
         new_user_vector = copy.copy(self.user_controller.get_user_vector())
-        if mood == "positive":  # energy + valence high
+        if equals(mood, "positive"):  # energy + valence high
             new_user_vector[0] = 1  # set valence to max
             if new_user_vector[3] * 1.3 < 1:
                 new_user_vector[3] = new_user_vector[3] * 1.3  # also increase the energy value
             else:
                 new_user_vector[3] = 1
-        elif mood == "negative":  # low valence
+        elif equals(mood, "negative"):  # low valence
             new_user_vector[0] = 0  # set valence to min
-        elif mood == "angry":  # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
+        elif equals(mood,
+                    "angry"):  # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
             new_user_vector[0] = 0
             new_user_vector[3] = 1
         else:
             raise ValueError('Unknown parameter for recommend_song_mood.', mood)
         score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
-        # print(score_list)
         return self.consider_genre_artist(score_list)
 
     def recommend_genre_or_mood(self, input_value):
@@ -182,7 +176,7 @@ class Recommender:
         this method determines whether to call the genre or mood recommendation.
         :return: recommended song
         """
-        if input_value == ("postive" or "negative" or "angry"):
+        if equals(input_value, "positive") or equals(input_value, "negative") or equals(input_value, "angry"):
             logging.info("calling mood recommender.")
             return self.recommend_song_mood(input_value)
         else:
@@ -238,8 +232,8 @@ class UserController:
             self.stats_all_time.artists = serialized_class["artists_total"]
         else:
             logging.error("No user data found.")
-        if os.path.exists(PATH_RELATED_ARTISTS):
-            with open(PATH_RELATED_ARTISTS, 'r') as json_file:
+        if os.path.exists(config_project.PATH_RELATED_ARTISTS):
+            with open(config_project.PATH_RELATED_ARTISTS, 'r') as json_file:
                 self.related_artists = json.load(json_file)
         else:
             logging.error("Related artists file not found")
@@ -320,7 +314,7 @@ class UserController:
         try:
             related_artists_selection = copy.copy(self.related_artists[str(artist_name)])
             for i in range(len(related_artists_selection)):
-                related_artists_selection[i] = [related_artists_selection[i], False] # false for not found yet
+                related_artists_selection[i] = [related_artists_selection[i], False]  # false for not found yet
         except KeyError:
             logging.warning("No related artists found for", artist_name)
 
@@ -328,7 +322,6 @@ class UserController:
             found = False
             for key in target_dict.copy():  # copy to avoid RuntimeError: Dict changed size during iteration
                 for related_artist in related_artists_selection:
-                    print(str(key), related_artist[0])
                     if related_artist[1]:
                         continue
                     elif equals(str(key), related_artist[0]):

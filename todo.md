@@ -43,7 +43,7 @@ This is the number of seconds that you need to wait, before you try your request
  
 
  ###Notes:
-  - always check if not comparing to an empty vector (bc. init with [0,0,0]) before using vectors
+  - always check if not comparing to an empty vector (bc. init_spotify with [0,0,0]) before using vectors
   - nehme euklidische distanz statt cos, da damit infos verloren gehen würden, e.g. [1,1] und [0.2,0.2] gleicher winkel
   
   

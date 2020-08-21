@@ -4,25 +4,20 @@ import logging
 import math
 import os.path
 import numpy as np
-
 import nltk
 
 import mpd_connector
-
-IP_MPD = "localhost"
-PORT_MPD = "6600"
-PATH_SONG_VECTORS = "data/tfidf_data.json"
-PATH_USER_VECTOR = "data/tfidf_user_vector"
+import config_project
 
 
 class TFIDF:
     def __init__(self):
-        if not os.path.exists(PATH_SONG_VECTORS):
+        if not os.path.exists(config_project.PATH_SONG_VECTORS):
             TFIDFInitializer()
-        self.song_vectors = TFIDFInitializer.read_vectors_from_json(PATH_SONG_VECTORS)
+        self.song_vectors = self.read_vectors_from_json(config_project.PATH_SONG_VECTORS)
         self.user_vector = np.zeros(len(self.song_vectors[0][1]))
         try:
-            with open(PATH_USER_VECTOR, "r") as json_file:
+            with open(config_project.PATH_USER_VECTOR, "r") as json_file:
                 self.user_vector = np.array(json.load(json_file))
         except FileNotFoundError:
             logging.info("No user profile for TFIDF recommender found!")
@@ -43,16 +38,28 @@ class TFIDF:
         self.serialize_user_vector()
 
     def serialize_user_vector(self):
-        with open(PATH_USER_VECTOR, "w") as file_obj:
+        with open(config_project.PATH_USER_VECTOR, "w") as file_obj:
             json.dump(self.user_vector.tolist(), file_obj)
 
-    def rank_by_cosine_similiarity(self):
+    def rank_by_cosine_similarity(self):
         recommend_list = []
         for song in self.song_vectors:
             similarity = np.dot(self.user_vector, song[1]) / (
                     np.linalg.norm(self.user_vector) * np.linalg.norm(song[1]))
             recommend_list.append({"title": song[0], "rating": similarity})
         return sorted(recommend_list, key=itemgetter("rating"), reverse=True)
+
+    @staticmethod
+    def read_vectors_from_json(path):
+        """
+        :param path: path to json file
+        :return: returns [[title, np.array(vector)], ...]
+        """
+        with open(path, "r") as json_file:
+            data = json.load(json_file)
+        for song in data:
+            song[1] = np.array(song[1])
+        return data
 
 
 class TFIDFInitializer:
@@ -62,8 +69,7 @@ class TFIDFInitializer:
     """
 
     def __init__(self):
-        # self.user_vector = np.array()
-        self.song_list = mpd_connector.MpdConnector(IP_MPD, PORT_MPD).get_all_songs()
+        self.song_list = mpd_connector.MpdConnector(config_project.MPD_IP, config_project.MPD_PORT).get_all_songs()
         nltk.download('punkt')
         nltk.download("wordnet")
         self.initialize()
@@ -76,7 +82,7 @@ class TFIDFInitializer:
         token_list = self.tokenize(new_song_list)
         token_list_lemmatized = self.lemmanization(token_list)
         list_with_vectors = self.calculate_tfidf(token_list_lemmatized)
-        self.vectors_to_json(list_with_vectors, PATH_SONG_VECTORS)
+        self.vectors_to_json(list_with_vectors, config_project.PATH_SONG_VECTORS)
 
     def join_song_data(self):
         """Joins title. album name, year and interpreter to a single string"""
@@ -164,7 +170,7 @@ class TFIDFInitializer:
                         break
                 if token_index is None:
                     print("TOKEN NOT FOUND! ERROR")
-                # tf-idf bei index einfügen
+                # insert tf-idf at index
                 tf = song["token_dict"][token] / len(song["tokens"])
                 idf = math.log10(len(token_list) / total_occurences_term_dict[token])
                 tf_idf = tf * idf
@@ -178,16 +184,6 @@ class TFIDFInitializer:
         for song in token_list:
             serializable_list.append([song["title"], song["vector"].tolist()])
         with open(path_json, "w") as file_obj:
-            json.dump(serializable_list, file_obj)
+            json.dump(serializable_list, file_obj, indent=4)
 
-    @staticmethod
-    def read_vectors_from_json(path):
-        """
-        :param path: path to json file
-        :return: returns [[title, np.array(vector)], ...]
-        """
-        with open(path, "r") as json_file:
-            data = json.load(json_file)
-        for song in data:
-            song[1] = np.array(song[1])
-        return data
+
