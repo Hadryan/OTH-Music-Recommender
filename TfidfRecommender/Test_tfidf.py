@@ -1,4 +1,4 @@
-import TFIDF_recommender
+from TfidfRecommender import TFIDF_recommender
 
 #TFIDF_recommender.TFIDFInitializer()
 tfidf = TFIDF_recommender.TFIDF()

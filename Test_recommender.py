@@ -1,7 +1,6 @@
-import recommender
+from SpotifyRecommender import recommender, tag_extractor
 import numpy as np
-import tag_extractor
-import TFIDF_recommender
+from TfidfRecommender import TFIDF_recommender
 
 
 def main():

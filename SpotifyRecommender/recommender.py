@@ -231,7 +231,7 @@ class UserController:
             self.stats_all_time.genres = serialized_class["genres_total"]
             self.stats_all_time.artists = serialized_class["artists_total"]
         else:
-            logging.error("No user data found.")
+            logging.warning("No user data found, creating new profile")
         if os.path.exists(config_project.PATH_RELATED_ARTISTS):
             with open(config_project.PATH_RELATED_ARTISTS, 'r') as json_file:
                 self.related_artists = json.load(json_file)

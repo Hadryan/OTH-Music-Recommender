@@ -1,0 +1,43 @@
+{
+    "total_songs_played": 8,
+    "vector_total": [
+        3.7236,
+        4.630000000000001,
+        3.716,
+        3.8280000000000003,
+        1.7674999999999998,
+        0.8832
+    ],
+    "vector_avg": [
+        0.46545,
+        0.5787500000000001,
+        0.4645,
+        0.47850000000000004,
+        0.22093749999999998,
+        0.1104
+    ],
+    "genres_total": {
+        "Testgenre": 2,
+        "Raggea": 2,
+        "Country": 2,
+        "Alternative": 2
+    },
+    "artists_total": {
+        "Tangerine Dream": 2,
+        "One Love": 2,
+        "Steel Pulse": 0.66,
+        "The Wailers": 0.66,
+        "Ziggy Marley": 0.66,
+        "Johnny Cash": 2,
+        "The Highwaymen": 0.66,
+        "Waylon Jennings": 0.66,
+        "Hank Williams": 0.66,
+        "Land Of Giants": 2,
+        "Bal Par\u00e9": 0.66,
+        "Das Ding": 0.66,
+        "Nine Circles": 0.66,
+        "Klaus Schulze": 0.33,
+        "Edgar Froese": 0.33,
+        "Isao Tomita": 0.33
+    }
+}
