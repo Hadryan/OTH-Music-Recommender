@@ -39,6 +39,8 @@ def test_complete():
           "with a score of:", round(recommend_list_genre[0]["score"], 4), "(perfect score would be 0).")
     print("All values:", recommend_list_genre)
 
+    test_tfidf()
+
 
 def extract_song_tags():
     tag_extractor.TagExtractor()

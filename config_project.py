@@ -2,7 +2,7 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("config_recommender.ini")
-
+print("I am here")
 
 
 #[SPOTIFY]
