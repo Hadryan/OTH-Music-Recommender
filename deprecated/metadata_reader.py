@@ -19,8 +19,7 @@ def read_metadata(path):
                 # print(metadata["tags"]["genre"])
             except KeyError:
                 print("no Metadata found for song:", filepath)
-                songinfo = {"success": False, "path": filepath}
-
+                song_info = {"success": False, "path": filepath}
             parsed_songs.append(song_info)
 
     print(parsed_songs)
