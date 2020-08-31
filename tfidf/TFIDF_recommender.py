@@ -10,7 +10,7 @@ import mpd_connector
 import config_project
 
 
-class TFIDF:
+class Recommender:
     def __init__(self):
         if not os.path.exists(config_project.PATH_SONG_VECTORS):
             TFIDFInitializer()

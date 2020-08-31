@@ -1,4 +1,4 @@
-import TFIDF_recommender
+from tfidf import TFIDF_recommender
 
 #TFIDF_recommender.TFIDFInitializer()
 tfidf = TFIDF_recommender.TFIDF()
@@ -9,3 +9,4 @@ tfidf.update_user_vector("People Get Ready")
 tfidf.update_user_vector("Grind")
 tfidf.update_user_vector("Too Long / Steam Machine")
 print(tfidf.rank_by_cosine_similarity())
+

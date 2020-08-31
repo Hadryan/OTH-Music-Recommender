@@ -1,7 +1,5 @@
-import recommender
+from spotifyRecommender import recommender, tag_extractor
 import numpy as np
-import tag_extractor
-import TFIDF_recommender
 
 
 def main():
@@ -49,17 +47,6 @@ def test_recommender_v1(recommender_object):
     print(recommender_object.get_eucl_distance_list(recommender_object.song_vectors,
                                                     recommender_object.user_controller.get_user_vector()))
 
-
-def test_tfidf():
-    TFIDF_recommender.TFIDFInitializer()
-    tfidf = TFIDF_recommender.TFIDF()
-    tfidf.update_user_vector("Thing Called Love")
-    tfidf.update_user_vector("Flow (feat. Mr. Woodnote & Flower Fairy)")
-    tfidf.update_user_vector("She Used To Love Me A Lot")
-    tfidf.update_user_vector("People Get Ready")
-    tfidf.update_user_vector("Grind")
-    tfidf.update_user_vector("Too Long / Steam Machine")
-    print(tfidf.rank_by_cosine_similarity())
 
 
 def test_updating_user_information(user_controller):
