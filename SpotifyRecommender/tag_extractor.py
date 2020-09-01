@@ -31,11 +31,10 @@ class TagExtractor:
         Initialize + authorize
         :return: spotify object on which api methods can be called
         """
-        cred = tk.RefreshingCredentials(config_project.CLIENT_ID, config_project.CLIENT_SECRET, config_project.REDIRECT_URI)
-        # app_token = cred.request_client_token()
-        user_token = cred.refresh_user_token(config_project.REFRESH_TOKEN)
+        cred = tk.RefreshingCredentials(config_project.CLIENT_ID, config_project.CLIENT_SECRET)
+        app_token = cred.request_client_token()
         sender = tk.RetryingSender(sender=tk.CachingSender())
-        spotify = tk.Spotify(user_token, max_limits_on=True, sender=sender)
+        spotify = tk.Spotify(app_token, max_limits_on=True, sender=sender)
         return spotify
 
     def get_spotify_data(self, songnames_dict):

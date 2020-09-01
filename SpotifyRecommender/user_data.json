@@ -1,43 +1,44 @@
 {
-    "total_songs_played": 80,
+    "total_songs_played": 104,
     "vector_total": [
-        37.236,
-        46.30000000000002,
-        37.16000000000002,
-        38.27999999999997,
-        17.675000000000004,
-        8.831999999999997
+        50.436000000000014,
+        60.868,
+        48.67400000000004,
+        49.75799999999995,
+        26.77729999999999,
+        11.467799999999983
     ],
     "vector_avg": [
-        0.46545,
-        0.5787500000000002,
-        0.46450000000000025,
-        0.47849999999999965,
-        0.22093750000000006,
-        0.11039999999999997
+        0.4849615384615386,
+        0.5852692307692308,
+        0.4680192307692312,
+        0.4784423076923072,
+        0.2574740384615384,
+        0.11026730769230753
     ],
     "genres_total": {
-        "Testgenre": 20,
-        "Raggea": 20,
-        "Country": 20,
-        "Alternative": 20
+        "Testgenre": 26,
+        "Raggea": 26,
+        "Country": 26,
+        "Alternative": 26
     },
     "artists_total": {
-        "Tangerine Dream": 20,
-        "One Love": 20,
-        "Steel Pulse": 6.6000000000000005,
-        "The Wailers": 6.6000000000000005,
-        "Ziggy Marley": 6.6000000000000005,
-        "Johnny Cash": 20,
-        "The Highwaymen": 6.6000000000000005,
-        "Waylon Jennings": 6.6000000000000005,
-        "Hank Williams": 6.6000000000000005,
-        "Land Of Giants": 20,
-        "Bal Par\u00e9": 6.6000000000000005,
-        "Das Ding": 6.6000000000000005,
-        "Nine Circles": 6.6000000000000005,
-        "Klaus Schulze": 6.2700000000000005,
-        "Edgar Froese": 6.2700000000000005,
-        "Isao Tomita": 6.2700000000000005
+        "Tangerine Dream": 26,
+        "One Love": 26,
+        "Steel Pulse": 8.58,
+        "The Wailers": 8.58,
+        "Ziggy Marley": 8.58,
+        "Johnny Cash": 26,
+        "The Highwaymen": 8.58,
+        "Waylon Jennings": 8.58,
+        "Hank Williams": 8.58,
+        "Land Of Giants": 26,
+        "Bal Par\u00e9": 8.58,
+        "Das Ding": 8.58,
+        "Nine Circles": 7.590000000000001,
+        "Klaus Schulze": 8.25,
+        "Edgar Froese": 8.25,
+        "Isao Tomita": 8.25,
+        "Moderne": 0.99
     }
 }

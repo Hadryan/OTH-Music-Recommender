@@ -6,8 +6,6 @@ config.read("config_recommender.ini")
 #[SPOTIFY]
 CLIENT_ID = config.get("SPOTIFY", "CLIENT_ID")
 CLIENT_SECRET = config.get("SPOTIFY", "CLIENT_SECRET")
-REDIRECT_URI = config.get("SPOTIFY", "REDIRECT_URI")
-REFRESH_TOKEN = config.get("SPOTIFY", "REFRESH_TOKEN")
 
 #[MPD]
 MPD_IP = config.get("MPD", "MPD_IP")

@@ -2,7 +2,7 @@
     {
         "artist": "Daft Punk",
         "title": "Too Long / Steam Machine",
-        "popularity": 30,
+        "popularity": 49,
         "genre": "Electronica",
         "album": "Alive 2007: Deluxe Edition",
         "date": "2007",
@@ -210,17 +210,17 @@
     {
         "artist": "M.A.N.D.Y.",
         "title": "Jah",
-        "popularity": 26,
+        "popularity": 32,
         "genre": "House",
         "album": "Fundacion",
         "date": "2005",
         "audio_features": {
-            "valence": 0.727,
-            "danceability": 0.482,
-            "energy": 0.579,
-            "tempo": 0.842,
-            "acousticness": 0.238,
-            "speechiness": 0.16
+            "valence": 0.863,
+            "danceability": 0.837,
+            "energy": 0.77,
+            "tempo": 0.453,
+            "acousticness": 0.165,
+            "speechiness": 0.0657
         }
     },
     {
@@ -354,17 +354,17 @@
     {
         "artist": "Tangerine Dream",
         "title": "Grind",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Soundtrack",
         "album": "Sorcerer 2014 - Cinematographic Score CD1",
         "date": "2014",
         "audio_features": {
-            "valence": 0.0888,
-            "danceability": 0.391,
-            "energy": 0.292,
-            "tempo": 0.613,
-            "acousticness": 0.0957,
-            "speechiness": 0.0354
+            "valence": 0.427,
+            "danceability": 0.504,
+            "energy": 0.353,
+            "tempo": 0.612,
+            "acousticness": 0.729,
+            "speechiness": 0.0331
         }
     },
     {
@@ -384,35 +384,19 @@
         }
     },
     {
-        "artist": "David Gilmour",
-        "title": "18",
-        "popularity": 4,
-        "genre": "H\u00f6rbuch",
-        "album": "Unser allerbestes Jahr CD2",
-        "date": "2010",
-        "audio_features": {
-            "valence": 0.0833,
-            "danceability": 0.292,
-            "energy": 0.19,
-            "tempo": 0.298,
-            "acousticness": 0.819,
-            "speechiness": 0.0345
-        }
-    },
-    {
         "artist": "Empire Of The Sun",
         "title": "The World",
-        "popularity": 33,
+        "popularity": 26,
         "genre": "Electronic",
         "album": "Walking On A Dream",
         "date": "2008",
         "audio_features": {
-            "valence": 0.153,
-            "danceability": 0.539,
-            "energy": 0.5,
+            "valence": 0.0945,
+            "danceability": 0.494,
+            "energy": 0.61,
             "tempo": 0.453,
-            "acousticness": 0.304,
-            "speechiness": 0.0365
+            "acousticness": 0.371,
+            "speechiness": 0.0298
         }
     },
     {
