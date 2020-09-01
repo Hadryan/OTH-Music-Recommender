@@ -1,8 +1,9 @@
-import os
 import time
-import tekore as tk
 import json
 import re
+
+import tekore as tk
+from termcolor import colored
 
 import config_project
 import mpd_connector
@@ -64,7 +65,7 @@ class TagExtractor:
                 time.sleep(1)
                 print("wait 1s, api exception")
                 error_list.append(single_track_info)
-        print("Found on Spotify:", len(spotify_id_list), "/", len(songnames_dict))
+        print(colored("Found on Spotify:", "green"), len(spotify_id_list), "/", len(songnames_dict))
         print("Songs not found:", *error_list)
         return spotify_id_list
 

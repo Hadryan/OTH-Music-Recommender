@@ -1,43 +1,43 @@
 {
-    "total_songs_played": 52,
+    "total_songs_played": 80,
     "vector_total": [
-        24.2034,
-        30.09500000000003,
-        24.154000000000003,
-        24.881999999999994,
-        11.488750000000003,
-        5.7408
+        37.236,
+        46.30000000000002,
+        37.16000000000002,
+        38.27999999999997,
+        17.675000000000004,
+        8.831999999999997
     ],
     "vector_avg": [
         0.46545,
-        0.5787500000000005,
-        0.4645000000000001,
-        0.47849999999999987,
+        0.5787500000000002,
+        0.46450000000000025,
+        0.47849999999999965,
         0.22093750000000006,
-        0.1104
+        0.11039999999999997
     ],
     "genres_total": {
-        "Testgenre": 13,
-        "Raggea": 13,
-        "Country": 13,
-        "Alternative": 13
+        "Testgenre": 20,
+        "Raggea": 20,
+        "Country": 20,
+        "Alternative": 20
     },
     "artists_total": {
-        "Tangerine Dream": 13,
-        "One Love": 13,
-        "Steel Pulse": 4.29,
-        "The Wailers": 4.29,
-        "Ziggy Marley": 4.29,
-        "Johnny Cash": 13,
-        "The Highwaymen": 4.29,
-        "Waylon Jennings": 4.29,
-        "Hank Williams": 4.29,
-        "Land Of Giants": 13,
-        "Bal Par\u00e9": 4.29,
-        "Das Ding": 4.29,
-        "Nine Circles": 4.29,
-        "Klaus Schulze": 3.9600000000000004,
-        "Edgar Froese": 3.9600000000000004,
-        "Isao Tomita": 3.9600000000000004
+        "Tangerine Dream": 20,
+        "One Love": 20,
+        "Steel Pulse": 6.6000000000000005,
+        "The Wailers": 6.6000000000000005,
+        "Ziggy Marley": 6.6000000000000005,
+        "Johnny Cash": 20,
+        "The Highwaymen": 6.6000000000000005,
+        "Waylon Jennings": 6.6000000000000005,
+        "Hank Williams": 6.6000000000000005,
+        "Land Of Giants": 20,
+        "Bal Par\u00e9": 6.6000000000000005,
+        "Das Ding": 6.6000000000000005,
+        "Nine Circles": 6.6000000000000005,
+        "Klaus Schulze": 6.2700000000000005,
+        "Edgar Froese": 6.2700000000000005,
+        "Isao Tomita": 6.2700000000000005
     }
 }

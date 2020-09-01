@@ -38,7 +38,10 @@ def test_complete():
     print("Recommend a\033[1m Reggae\033[0m song based on user profile:", recommend_list_genre[0]["title"], "by", recommend_list_genre[0]["interpreter"],
           "with a score of:", round(recommend_list_genre[0]["score"], 4), "(perfect score would be 0).")
     print("All values:", recommend_list_genre)
-
+    print("_________")
+    print("_________")
+    print()
+    print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     test_tfidf()
 
 
@@ -52,7 +55,6 @@ def test_recommender_v1(recommender_object):
 
 
 def test_tfidf():
-    TFIDF_recommender.TFIDFInitializer()
     tfidf = TFIDF_recommender.TFIDF()
     tfidf.update_user_vector("Thing Called Love")
     tfidf.update_user_vector("Flow (feat. Mr. Woodnote & Flower Fairy)")

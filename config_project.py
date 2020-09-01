@@ -2,8 +2,6 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("config_recommender.ini")
-print("I am here")
-
 
 #[SPOTIFY]
 CLIENT_ID = config.get("SPOTIFY", "CLIENT_ID")

@@ -1,5 +1,5 @@
 from mpd import MPDClient
-from termcolor import colored
+
 
 
 class MpdConnector:
@@ -35,7 +35,7 @@ class MpdConnector:
             except KeyError:
                 if "directory" not in song:  # filter out directories
                     incomplete_metadata.append(song)
-        print(colored("Incomplete Metadata found for: " + str(len(incomplete_metadata)) + " songs", "yellow"))
+        #print(colored("Incomplete Metadata found for: " + str(len(incomplete_metadata)) + " songs", "yellow"))
         return reduced_dict_list
 
     def play_next_song(self):
