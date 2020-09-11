@@ -41,7 +41,6 @@ class TagExtractor:
         """
         Getting the spotify ids by searching for artists and songnames parsed from the mpd tags
         """
-        print(songnames_dict)
         songnames_dict = self._remove_brackets(songnames_dict)
         spotify_id_list = []
         error_list = []
@@ -53,7 +52,7 @@ class TagExtractor:
                     spotify_id_list.append({"artist": single_track_info["artist"], "title": single_track_info["title"],
                                             "popularity": track_paging_object.items[0].popularity,
                                             "id": track_paging_object.items[0].id, "genre": single_track_info["genre"],
-                                            "album": single_track_info["album"], "date": single_track_info["date"],
+                                            "album": single_track_info["album"],
                                             "artist_id": track_paging_object.items[0].artists[0].id})
                 else:
                     error_list.append(single_track_info)
@@ -63,7 +62,7 @@ class TagExtractor:
                 print("waiting 1s, unexpected api exception")
                 error_list.append(single_track_info)
         print(colored("Found on Spotify:", "green"), len(spotify_id_list), "/", len(songnames_dict))
-        print("Songs not found:", *error_list)
+        #print("Songs not found:", *error_list)
         return spotify_id_list
 
     def _remove_brackets(self, dict_list):
@@ -86,15 +85,15 @@ class TagExtractor:
         """
         artist_dict = {}
         for song_info in spotify_data:
-            related_artists = self.spotify.artist_related_artists(song_info["artist_id"])
-
-            related_artists_temp = []
-            for i in range(0, 3):  # just append the first 3 related artists
-                if len(related_artists) <= i+1:
-                    related_artists_temp.append("placeholder artist")
-                    continue
-                related_artists_temp.append(related_artists[i].name)
-            artist_dict[song_info["artist"]] = related_artists_temp
+            if song_info["artist"] not in artist_dict:
+                related_artists = self.spotify.artist_related_artists(song_info["artist_id"])
+                related_artists_temp = []
+                for i in range(0, 3):  # just append the first 3 related artists
+                    if len(related_artists) <= i+1:
+                        related_artists_temp.append("placeholder artist")
+                        continue
+                    related_artists_temp.append(related_artists[i].name)
+                artist_dict[song_info["artist"]] = related_artists_temp
         self.save_as_json(artist_dict, config_project.PATH_RELATED_ARTISTS)
         return artist_dict
 

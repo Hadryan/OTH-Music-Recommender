@@ -47,8 +47,7 @@ def test_complete(with_extraction):
         print("All values:", recommend_list_genre)
     else:
         print("No songs of that genre in media library")
-    print("_________")
-    print("_________")
+    print("=========")
     print()
     print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     test_tfidf()

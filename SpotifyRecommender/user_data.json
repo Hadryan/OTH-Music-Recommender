@@ -1,43 +1,43 @@
 {
-    "total_songs_played": 32,
+    "total_songs_played": 60,
     "vector_total": [
-        17.599999999999998,
-        19.424000000000007,
-        15.352,
-        440.40000000000015,
-        12.1364,
-        3.5143999999999993
+        32.99999999999999,
+        36.42000000000002,
+        28.785000000000004,
+        449.5980000000003,
+        22.75574999999999,
+        6.589500000000001
     ],
     "vector_avg": [
         0.5499999999999999,
-        0.6070000000000002,
-        0.47975,
-        13.762500000000005,
-        0.3792625,
-        0.10982499999999998
+        0.6070000000000004,
+        0.47975000000000007,
+        7.493300000000005,
+        0.3792624999999998,
+        0.10982500000000002
     ],
     "genres_total": {
-        "Testgenre": 8,
-        "Raggea": 8,
-        "Country": 8,
-        "Alternative": 8
+        "Testgenre": 15,
+        "Raggea": 15,
+        "Country": 15,
+        "Alternative": 15
     },
     "artists_total": {
-        "Tangerine Dream": 8,
-        "One Love": 8,
-        "Steel Pulse": 2.64,
-        "The Wailers": 2.64,
-        "Ziggy Marley": 2.64,
-        "Johnny Cash": 8,
-        "The Highwaymen": 2.64,
-        "Waylon Jennings": 2.64,
-        "Hank Williams": 2.64,
-        "Land Of Giants": 8,
-        "Bal Par\u00e9": 2.64,
-        "Das Ding": 2.64,
-        "Moderne": 2.64,
-        "Klaus Schulze": 2.31,
-        "Edgar Froese": 2.31,
-        "Isao Tomita": 2.31
+        "Tangerine Dream": 15,
+        "One Love": 15,
+        "Steel Pulse": 4.95,
+        "The Wailers": 4.95,
+        "Ziggy Marley": 4.95,
+        "Johnny Cash": 15,
+        "The Highwaymen": 4.95,
+        "Waylon Jennings": 4.95,
+        "Hank Williams": 4.95,
+        "Land Of Giants": 15,
+        "Bal Par\u00e9": 4.95,
+        "Das Ding": 4.95,
+        "Moderne": 4.95,
+        "Klaus Schulze": 4.62,
+        "Edgar Froese": 4.62,
+        "Isao Tomita": 4.62
     }
 }
