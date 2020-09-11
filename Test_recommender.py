@@ -1,43 +1,52 @@
 from SpotifyRecommender import recommender, tag_extractor
 import numpy as np
 from TfidfRecommender import TFIDF_recommender
+import sys
+import matplotlib.pyplot as plt
+
+"""This class is for testing purposes only. It is not required for any functionality of the recommender system"""
 
 
 def main():
-    test_complete()
-    """
-
-    test_genre_recommendation(recommender_object, "Reggae")
-    test_mood_recommendation_complete(recommender_object)
-    # mpd_connector.test_mpd()
-    # test_serialization()
-    """
+    print(sys.argv)
+    if len(sys.argv) > 1:
+        test_complete(True)
+    else:
+        test_complete(False)
 
 
-def test_complete():
-    extract_song_tags()
+def test_complete(with_extraction):
+    if with_extraction:
+        extract_song_tags()
     recommender_object = recommender.Recommender()
     test_updating_user_information(recommender_object.user_controller)
     recommend_list = recommender_object.recommend_song()
     recommend_list_positive = recommender_object.recommend_genre_or_mood("positive")
     recommend_list_negative = recommender_object.recommend_song_mood("negative")
     recommend_list_genre = recommender_object.recommend_genre_or_mood("Reggae")
+
     print()
     print("Recommend a song based on user profile:", recommend_list[0]["title"], "by", recommend_list[0]["interpreter"],
           "with a score of:", round(recommend_list[0]["score"], 4), "(perfect score would be 0).")
     print("All values:", recommend_list)
     print("_________")
-    print("Recommend a\033[1m positive\033[0m song based on user profile:", recommend_list_positive[0]["title"], "by", recommend_list_positive[0]["interpreter"],
+    print("Recommend a\033[1m positive\033[0m song based on user profile:", recommend_list_positive[0]["title"], "by",
+          recommend_list_positive[0]["interpreter"],
           "with a score of:", round(recommend_list_positive[0]["score"], 4), "(perfect score would be 0).")
     print("All values:", recommend_list_positive)
     print("_________")
-    print("Recommend a\033[1m negative\033[0m song based on user profile:", recommend_list_negative[0]["title"], "by", recommend_list_negative[0]["interpreter"],
+    print("Recommend a\033[1m negative\033[0m song based on user profile:", recommend_list_negative[0]["title"], "by",
+          recommend_list_negative[0]["interpreter"],
           "with a score of:", round(recommend_list_negative[0]["score"], 4), "(perfect score would be 0).")
     print("All values:", recommend_list_negative)
     print("_________")
-    print("Recommend a\033[1m Reggae\033[0m song based on user profile:", recommend_list_genre[0]["title"], "by", recommend_list_genre[0]["interpreter"],
-          "with a score of:", round(recommend_list_genre[0]["score"], 4), "(perfect score would be 0).")
-    print("All values:", recommend_list_genre)
+    if recommend_list_genre:
+        print("Recommend a\033[1m Reggae\033[0m song based on user profile:", recommend_list_genre[0]["title"], "by",
+              recommend_list_genre[0]["interpreter"],
+              "with a score of:", round(recommend_list_genre[0]["score"], 4), "(perfect score would be 0).")
+        print("All values:", recommend_list_genre)
+    else:
+        print("No songs of that genre in media library")
     print("_________")
     print("_________")
     print()
@@ -90,14 +99,30 @@ def test_mood_recommendation_complete(recommender_object):
 
     test_mood_recommendation("positive")
     test_mood_recommendation("negative")
-    # test_mood_recommendation("angry")
-    # test_mood_recommendation("invalid_input")
+    test_mood_recommendation("invalid_input")
 
 
 def test_genre_recommendation(recommender_object, genre):
     print("Recommending songs of genre:", genre)
     print(recommender_object.recommend_song_genre(genre))
     print("___")
+
+
+def get_tempo_range():
+    """Used to create a histogram of the BPM in the media library.
+     To get absolute values first disable tempo scaling in tag_extractor"""
+
+    tag_extractor.TagExtractor()
+    recommender_object = recommender.Recommender()
+    json_data = recommender_object.json_data
+    tempo_list = []
+    for song in json_data:
+        tempo_list.append(song["audio_features"]["tempo"])
+    plt.hist(tempo_list, bins=30)
+    plt.title("BPM Verteilung")
+    plt.xlabel("Beats per Minute (BPM)")
+    plt.ylabel("Häufigkeit")
+    plt.savefig("Verteilung BPM")
 
 
 if __name__ == '__main__':

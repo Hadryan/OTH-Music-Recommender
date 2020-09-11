@@ -13,7 +13,7 @@ from scipy.spatial import distance
 import mpd_connector
 import config_project
 
-WEIGHT_ARTISTS = 0.4  # How strong artists are being factored into the recommendation compared to genres
+WEIGHT_ARTISTS = 0.1  # How strong artists are being factored into the recommendation compared to genres
 WEIGHT_RELATED_ARTISTS = 0.33
 
 class Recommender:
@@ -108,6 +108,7 @@ class Recommender:
         :param: distance_list: eukl. distances of songvectors to the user vector. Created by calling get_eucl_distance_list()
         :return: sorted list of songs, ordered from best match to worst
         """
+
         if self.user_controller.is_cold_start():
             return self.cold_start()
 
@@ -306,7 +307,8 @@ class UserController:
 
     def _update_artists(self, target_dict, artist_name):
         """
-        Updates the artists and the related_artists, taken from the spotify api. The Weight of those realted_artists is
+        Updates the artists and the related_artists, taken from the spotify api.
+        The Weight of related_artists is
         determined by the global variable WEIGHT_RELATED_ARTISTS.
         :param target_dict: the to be updated dict, e.g. self.stats_session.artists
         :param artist_name: the song feature that fits to the selected list , e.g. the artists name
@@ -353,7 +355,7 @@ class UserController:
         else:
             print("Unknown Scope. Please Use \"session\" or \"all_time\"")
             return
-        for artist in artist_list:  # workinglist[artist_name, count], ...]
+        for artist in artist_list:
             artist[1] = (artist[1] / total_number) * 100
 
         return artist_list

@@ -28,27 +28,25 @@ class TagExtractor:
 
     def init_spotify(self):
         """
-        Initialize + authorize
-        :return: spotify object on which api methods can be called
+        Initialize the main entity for the Spotify API. This includes Authorization.
+        :return: Spotify object on which API methods can be called
         """
         cred = tk.RefreshingCredentials(config_project.CLIENT_ID, config_project.CLIENT_SECRET)
         app_token = cred.request_client_token()
         sender = tk.RetryingSender(sender=tk.CachingSender())
-        spotify = tk.Spotify(app_token, max_limits_on=True, sender=sender)
+        spotify = tk.Spotify(app_token, sender=sender)
         return spotify
 
     def get_spotify_data(self, songnames_dict):
         """
         Getting the spotify ids by searching for artists and songnames parsed from the mpd tags
-        :param songnames_dict:
-        :param spotify:
-        :return:
         """
+        print(songnames_dict)
         songnames_dict = self._remove_brackets(songnames_dict)
         spotify_id_list = []
         error_list = []
         for single_track_info in songnames_dict:
-            try:  # to catch all api exceptions
+            try:  # just a saveguard, if RetryingSender should fail, e.g. unexpected exceptions
                 track_paging_object, = self.spotify.search(
                     single_track_info["title"] + " " + single_track_info["artist"], limit=1)
                 if len(track_paging_object.items) != 0:
@@ -62,7 +60,7 @@ class TagExtractor:
             except Exception as e:
                 print(e)
                 time.sleep(1)
-                print("wait 1s, api exception")
+                print("waiting 1s, unexpected api exception")
                 error_list.append(single_track_info)
         print(colored("Found on Spotify:", "green"), len(spotify_id_list), "/", len(songnames_dict))
         print("Songs not found:", *error_list)
@@ -80,13 +78,23 @@ class TagExtractor:
         return dict_list
 
     def get_similiar_artists(self, spotify_data):
+        """
+        Get the top 3 related artists on spotify and serialized it to json file.
+        Path defined by PATH_RELATED_ARTISTS
+        :param spotify_data: Returned by get_spotify_data
+        :return:
+        """
         artist_dict = {}
         for song_info in spotify_data:
             related_artists = self.spotify.artist_related_artists(song_info["artist_id"])
-            artists_realted = []
+
+            related_artists_temp = []
             for i in range(0, 3):  # just append the first 3 related artists
-                artists_realted.append(related_artists[i].name)
-            artist_dict[song_info["artist"]] = artists_realted
+                if len(related_artists) <= i+1:
+                    related_artists_temp.append("placeholder artist")
+                    continue
+                related_artists_temp.append(related_artists[i].name)
+            artist_dict[song_info["artist"]] = related_artists_temp
         self.save_as_json(artist_dict, config_project.PATH_RELATED_ARTISTS)
         return artist_dict
 
@@ -111,9 +119,14 @@ class TagExtractor:
         Scale Tempo attribute down to a scale from 0 - 1. Max BPM (Beats per minute) is assumed to be 225, since its extremely
         rare for a song to have a higher BPM
         """
-        max_bpm = 225
+        max_bpm = 205
+        min_bpm = 60
         if tempo_in_bpm > max_bpm:
             tempo_in_bpm = max_bpm
+        if tempo_in_bpm <= min_bpm:
+            tempo_in_bpm = min_bpm + 1
+        max_bpm -= min_bpm
+        tempo_in_bpm -= min_bpm
         return round(tempo_in_bpm / max_bpm, 3)
 
     def save_as_json(self, high_level_dict_list, save_path):

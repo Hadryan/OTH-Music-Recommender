@@ -78,7 +78,7 @@ class TFIDFInitializer:
         """
         initialize the tf-idf recommender.
         """
-        new_song_list = self.remove_punctuation(self.join_song_data())
+        new_song_list = self.remove_special_characters(self.join_song_data())
         token_list = self.tokenize(new_song_list)
         token_list_lemmatized = self.lemmanization(token_list)
         list_with_vectors = self.calculate_tfidf(token_list_lemmatized)
@@ -94,7 +94,7 @@ class TFIDFInitializer:
             joined_song_list.append({"title": song_entry["title"], "body": merged_entry})
         return joined_song_list
 
-    def remove_punctuation(self, joined_song_list):
+    def remove_special_characters(self, joined_song_list):
         """
         Remove the punctuation and call lower() on the new title
         :param song_list: list of dicts with ["title"] as the relevant key
@@ -110,8 +110,8 @@ class TFIDFInitializer:
 
     def tokenize(self, song_list):
         """
-        Splits the title into tokens and removes single letters
-        :param: song_list: Returned by remove_punctuation()
+        Splits the song string into tokens and removes single letters
+        :param: song_list: Returned by remove_special_characters()
         """
         token_list = []
         for song in song_list:
