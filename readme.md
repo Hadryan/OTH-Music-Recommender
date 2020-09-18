@@ -8,11 +8,12 @@ This repository is intended to be integrated into a MPD client and does not supp
 * Tf-idf-based Recommender System
 * Content-Based Recommender System using the spotify API
  
-###Prerequisites
+### Prerequisites
 * Python 3.5 or higher
 * Running MPD Server
 * Media library of the MPD Server must have complete metadata. Genre, Title and Artist are vital for this programm to work.  Alternative you have to tag your music database with a software like https://picard.musicbrainz.org/. Download and follow the instructions!
-###Install
+
+### Install
 1. Clone this repository
 1. CD into OTH-Music-Recommender
 2. Check that MPD is running
