@@ -17,10 +17,10 @@ This repository is intended to be integrated into a MPD client and does not supp
 1. Clone this repository
 1. CD into OTH-Music-Recommender
 2. Check that MPD is running
-3. Check if the IP and Port of your MPD server are correctly listed in config_recommender.ini, outherwise chance those values accordingly.
+3. Check if the IP and Port of your MPD server are correctly listed in config_recommender.ini, outherwise change those values accordingly.
 4. run "python setup.py install". If not using a virutal Environment this may require Root access. In that case use: "sudo python setup.py install"
 
-Run Test_recommender.py for a full test of all features. Run it with 
+Run Test_recommender.py for a full test of all features. Since this is dependant on certain songs, running tag_extractor may break this test. 
 
     
 
