@@ -11,7 +11,7 @@ This repository is intended to be integrated into a MPD client and does not supp
 ### Prerequisites
 * Python 3.5 or higher
 * Running MPD Server
-* Media library of the MPD Server must have complete metadata. Genre, Title and Artist are vital for this programm to work.  Alternative you have to tag your music database with a software like https://picard.musicbrainz.org/. Download and follow the instructions!
+* Media library of the MPD Server must have complete metadata. Genre, Title and Artist are vital for this programm to work. You can add Metadata to your music database with a software like https://picard.musicbrainz.org/. Download and follow the instructions!
 
 ### Install
 1. Clone this repository
