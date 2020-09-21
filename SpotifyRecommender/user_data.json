@@ -1,43 +1,48 @@
 {
-    "total_songs_played": 60,
+    "total_songs_played": 55,
     "vector_total": [
-        32.99999999999999,
-        36.42000000000002,
-        28.785000000000004,
-        449.5980000000003,
-        22.75574999999999,
-        6.589500000000001
+        26.27900000000001,
+        26.55400000000001,
+        39.787,
+        18.128000000000014,
+        18.08367,
+        4.455000000000003
     ],
     "vector_avg": [
-        0.5499999999999999,
-        0.6070000000000004,
-        0.47975000000000007,
-        7.493300000000005,
-        0.3792624999999998,
-        0.10982500000000002
+        0.47780000000000017,
+        0.4828000000000002,
+        0.7233999999999999,
+        0.3296000000000003,
+        0.32879400000000003,
+        0.08100000000000004
     ],
     "genres_total": {
-        "Testgenre": 15,
-        "Raggea": 15,
-        "Country": 15,
-        "Alternative": 15
+        "Rock": 11,
+        "Punk": 11,
+        "Country": 11,
+        "Progressive Rock": 11,
+        "Funk Rock": 11
     },
     "artists_total": {
-        "Tangerine Dream": 15,
-        "One Love": 15,
-        "Steel Pulse": 4.95,
-        "The Wailers": 4.95,
-        "Ziggy Marley": 4.95,
-        "Johnny Cash": 15,
-        "The Highwaymen": 4.95,
-        "Waylon Jennings": 4.95,
-        "Hank Williams": 4.95,
-        "Land Of Giants": 15,
-        "Bal Par\u00e9": 4.95,
-        "Das Ding": 4.95,
-        "Moderne": 4.95,
-        "Klaus Schulze": 4.62,
-        "Edgar Froese": 4.62,
-        "Isao Tomita": 4.62
+        "The Doors": 11,
+        "Billy Idol": 11,
+        "The Cars": 11,
+        "The Romantics": 11,
+        "Men At Work": 11,
+        "Johnny Cash": 11,
+        "The Highwaymen": 11,
+        "Waylon Jennings": 11,
+        "Hank Williams": 11,
+        "Pink Floyd": 11,
+        "David Gilmour": 11,
+        "Roger Waters": 11,
+        "Jethro Tull": 11,
+        "Red Hot Chili Peppers": 11,
+        "Foo Fighters": 11,
+        "Audioslave": 11,
+        "Incubus": 11,
+        "Jim Morrison": 10,
+        "Jefferson Airplane": 10,
+        "Janis Joplin": 10
     }
 }

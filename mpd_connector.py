@@ -36,7 +36,7 @@ class MpdConnector:
                 if "directory" not in song:  # filter out directories
                     incomplete_metadata.append(song)
         print(colored("Incomplete Metadata found for: " + str(len(incomplete_metadata)) + " songs", "yellow"))
-        print(len(reduced_dict_list), "songs found in your MPD media library.")
+        print(len(reduced_dict_list), "songs with complete metadata found in your MPD media library.")
         return reduced_dict_list
 
     def play_next_song(self):

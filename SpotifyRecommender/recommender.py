@@ -13,17 +13,18 @@ from scipy.spatial import distance
 import mpd_connector
 import config_project
 
-WEIGHT_ARTISTS = 0.1  # How strong artists are being factored into the recommendation compared to genres
-WEIGHT_RELATED_ARTISTS = 0.33
+WEIGHT_ARTISTS = 0.2  # How strong artists are being factored into the recommendation compared to genres
+WEIGHT_RELATED_ARTISTS = 1
+
 
 class Recommender:
     def __init__(self):
         self.json_data = self.read_tags_from_json(config_project.PATH_SONG_DATA)
         self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), title, interpreter]
         self.played_songs_session = []
-        self.user_controller = UserController(config_project.PATH_USER_DATA, self.song_vectors)
-        self.mpd = mpd_connector.MpdConnector(config_project.MPD_IP,config_project.MPD_PORT)
-        t = threading.Thread(target=self._update_played_songs_session, daemon=True)
+        self.user_controller = UserDataController(config_project.PATH_USER_DATA, self.song_vectors)
+        self.mpd = mpd_connector.MpdConnector(config_project.MPD_IP, config_project.MPD_PORT)
+        t = threading.Thread(target=self._update_played_songs, daemon=True)
         t.start()
 
     @staticmethod
@@ -32,9 +33,12 @@ class Recommender:
         :param path: path to json file that was created using tag_extractor.py
         :return: returns a list of dicts as seen in json
          """
-        with open(path, "r") as json_file:
-            data = json.load(json_file)
-        return data
+        try:
+            with open(path, "r") as json_file:
+                data = json.load(json_file)
+            return data
+        except FileNotFoundError:
+            logging.error("SONG_TAGS NOT FOUND! Please run tag_extractor.py")
 
     def create_song_feature_vectors(self):
         """
@@ -51,7 +55,7 @@ class Recommender:
             song_vector_list.append(single_entry)
         return song_vector_list
 
-    def _update_played_songs_session(self):
+    def _update_played_songs(self):
         """
         Tracks all songs that were played this session. Only call this inside a thread.
         Updates every 30s.
@@ -61,13 +65,14 @@ class Recommender:
             time.sleep(10)
             try:
                 current_song = self.mpd.get_current_song()
-                if self.played_songs_session and current_song:  # if list and current_song not empty
-                    if self.played_songs_session[-1] != current_song:
+                if current_song:  # if there is a song currently playing
+                    if self.played_songs_session:  # if this is not the first song played this session
+                        if self.played_songs_session[-1] != current_song:
+                            self.played_songs_session.append(current_song)
+                            self.user_controller.update_preferences(current_song)
+                            self.user_controller.serialize_stats_all_time()
+                    else:
                         self.played_songs_session.append(current_song)
-                        self.user_controller.update_preferences(current_song)
-                        self.user_controller.serialize_stats_all_time()
-                else:
-                    self.played_songs_session.append(current_song)
             except KeyError:
                 logging.debug("Couldn't get current song. Probably no song currently playing")
 
@@ -98,6 +103,9 @@ class Recommender:
         # Take a guess based on popularity
         songs_sorted_by_popularity = copy.deepcopy(self.json_data)
         logging.info("Cold Start. Recommending by popularity")
+        for song in songs_sorted_by_popularity: # so it has the same attribute as in the non cold start scenario
+            song["interpreter"] = song["artist"]
+            song["score"] = 0
         return sorted(songs_sorted_by_popularity, key=itemgetter("popularity"), reverse=True)
 
     def consider_genre_artist(self, distance_list):
@@ -151,22 +159,18 @@ class Recommender:
         """
         This is an experimental mood recommender.
         The quality of the results is very dependant on the quality of the spotify tags.
-        :param mood: possible moods: positive, negative, angry
+        :param mood: possible moods: positive, negative
         :return: sorted how recommended the songs are in descending order.
         """
         new_user_vector = copy.copy(self.user_controller.get_user_vector())
         if equals(mood, "positive"):  # energy + valence high
             new_user_vector[0] = 1  # set valence to max
             if new_user_vector[3] * 1.3 < 1:
-                new_user_vector[3] = new_user_vector[3] * 1.3  # also increase the energy value
+                new_user_vector[3] = new_user_vector[3] * 1.3  
             else:
                 new_user_vector[3] = 1
         elif equals(mood, "negative"):  # low valence
             new_user_vector[0] = 0  # set valence to min
-        elif equals(mood,
-                    "angry"):  # Angry: Low valence, high energy #TODO perhaps remove, not working very well, perhaps better with more songs
-            new_user_vector[0] = 0
-            new_user_vector[3] = 1
         else:
             raise ValueError('Unknown parameter for recommend_song_mood.', mood)
         score_list = self.get_eucl_distance_list(self.song_vectors, new_user_vector)
@@ -195,17 +199,18 @@ class UserDataContainer:
         self.vector_total = np.array([0, 0, 0, 0, 0, 0],
                                      dtype=float)  # (valence, danceability, energy, tempo, acousticness, speechiness)
         self.vector_avg = np.array([0, 0, 0, 0, 0, 0], dtype=float)  # self.vector_total / self.total_songs_played
-        self.genres = {}  # [("genre_name", times_played)]
-        self.artists = {}  # [("artist_name", times_played)
+        self.genres = {}  # Dict: Key=Genre_name, Value=Times_Played
+        self.artists = {}  # Dict: Key=Artist_name, Value=Times_Played
 
 
-class UserController:
+class UserDataController:
     """
     THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
     Genres and Artists can be returned as percentages, because displaying them as vectors would cause the most prevalent
     genre/artist to always be recommended.
     Session should be weighted more than overall tastes, since moods can greatly influence music tastes
     :param path_serialization: path to the json file the user profile is saved in
+    ,  song_vectors: Song vectors red from song_tags.json
     """
 
     def __init__(self, path_serialization, song_vectors):
@@ -260,18 +265,19 @@ class UserController:
         try:
             for song in self.song_vectors:
                 if equals(song[1], currently_played_song["title"]) and equals(song[2], currently_played_song["artist"]):
-                    matched_song = song  # matched song: [Valence, danceability, energy], songname, interpreter
+                    matched_song = song  # matched song: [valence, ...], songname, interpreter
                     break
         except KeyError:
             logging.error("currently_played_song is missing title or interpreter!")
             return
         if matched_song is None:
             logging.warning(termcolor.colored(currently_played_song["title"] + ", " + currently_played_song[
-                "artist"] + " has no matching song vector! Not adding this song to the user profile.", "yellow"))
+                "artist"] + " has no matching song vector! Please update your song tags!", "yellow"))
             return  # ignore this song for the recommender
         if "genre" not in currently_played_song:
             logging.warning(termcolor.colored(currently_played_song["title"] + ", " + currently_played_song[
-                "artist"] + " has no genre! Not adding this song to the user profile.", "yellow"))
+                "artist"] + " has no genre! Not adding this song to the user profile. Please update your song tags and check if your songs have the required metadata!",
+                                              "yellow"))
             return
         new_song_vector = np.array(
             [matched_song[0][0], matched_song[0][1], matched_song[0][2], matched_song[0][3], matched_song[0][4],
@@ -324,7 +330,7 @@ class UserController:
             found = False
             for key in target_dict.copy():  # copy to avoid RuntimeError: Dict changed size during iteration
                 for related_artist in related_artists_selection:
-                    if related_artist[1]:
+                    if related_artist[1]:  # if already found
                         continue
                     elif equals(str(key), related_artist[0]):
                         target_dict[key] += WEIGHT_RELATED_ARTISTS
@@ -362,6 +368,7 @@ class UserController:
 
     def get_genre_percentages(self, scope):
         """
+        Not in use right now.
         :param scope: Can either be "session" or "all_time"
         :return:List of genres with the percentage of how often it was played compared to the total amount of played songs
         """
@@ -391,9 +398,9 @@ class UserController:
 
     def calculate_weighted_percentages(self, dict_session, dict_all_time):
         """
-        the weighted percantages are calculated by dividing the times an item is recorded (e.g. times a genre was played)
+        the weighted percentages are calculated by dividing the times an item is recorded (e.g. times a genre was played)
         by the amount of songs played. This is done for the session and all time stats.
-        These 2 percentages for every genre are then each multiplied by their factor (calculated in get_session_factor())
+        These 2 percentages for every genre/artist are then each multiplied by their factor (calculated in get_session_factor())
         and at last added up for a weighted percentage.
         :return: {item: percentage, ...}
         """
@@ -431,9 +438,9 @@ class UserController:
         if self.stats_session.song_count == 0:
             return 0.0
         else:
-            return -1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2)) + 0.9
+            return round(-1 / (1 + math.exp(0.8 * self.stats_session.song_count - 2.19)) + 0.9, 2)
 
-    def get_user_vector(self):  # TOTEST
+    def get_user_vector(self):
         """
         Calculate the averaged user vector, weighting the session values according to how long that session is.
         :return: user vector [valence, danceability, energy]

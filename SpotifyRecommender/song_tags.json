@@ -2,7 +2,7 @@
     {
         "artist": "Daft Punk",
         "title": "Too Long / Steam Machine",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Electronica",
         "album": "Alive 2007: Deluxe Edition",
         "audio_features": {
@@ -62,7 +62,7 @@
     {
         "artist": "Daft Punk",
         "title": "Something About Us",
-        "popularity": 70,
+        "popularity": 69,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -92,7 +92,7 @@
     {
         "artist": "Daft Punk",
         "title": "Short Circuit",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -107,7 +107,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Lodi Dodi",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -182,7 +182,7 @@
     {
         "artist": "One Love",
         "title": "People Get Ready",
-        "popularity": 75,
+        "popularity": 74,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -227,7 +227,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Latin Thugs",
-        "popularity": 44,
+        "popularity": 43,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -242,7 +242,7 @@
     {
         "artist": "Cypress Hill",
         "title": "EZ Come, EZ Go",
-        "popularity": 19,
+        "popularity": 18,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -257,7 +257,7 @@
     {
         "artist": "Johnny Cash",
         "title": "If I Told You Who It Was",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -272,7 +272,7 @@
     {
         "artist": "Johnny Cash",
         "title": "Don't You Think It's Come Our Time",
-        "popularity": 33,
+        "popularity": 32,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -287,7 +287,7 @@
     {
         "artist": "Johnny Cash",
         "title": "She Used To Love Me A Lot",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -360,9 +360,24 @@
         }
     },
     {
+        "artist": "David Gilmour",
+        "title": "18",
+        "popularity": 0,
+        "genre": "H\u00f6rbuch",
+        "album": "Unser allerbestes Jahr CD2",
+        "audio_features": {
+            "valence": 0.295,
+            "danceability": 0.604,
+            "energy": 0.354,
+            "tempo": 0.441,
+            "acousticness": 0.61,
+            "speechiness": 0.0315
+        }
+    },
+    {
         "artist": "Empire Of The Sun",
         "title": "The World",
-        "popularity": 26,
+        "popularity": 25,
         "genre": "Electronic",
         "album": "Walking On A Dream",
         "audio_features": {
@@ -392,7 +407,7 @@
     {
         "artist": "Johnny Cash",
         "title": "Out Among the Stars",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -422,7 +437,7 @@
     {
         "artist": "Johnny Cash",
         "title": "She Used to Love Me a Lot",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -467,7 +482,7 @@
     {
         "artist": "Johnny Cash",
         "title": "If I Told You Who It Was",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -482,7 +497,7 @@
     {
         "artist": "Johnny Cash",
         "title": "Call Your Mother",
-        "popularity": 33,
+        "popularity": 32,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -497,7 +512,7 @@
     {
         "artist": "Johnny Cash",
         "title": "I Drove Her Out of My Mind",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -512,7 +527,7 @@
     {
         "artist": "Johnny Cash",
         "title": "Tennessee",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -542,7 +557,7 @@
     {
         "artist": "Johnny Cash",
         "title": "Don't You Think It's Come Our Time",
-        "popularity": 33,
+        "popularity": 32,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -572,7 +587,7 @@
     {
         "artist": "Johnny Cash",
         "title": "She Used To Love Me A Lot",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Country",
         "album": "Out Among The Stars",
         "audio_features": {
@@ -632,7 +647,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "East Side of Town",
-        "popularity": 22,
+        "popularity": 21,
         "genre": "Alt Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -647,7 +662,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "West Memphis",
-        "popularity": 27,
+        "popularity": 26,
         "genre": "Alt Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -677,7 +692,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "Foolishness",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Alt Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -737,7 +752,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "Something Wicked This Way Comes",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -812,7 +827,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "Everything but the Truth",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -842,7 +857,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "Stowaway in Your Heart",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -872,7 +887,7 @@
     {
         "artist": "Lucinda Williams",
         "title": "Magnolia",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Country",
         "album": "Down Where the Spirit Meets the Bone",
         "audio_features": {
@@ -887,7 +902,7 @@
     {
         "artist": "Daft Punk",
         "title": "One More Time",
-        "popularity": 76,
+        "popularity": 75,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -902,7 +917,7 @@
     {
         "artist": "Daft Punk",
         "title": "Aerodynamic",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -917,7 +932,7 @@
     {
         "artist": "Daft Punk",
         "title": "Digital Love",
-        "popularity": 65,
+        "popularity": 64,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -977,7 +992,7 @@
     {
         "artist": "Daft Punk",
         "title": "Superheroes",
-        "popularity": 55,
+        "popularity": 54,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -1007,7 +1022,7 @@
     {
         "artist": "Daft Punk",
         "title": "Something About Us",
-        "popularity": 70,
+        "popularity": 69,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -1037,7 +1052,7 @@
     {
         "artist": "Daft Punk",
         "title": "Veridis Quo",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -1052,7 +1067,7 @@
     {
         "artist": "Daft Punk",
         "title": "Short Circuit",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Electronic",
         "album": "Discovery",
         "audio_features": {
@@ -1097,7 +1112,7 @@
     {
         "artist": "Electrypnose",
         "title": "A5sention",
-        "popularity": 3,
+        "popularity": 2,
         "genre": "Ambient",
         "album": "Sweet Sadness",
         "audio_features": {
@@ -1112,7 +1127,7 @@
     {
         "artist": "Electrypnose",
         "title": "Histoire d'Histoire",
-        "popularity": 2,
+        "popularity": 1,
         "genre": "Ambient",
         "album": "Sweet Sadness",
         "audio_features": {
@@ -1127,7 +1142,7 @@
     {
         "artist": "Electrypnose",
         "title": "A Part Of Myself Is Somewhere Else",
-        "popularity": 2,
+        "popularity": 1,
         "genre": "Ambient",
         "album": "Sweet Sadness",
         "audio_features": {
@@ -1262,7 +1277,7 @@
     {
         "artist": "Utah Saints",
         "title": "Something Good '08",
-        "popularity": 9,
+        "popularity": 8,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1307,7 +1322,7 @@
     {
         "artist": "Calvin Harris",
         "title": "The Girls",
-        "popularity": 40,
+        "popularity": 39,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1337,7 +1352,7 @@
     {
         "artist": "Ida Corr vs. Fedde Le Grand",
         "title": "Let Me Think About It",
-        "popularity": 7,
+        "popularity": 6,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1382,7 +1397,7 @@
     {
         "artist": "Chanel",
         "title": "Dance",
-        "popularity": 28,
+        "popularity": 27,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1397,7 +1412,7 @@
     {
         "artist": "Jody Watley",
         "title": "I Want Your Love",
-        "popularity": 17,
+        "popularity": 16,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1412,7 +1427,7 @@
     {
         "artist": "Todd Terry All Stars feat. Kenny Dope, DJ Sneak, Terry Hunter & Tara McDonald",
         "title": "Get Down",
-        "popularity": 31,
+        "popularity": 30,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1427,7 +1442,7 @@
     {
         "artist": "Yves Larock",
         "title": "Rise Up",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1442,7 +1457,7 @@
     {
         "artist": "Armand Van Helden",
         "title": "I Want Your Soul",
-        "popularity": 32,
+        "popularity": 31,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1532,7 +1547,7 @@
     {
         "artist": "Samim",
         "title": "Heater",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Electronic",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1592,7 +1607,7 @@
     {
         "artist": "September",
         "title": "Cry For You",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Electronic",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1622,7 +1637,7 @@
     {
         "artist": "Axford",
         "title": "We Gotta Love",
-        "popularity": 4,
+        "popularity": 3,
         "genre": "Electronic",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1637,7 +1652,7 @@
     {
         "artist": "Warrior",
         "title": "Warrior",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Electronic",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1667,7 +1682,7 @@
     {
         "artist": "Eric Prydz",
         "title": "Call On Me",
-        "popularity": 76,
+        "popularity": 75,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1712,7 +1727,7 @@
     {
         "artist": "Joey Negro",
         "title": "Make A Move On Me",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1742,7 +1757,7 @@
     {
         "artist": "Shakedown",
         "title": "At Night",
-        "popularity": 58,
+        "popularity": 57,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1757,7 +1772,7 @@
     {
         "artist": "Basement Jaxx",
         "title": "Red Alert",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1787,7 +1802,7 @@
     {
         "artist": "Supermode",
         "title": "Tell Me Why",
-        "popularity": 45,
+        "popularity": 44,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1817,7 +1832,7 @@
     {
         "artist": "Sash!",
         "title": "Encore Une Fois",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1847,7 +1862,7 @@
     {
         "artist": "Paffendorf",
         "title": "Be Cool",
-        "popularity": 44,
+        "popularity": 43,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1877,7 +1892,7 @@
     {
         "artist": "Ian Van Dahl",
         "title": "Castles In The Sky",
-        "popularity": 59,
+        "popularity": 58,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1922,7 +1937,7 @@
     {
         "artist": "Benny Benassi presents The Biz",
         "title": "Satisfaction",
-        "popularity": 69,
+        "popularity": 68,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -1937,7 +1952,7 @@
     {
         "artist": "Underworld",
         "title": "Born Slippy",
-        "popularity": 66,
+        "popularity": 65,
         "genre": "Dance",
         "album": "Ministry Of Sound - The Very Best of Euphoric Breakdown",
         "audio_features": {
@@ -2117,7 +2132,7 @@
     {
         "artist": "Rob Acid",
         "title": "Happy Answer",
-        "popularity": 6,
+        "popularity": 5,
         "genre": "Acid",
         "album": "Classic Trax",
         "audio_features": {
@@ -2222,7 +2237,7 @@
     {
         "artist": "Rob Acid",
         "title": "Ein Blick Ins Nichts",
-        "popularity": 0,
+        "popularity": 1,
         "genre": "Techno, Acid",
         "album": "Classic Trax Vol. 2",
         "audio_features": {
@@ -2342,7 +2357,7 @@
     {
         "artist": "The Prodigy",
         "title": "Voodoo People",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2372,7 +2387,7 @@
     {
         "artist": "The Prodigy",
         "title": "Poison",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2402,7 +2417,7 @@
     {
         "artist": "The Prodigy",
         "title": "Their Law",
-        "popularity": 41,
+        "popularity": 40,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2492,7 +2507,7 @@
     {
         "artist": "The Prodigy",
         "title": "Death Of The Prodigy",
-        "popularity": 25,
+        "popularity": 24,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2522,7 +2537,7 @@
     {
         "artist": "The Prodigy",
         "title": "Voodoo People",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2552,7 +2567,7 @@
     {
         "artist": "The Prodigy",
         "title": "Poison",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Electronic Punk",
         "album": "Music For The Voodoo Crew (Live)",
         "audio_features": {
@@ -2567,7 +2582,7 @@
     {
         "artist": "2Pac",
         "title": "Ambitionz Az A Ridah",
-        "popularity": 79,
+        "popularity": 78,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me [Book 1]",
         "audio_features": {
@@ -2642,7 +2657,7 @@
     {
         "artist": "2Pac",
         "title": "No More Pain",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me [Book 1]",
         "audio_features": {
@@ -2657,7 +2672,7 @@
     {
         "artist": "2Pac",
         "title": "Heartz Of Men",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me [Book 1]",
         "audio_features": {
@@ -2717,7 +2732,7 @@
     {
         "artist": "2Pac",
         "title": "California Love",
-        "popularity": 67,
+        "popularity": 66,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me [Book 1]",
         "audio_features": {
@@ -2732,7 +2747,7 @@
     {
         "artist": "2Pac",
         "title": "I Ain't Mad At Cha",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me [Book 1]",
         "audio_features": {
@@ -2867,7 +2882,7 @@
     {
         "artist": "2Pac",
         "title": "All Eyes On Me",
-        "popularity": 24,
+        "popularity": 25,
         "genre": "Hip-Hop",
         "album": "All Eyez On Me (Book 2)",
         "audio_features": {
@@ -2927,7 +2942,7 @@
     {
         "artist": "Cypress Hill",
         "title": "How I Could Just Kill a Man",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -2957,7 +2972,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Latin Lingo",
-        "popularity": 38,
+        "popularity": 37,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -3032,7 +3047,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Superstar",
-        "popularity": 62,
+        "popularity": 61,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -3047,7 +3062,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Latin Thugs",
-        "popularity": 44,
+        "popularity": 43,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -3077,7 +3092,7 @@
     {
         "artist": "Cypress Hill",
         "title": "EZ Come, EZ Go",
-        "popularity": 19,
+        "popularity": 18,
         "genre": "Gangsta Rap",
         "album": "Greatest Hits from The Bong",
         "audio_features": {
@@ -3107,7 +3122,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Intro",
-        "popularity": 28,
+        "popularity": 27,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3137,7 +3152,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Kronologik",
-        "popularity": 32,
+        "popularity": 31,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3152,7 +3167,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Southland Killers",
-        "popularity": 23,
+        "popularity": 22,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3167,7 +3182,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Bitter",
-        "popularity": 19,
+        "popularity": 18,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3197,7 +3212,7 @@
     {
         "artist": "Cypress Hill",
         "title": "It Ain't Easy",
-        "popularity": 18,
+        "popularity": 17,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3242,7 +3257,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Red, Meth & B",
-        "popularity": 35,
+        "popularity": 34,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3257,7 +3272,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Lowrider",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3302,7 +3317,7 @@
     {
         "artist": "Cypress Hill",
         "title": "Here Is Something You Can't Understand",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Hip-Hop",
         "album": "Stoned Raiders",
         "audio_features": {
@@ -3317,7 +3332,7 @@
     {
         "artist": "Dr. Dre",
         "title": "The Chronic",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3347,7 +3362,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Let Me Ride",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3377,7 +3392,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Nuthin' But A G Thang",
-        "popularity": 74,
+        "popularity": 73,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3392,7 +3407,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Deeez Nuuuts",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3407,7 +3422,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Lil' Ghetto Boy",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3422,7 +3437,7 @@
     {
         "artist": "Dr. Dre",
         "title": "A Nigga Witta Gun",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3437,7 +3452,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Rat-Tat-Tat-Tat",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3452,7 +3467,7 @@
     {
         "artist": "Dr. Dre",
         "title": "The $20 Sack Pyramid",
-        "popularity": 43,
+        "popularity": 42,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3467,7 +3482,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Lyrical Gangbang",
-        "popularity": 47,
+        "popularity": 46,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3482,7 +3497,7 @@
     {
         "artist": "Dr. Dre",
         "title": "High Powered",
-        "popularity": 46,
+        "popularity": 45,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3497,7 +3512,7 @@
     {
         "artist": "Dr. Dre",
         "title": "The Doctor's Office",
-        "popularity": 41,
+        "popularity": 40,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3512,7 +3527,7 @@
     {
         "artist": "Dr. Dre",
         "title": "Stranded On Death Row",
-        "popularity": 47,
+        "popularity": 46,
         "genre": "Hip-Hop",
         "album": "The Chronic",
         "audio_features": {
@@ -3557,7 +3572,7 @@
     {
         "artist": "Nas",
         "title": "Album Intro",
-        "popularity": 39,
+        "popularity": 38,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3572,7 +3587,7 @@
     {
         "artist": "Nas",
         "title": "The Message",
-        "popularity": 66,
+        "popularity": 65,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3587,7 +3602,7 @@
     {
         "artist": "Nas",
         "title": "Street Dreams",
-        "popularity": 58,
+        "popularity": 57,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3632,7 +3647,7 @@
     {
         "artist": "Nas",
         "title": "Take It In Blood",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3647,7 +3662,7 @@
     {
         "artist": "Nas",
         "title": "Nas Is Coming",
-        "popularity": 45,
+        "popularity": 44,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3677,7 +3692,7 @@
     {
         "artist": "Nas",
         "title": "The Set Up",
-        "popularity": 45,
+        "popularity": 44,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3692,7 +3707,7 @@
     {
         "artist": "Nas",
         "title": "Black Girl Lost",
-        "popularity": 42,
+        "popularity": 41,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3737,7 +3752,7 @@
     {
         "artist": "Nas",
         "title": "Live Nigga Rap",
-        "popularity": 45,
+        "popularity": 44,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3752,7 +3767,7 @@
     {
         "artist": "Nas",
         "title": "If I Ruled The World",
-        "popularity": 70,
+        "popularity": 69,
         "genre": "Hip-Hop",
         "album": "It Was Written",
         "audio_features": {
@@ -3782,7 +3797,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "I Can't Wait",
-        "popularity": 30,
+        "popularity": 29,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3797,7 +3812,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "Cold Blooded",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3827,7 +3842,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "Rollin' Wit You",
-        "popularity": 30,
+        "popularity": 29,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3872,7 +3887,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "Nigga Please",
-        "popularity": 31,
+        "popularity": 30,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3917,7 +3932,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "All In Together Now",
-        "popularity": 22,
+        "popularity": 21,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3932,7 +3947,7 @@
     {
         "artist": "Ol' Dirty Bastard",
         "title": "Cracker Jack",
-        "popularity": 22,
+        "popularity": 21,
         "genre": "Rap",
         "album": "Nigga Please",
         "audio_features": {
@@ -3962,22 +3977,22 @@
     {
         "artist": "Public Enemy",
         "title": "Brothers Gonna Work It Out",
-        "popularity": 40,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.515,
-            "danceability": 0.632,
-            "energy": 0.748,
+            "valence": 0.383,
+            "danceability": 0.639,
+            "energy": 0.973,
             "tempo": 0.313,
-            "acousticness": 0.00113,
-            "speechiness": 0.0988
+            "acousticness": 0.0161,
+            "speechiness": 0.14
         }
     },
     {
         "artist": "Public Enemy",
         "title": "911 Is A Joke",
-        "popularity": 42,
+        "popularity": 41,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -3992,7 +4007,7 @@
     {
         "artist": "Public Enemy",
         "title": "Incident At 66.6 FM",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4022,7 +4037,7 @@
     {
         "artist": "Public Enemy",
         "title": "Meet The G That Killed Me",
-        "popularity": 28,
+        "popularity": 27,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4052,7 +4067,7 @@
     {
         "artist": "Public Enemy",
         "title": "Anti-Nigger Machine",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4067,7 +4082,7 @@
     {
         "artist": "Public Enemy",
         "title": "Burn Hollywood Burn",
-        "popularity": 38,
+        "popularity": 37,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4082,7 +4097,7 @@
     {
         "artist": "Public Enemy",
         "title": "Power To The People",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4127,7 +4142,7 @@
     {
         "artist": "Public Enemy",
         "title": "Revolutionary Generation",
-        "popularity": 27,
+        "popularity": 26,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4142,16 +4157,16 @@
     {
         "artist": "Public Enemy",
         "title": "Can't Do Nuttin' For Ya Man",
-        "popularity": 36,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.649,
+            "valence": 0.542,
             "danceability": 0.862,
-            "energy": 0.511,
+            "energy": 0.903,
             "tempo": 0.397,
-            "acousticness": 0.00669,
-            "speechiness": 0.242
+            "acousticness": 0.0261,
+            "speechiness": 0.246
         }
     },
     {
@@ -4232,37 +4247,37 @@
     {
         "artist": "Public Enemy",
         "title": "Brothers Gonna Work It Out",
-        "popularity": 40,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.515,
-            "danceability": 0.632,
-            "energy": 0.748,
+            "valence": 0.383,
+            "danceability": 0.639,
+            "energy": 0.973,
             "tempo": 0.313,
-            "acousticness": 0.00113,
-            "speechiness": 0.0988
+            "acousticness": 0.0161,
+            "speechiness": 0.14
         }
     },
     {
         "artist": "Public Enemy",
         "title": "Brothers Gonna Work It Out",
-        "popularity": 40,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.515,
-            "danceability": 0.632,
-            "energy": 0.748,
+            "valence": 0.383,
+            "danceability": 0.639,
+            "energy": 0.973,
             "tempo": 0.313,
-            "acousticness": 0.00113,
-            "speechiness": 0.0988
+            "acousticness": 0.0161,
+            "speechiness": 0.14
         }
     },
     {
         "artist": "Public Enemy",
         "title": "Flavor Flav",
-        "popularity": 30,
+        "popularity": 29,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4277,7 +4292,7 @@
     {
         "artist": "Public Enemy",
         "title": "Terrorbeat",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4307,52 +4322,52 @@
     {
         "artist": "Public Enemy",
         "title": "Can't Do Nuttin' For Ya Man",
-        "popularity": 36,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.649,
+            "valence": 0.542,
             "danceability": 0.862,
-            "energy": 0.511,
+            "energy": 0.903,
             "tempo": 0.397,
-            "acousticness": 0.00669,
-            "speechiness": 0.242
+            "acousticness": 0.0261,
+            "speechiness": 0.246
         }
     },
     {
         "artist": "Public Enemy",
         "title": "Can't Do Nuttin' For Ya Man",
-        "popularity": 36,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.649,
+            "valence": 0.542,
             "danceability": 0.862,
-            "energy": 0.511,
+            "energy": 0.903,
             "tempo": 0.397,
-            "acousticness": 0.00669,
-            "speechiness": 0.242
+            "acousticness": 0.0261,
+            "speechiness": 0.246
         }
     },
     {
         "artist": "Public Enemy",
         "title": "Can't Do Nuttin' For Ya Man",
-        "popularity": 36,
+        "popularity": 0,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
-            "valence": 0.649,
+            "valence": 0.542,
             "danceability": 0.862,
-            "energy": 0.511,
+            "energy": 0.903,
             "tempo": 0.397,
-            "acousticness": 0.00669,
-            "speechiness": 0.242
+            "acousticness": 0.0261,
+            "speechiness": 0.246
         }
     },
     {
         "artist": "Public Enemy",
         "title": "Burn Hollywood Burn",
-        "popularity": 38,
+        "popularity": 37,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4367,7 +4382,7 @@
     {
         "artist": "Public Enemy",
         "title": "Anti-Nigger Machine",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4382,7 +4397,7 @@
     {
         "artist": "Public Enemy",
         "title": "911 Is A Joke",
-        "popularity": 42,
+        "popularity": 41,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4397,7 +4412,7 @@
     {
         "artist": "Public Enemy",
         "title": "Power To The People",
-        "popularity": 29,
+        "popularity": 28,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4412,7 +4427,7 @@
     {
         "artist": "Public Enemy",
         "title": "Revolutionary Generation",
-        "popularity": 27,
+        "popularity": 26,
         "genre": "Hip-Hop",
         "album": "Fear Of A Black Planet (Deluxe Edition)",
         "audio_features": {
@@ -4502,7 +4517,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Toyz N Da Hood",
-        "popularity": 16,
+        "popularity": 15,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4517,7 +4532,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "The Way Life Used To Be",
-        "popularity": 21,
+        "popularity": 20,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4547,7 +4562,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Wonder What It Do",
-        "popularity": 21,
+        "popularity": 20,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4577,7 +4592,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Peer Pressure",
-        "popularity": 16,
+        "popularity": 15,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4637,7 +4652,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "We Rest N Cali",
-        "popularity": 16,
+        "popularity": 15,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4667,7 +4682,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "This Weed Iz Mine",
-        "popularity": 30,
+        "popularity": 29,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4682,7 +4697,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Wet",
-        "popularity": 30,
+        "popularity": 29,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4697,7 +4712,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Take U Home",
-        "popularity": 19,
+        "popularity": 18,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4712,7 +4727,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Sumthin Like This Night",
-        "popularity": 20,
+        "popularity": 19,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4757,7 +4772,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "Raised In Da Hood",
-        "popularity": 14,
+        "popularity": 13,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4772,7 +4787,7 @@
     {
         "artist": "Snoop Dogg",
         "title": "It's D Only Thang",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Hip-Hop",
         "album": "Doggumentary",
         "audio_features": {
@@ -4802,7 +4817,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Bathtub",
-        "popularity": 47,
+        "popularity": 46,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4862,7 +4877,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Domino",
-        "popularity": 34,
+        "popularity": 41,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4877,7 +4892,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Lodi Dodi",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4892,7 +4907,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Murder Was The Case",
-        "popularity": 60,
+        "popularity": 59,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4907,7 +4922,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Serial Killa",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4952,7 +4967,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Ain't No Fun",
-        "popularity": 67,
+        "popularity": 66,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -4982,7 +4997,7 @@
     {
         "artist": "Snoop Doggy Dogg",
         "title": "Gz And Hustlas",
-        "popularity": 25,
+        "popularity": 24,
         "genre": "Hip-Hop",
         "album": "Doggystyle",
         "audio_features": {
@@ -5012,22 +5027,22 @@
     {
         "artist": "Acid Drinkers",
         "title": "25 Cents for a Riff",
-        "popularity": 12,
+        "popularity": 8,
         "genre": "Metal",
         "album": "25 Cents for a Riff",
         "audio_features": {
-            "valence": 0.251,
-            "danceability": 0.333,
-            "energy": 0.99,
-            "tempo": 0.738,
-            "acousticness": 7.11e-06,
-            "speechiness": 0.0733
+            "valence": 0.158,
+            "danceability": 0.694,
+            "energy": 0.491,
+            "tempo": 0.484,
+            "acousticness": 0.849,
+            "speechiness": 0.0293
         }
     },
     {
         "artist": "Acid Drinkers",
         "title": "Me",
-        "popularity": 35,
+        "popularity": 34,
         "genre": "Metal",
         "album": "25 Cents for a Riff",
         "audio_features": {
@@ -5117,7 +5132,7 @@
     {
         "artist": "Acid Drinkers",
         "title": "Riot in Eden",
-        "popularity": 7,
+        "popularity": 6,
         "genre": "Metal",
         "album": "25 Cents for a Riff",
         "audio_features": {
@@ -5132,7 +5147,7 @@
     {
         "artist": "Acid Drinkers",
         "title": "The Noose",
-        "popularity": 7,
+        "popularity": 6,
         "genre": "Metal",
         "album": "25 Cents for a Riff",
         "audio_features": {
@@ -5162,7 +5177,7 @@
     {
         "artist": "Acid Drinkers",
         "title": "Enjoy Your Death",
-        "popularity": 7,
+        "popularity": 6,
         "genre": "Metal",
         "album": "25 Cents for a Riff",
         "audio_features": {
@@ -5267,7 +5282,7 @@
     {
         "artist": "Marilyn Manson",
         "title": "The Speed of Pain",
-        "popularity": 45,
+        "popularity": 46,
         "genre": "Gothic Rock",
         "album": "Mechanical Animals",
         "audio_features": {
@@ -5402,7 +5417,7 @@
     {
         "artist": "Rammstein",
         "title": "Das Modell",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Metal",
         "album": "Das Modell",
         "audio_features": {
@@ -5417,7 +5432,7 @@
     {
         "artist": "Rammstein",
         "title": "Kokain",
-        "popularity": 45,
+        "popularity": 44,
         "genre": "Metal",
         "album": "Das Modell",
         "audio_features": {
@@ -5477,7 +5492,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "She Is Calling",
-        "popularity": 9,
+        "popularity": 8,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5507,7 +5522,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Lieber Gott",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5522,7 +5537,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Schweigen ist Gold",
-        "popularity": 4,
+        "popularity": 3,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5537,7 +5552,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Mea Culpa",
-        "popularity": 18,
+        "popularity": 17,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5552,7 +5567,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Alles Schwarz",
-        "popularity": 13,
+        "popularity": 12,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5567,7 +5582,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Dunkle Energie",
-        "popularity": 9,
+        "popularity": 8,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5582,7 +5597,7 @@
     {
         "artist": "Umbra et Imago",
         "title": "Teutonenlied",
-        "popularity": 7,
+        "popularity": 6,
         "genre": "Gothic",
         "album": "Die Welt brennt",
         "audio_features": {
@@ -5626,23 +5641,8 @@
     },
     {
         "artist": "Bob Marley & the Wailers",
-        "title": "So Much Things to Say",
-        "popularity": 55,
-        "genre": "Reggae",
-        "album": "Exodus (Remastered)",
-        "audio_features": {
-            "valence": 0.774,
-            "danceability": 0.815,
-            "energy": 0.336,
-            "tempo": 0.436,
-            "acousticness": 0.208,
-            "speechiness": 0.478
-        }
-    },
-    {
-        "artist": "Bob Marley & the Wailers",
         "title": "Guiltiness",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -5657,7 +5657,7 @@
     {
         "artist": "Bob Marley & the Wailers",
         "title": "The Heathen",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -5672,7 +5672,7 @@
     {
         "artist": "Bob Marley & the Wailers",
         "title": "Exodus",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -5716,23 +5716,8 @@
     },
     {
         "artist": "Bob Marley & the Wailers",
-        "title": "Turn Your Lights Down Low",
-        "popularity": 63,
-        "genre": "Reggae",
-        "album": "Exodus (Remastered)",
-        "audio_features": {
-            "valence": 0.713,
-            "danceability": 0.733,
-            "energy": 0.668,
-            "tempo": 0.159,
-            "acousticness": 0.0137,
-            "speechiness": 0.0685
-        }
-    },
-    {
-        "artist": "Bob Marley & the Wailers",
         "title": "Three Little Birds",
-        "popularity": 79,
+        "popularity": 78,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -5747,7 +5732,7 @@
     {
         "artist": "One Love",
         "title": "People Get Ready",
-        "popularity": 75,
+        "popularity": 74,
         "genre": "Reggae",
         "album": "Exodus (Remastered)",
         "audio_features": {
@@ -5807,7 +5792,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Real Situation",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5822,7 +5807,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Bad Card",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5852,7 +5837,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Work",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5867,7 +5852,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Zion Train",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5882,7 +5867,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Pimper's Paradise",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5897,7 +5882,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Could You Be Loved",
-        "popularity": 78,
+        "popularity": 77,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5912,7 +5897,7 @@
     {
         "artist": "Bob Marley & The Wailers",
         "title": "Forever Loving Jah",
-        "popularity": 62,
+        "popularity": 61,
         "genre": "Reggae",
         "album": "Uprising",
         "audio_features": {
@@ -5972,7 +5957,7 @@
     {
         "artist": "Bunny Wailer",
         "title": "Food",
-        "popularity": 19,
+        "popularity": 18,
         "genre": "Reggae",
         "album": "Liberation",
         "audio_features": {
@@ -5987,7 +5972,7 @@
     {
         "artist": "Joe Higgs",
         "title": "Come On Home",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6002,7 +5987,7 @@
     {
         "artist": "Joe Higgs",
         "title": "Got To Make A Way",
-        "popularity": 17,
+        "popularity": 16,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6016,23 +6001,8 @@
     },
     {
         "artist": "Joe Higgs",
-        "title": "Wake Up And Live",
-        "popularity": 15,
-        "genre": "Reggae",
-        "album": "Life Of Contradiction",
-        "audio_features": {
-            "valence": 0.954,
-            "danceability": 0.872,
-            "energy": 0.462,
-            "tempo": 0.517,
-            "acousticness": 0.759,
-            "speechiness": 0.0674
-        }
-    },
-    {
-        "artist": "Joe Higgs",
         "title": "Life Of Contradiction",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6047,7 +6017,7 @@
     {
         "artist": "Joe Higgs",
         "title": "Who Brought Down The Curtains",
-        "popularity": 11,
+        "popularity": 10,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6062,7 +6032,7 @@
     {
         "artist": "Joe Higgs",
         "title": "There's A Reward",
-        "popularity": 26,
+        "popularity": 25,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6076,23 +6046,8 @@
     },
     {
         "artist": "Joe Higgs",
-        "title": "Hard Times Don't Bother Me",
-        "popularity": 13,
-        "genre": "Reggae",
-        "album": "Life Of Contradiction",
-        "audio_features": {
-            "valence": 0.462,
-            "danceability": 0.743,
-            "energy": 0.461,
-            "tempo": 0.567,
-            "acousticness": 0.292,
-            "speechiness": 0.281
-        }
-    },
-    {
-        "artist": "Joe Higgs",
         "title": "My Baby Still Loves Me",
-        "popularity": 11,
+        "popularity": 10,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6107,7 +6062,7 @@
     {
         "artist": "Joe Higgs",
         "title": "She Was The One",
-        "popularity": 11,
+        "popularity": 10,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6121,23 +6076,8 @@
     },
     {
         "artist": "Joe Higgs",
-        "title": "Song My Enemy Sings",
-        "popularity": 15,
-        "genre": "Reggae",
-        "album": "Life Of Contradiction",
-        "audio_features": {
-            "valence": 0.769,
-            "danceability": 0.828,
-            "energy": 0.476,
-            "tempo": 0.568,
-            "acousticness": 0.634,
-            "speechiness": 0.315
-        }
-    },
-    {
-        "artist": "Joe Higgs",
         "title": "Let Us Do Something",
-        "popularity": 16,
+        "popularity": 15,
         "genre": "Reggae",
         "album": "Life Of Contradiction",
         "audio_features": {
@@ -6181,23 +6121,8 @@
     },
     {
         "artist": "Bob Dylan",
-        "title": "The Night We Called It A Day",
-        "popularity": 24,
-        "genre": "Satire",
-        "album": "Shadows in the Night",
-        "audio_features": {
-            "valence": 0.197,
-            "danceability": 0.305,
-            "energy": 0.0413,
-            "tempo": 0.602,
-            "acousticness": 0.882,
-            "speechiness": 0.0334
-        }
-    },
-    {
-        "artist": "Bob Dylan",
         "title": "Stay With Me",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Satire",
         "album": "Shadows in the Night",
         "audio_features": {
@@ -6227,7 +6152,7 @@
     {
         "artist": "Bob Dylan",
         "title": "Why Try to Change Me Now",
-        "popularity": 25,
+        "popularity": 24,
         "genre": "Satire",
         "album": "Shadows in the Night",
         "audio_features": {
@@ -6242,7 +6167,7 @@
     {
         "artist": "Bob Dylan",
         "title": "Some Enchanted Evening",
-        "popularity": 24,
+        "popularity": 23,
         "genre": "Satire",
         "album": "Shadows in the Night",
         "audio_features": {
@@ -6252,21 +6177,6 @@
             "tempo": 0.136,
             "acousticness": 0.909,
             "speechiness": 0.0327
-        }
-    },
-    {
-        "artist": "Bob Dylan",
-        "title": "Full Moon And Empty Arms",
-        "popularity": 23,
-        "genre": "Satire",
-        "album": "Shadows in the Night",
-        "audio_features": {
-            "valence": 0.155,
-            "danceability": 0.288,
-            "energy": 0.034,
-            "tempo": 0.61,
-            "acousticness": 0.885,
-            "speechiness": 0.036
         }
     },
     {
@@ -6287,7 +6197,7 @@
     {
         "artist": "Bob Dylan",
         "title": "What'll I Do",
-        "popularity": 23,
+        "popularity": 22,
         "genre": "Satire",
         "album": "Shadows in the Night",
         "audio_features": {
@@ -6302,7 +6212,7 @@
     {
         "artist": "Bob Dylan",
         "title": "That Lucky Old Sun",
-        "popularity": 26,
+        "popularity": 25,
         "genre": "Satire",
         "album": "Shadows in the Night",
         "audio_features": {
@@ -6317,7 +6227,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "Welcome to the Jungle",
-        "popularity": 73,
+        "popularity": 72,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6362,7 +6272,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "Out ta Get Me",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6377,7 +6287,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "Mr. Brownstone",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6392,7 +6302,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "Paradise City",
-        "popularity": 73,
+        "popularity": 72,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6407,7 +6317,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "My Michelle",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6422,7 +6332,7 @@
     {
         "artist": "Guns N\u2019 Roses",
         "title": "Think About You",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Rock",
         "album": "Appetite for Destruction",
         "audio_features": {
@@ -6497,7 +6407,7 @@
     {
         "artist": "Guns n' Roses",
         "title": "Chinese Democracy",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Hard Rock",
         "album": "Chinese Democracy",
         "audio_features": {
@@ -6527,7 +6437,7 @@
     {
         "artist": "Guns n' Roses",
         "title": "Better",
-        "popularity": 55,
+        "popularity": 54,
         "genre": "Hard Rock",
         "album": "Chinese Democracy",
         "audio_features": {
@@ -6542,7 +6452,7 @@
     {
         "artist": "Guns n' Roses",
         "title": "Street of Dreams",
-        "popularity": 46,
+        "popularity": 45,
         "genre": "Hard Rock",
         "album": "Chinese Democracy",
         "audio_features": {
@@ -6557,7 +6467,7 @@
     {
         "artist": "Guns n' Roses",
         "title": "If the world",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Hard Rock",
         "album": "Chinese Democracy",
         "audio_features": {
@@ -6602,7 +6512,7 @@
     {
         "artist": "Guns n' Roses",
         "title": "Scraped",
-        "popularity": 40,
+        "popularity": 39,
         "genre": "Hard Rock",
         "album": "Chinese Democracy",
         "audio_features": {
@@ -6737,7 +6647,7 @@
     {
         "artist": "Iron Maiden",
         "title": "The Great Unknown",
-        "popularity": 28,
+        "popularity": 27,
         "genre": "Heavy Metal",
         "album": "The Book of Souls",
         "audio_features": {
@@ -6767,7 +6677,7 @@
     {
         "artist": "Iron Maiden",
         "title": "When the River Runs Deep",
-        "popularity": 27,
+        "popularity": 26,
         "genre": "Heavy Metal",
         "album": "The Book of Souls",
         "audio_features": {
@@ -6797,7 +6707,7 @@
     {
         "artist": "Iron Maiden",
         "title": "Death or Glory",
-        "popularity": 34,
+        "popularity": 33,
         "genre": "Heavy Metal",
         "album": "The Book of Souls",
         "audio_features": {
@@ -6812,7 +6722,7 @@
     {
         "artist": "Iron Maiden",
         "title": "Shadows of the Valley",
-        "popularity": 27,
+        "popularity": 26,
         "genre": "Heavy Metal",
         "album": "The Book of Souls",
         "audio_features": {
@@ -6842,7 +6752,7 @@
     {
         "artist": "Iron Maiden",
         "title": "The Man of Sorrows",
-        "popularity": 26,
+        "popularity": 25,
         "genre": "Heavy Metal",
         "album": "The Book of Souls",
         "audio_features": {
@@ -6872,7 +6782,7 @@
     {
         "artist": "John Lennon",
         "title": "Imagine",
-        "popularity": 78,
+        "popularity": 77,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -6887,7 +6797,7 @@
     {
         "artist": "John Lennon",
         "title": "Crippled Inside",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -6902,7 +6812,7 @@
     {
         "artist": "John Lennon",
         "title": "Jealous Guy",
-        "popularity": 67,
+        "popularity": 66,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -6917,7 +6827,7 @@
     {
         "artist": "John Lennon",
         "title": "It's So Hard",
-        "popularity": 43,
+        "popularity": 42,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -6931,23 +6841,8 @@
     },
     {
         "artist": "John Lennon",
-        "title": "I Don't Wanna Be A Soldier Mama",
-        "popularity": 42,
-        "genre": "Rock",
-        "album": "Imagine (Hi-Res)",
-        "audio_features": {
-            "valence": 0.521,
-            "danceability": 0.305,
-            "energy": 0.834,
-            "tempo": 0.708,
-            "acousticness": 0.00629,
-            "speechiness": 0.0586
-        }
-    },
-    {
-        "artist": "John Lennon",
         "title": "Gimme Some Truth",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -7007,7 +6902,7 @@
     {
         "artist": "John Lennon",
         "title": "Oh Yoko!",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Rock",
         "album": "Imagine (Hi-Res)",
         "audio_features": {
@@ -7037,7 +6932,7 @@
     {
         "artist": "Pink Floyd",
         "title": "Sheep",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Progressive Rock",
         "album": "Absolutely Ambient",
         "audio_features": {
@@ -7047,21 +6942,6 @@
             "tempo": 0.52,
             "acousticness": 0.0648,
             "speechiness": 0.0986
-        }
-    },
-    {
-        "artist": "Pink Floyd",
-        "title": "Another Brick In The Wall",
-        "popularity": 77,
-        "genre": "Progressive Rock",
-        "album": "Absolutely Ambient",
-        "audio_features": {
-            "valence": 0.719,
-            "danceability": 0.694,
-            "energy": 0.394,
-            "tempo": 0.304,
-            "acousticness": 0.0781,
-            "speechiness": 0.0428
         }
     },
     {
@@ -7082,7 +6962,7 @@
     {
         "artist": "Pink Floyd",
         "title": "Time",
-        "popularity": 71,
+        "popularity": 70,
         "genre": "Progressive Rock",
         "album": "Absolutely Ambient",
         "audio_features": {
@@ -7112,7 +6992,7 @@
     {
         "artist": "Doug Pinnick",
         "title": "Welcome to the Machine",
-        "popularity": 12,
+        "popularity": 11,
         "genre": "Progressive Rock",
         "album": "Pigs and Pyramids: An All Star Lineup Performing the Songs of Pink Floyd",
         "audio_features": {
@@ -7157,7 +7037,7 @@
     {
         "artist": "Jeff Scott Soto",
         "title": "Us and Them",
-        "popularity": 2,
+        "popularity": 3,
         "genre": "Progressive Rock",
         "album": "Pigs and Pyramids: An All Star Lineup Performing the Songs of Pink Floyd",
         "audio_features": {
@@ -7187,7 +7067,7 @@
     {
         "artist": "Jason Scheff",
         "title": "Run Like Hell",
-        "popularity": 16,
+        "popularity": 15,
         "genre": "Progressive Rock",
         "album": "Pigs and Pyramids: An All Star Lineup Performing the Songs of Pink Floyd",
         "audio_features": {
@@ -7217,7 +7097,7 @@
     {
         "artist": "Tommy Shaw",
         "title": "Money",
-        "popularity": 20,
+        "popularity": 19,
         "genre": "Progressive Rock",
         "album": "Pigs and Pyramids: An All Star Lineup Performing the Songs of Pink Floyd",
         "audio_features": {
@@ -7277,7 +7157,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Killing in the Name",
-        "popularity": 79,
+        "popularity": 78,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7307,7 +7187,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Settle for Nothing",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7337,7 +7217,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Know Your Enemy",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7367,7 +7247,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Fistful of Steel",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7382,7 +7262,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Township Rebellion",
-        "popularity": 48,
+        "popularity": 47,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7397,7 +7277,7 @@
     {
         "artist": "Rage Against the Machine",
         "title": "Freedom",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Metal",
         "album": "\u00d72: Rage Against the Machine / Evil Empire - Rage Against the Machine",
         "audio_features": {
@@ -7412,7 +7292,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Around the World",
-        "popularity": 68,
+        "popularity": 67,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7457,7 +7337,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Otherside",
-        "popularity": 79,
+        "popularity": 78,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7472,7 +7352,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Get on Top",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7487,7 +7367,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Californication",
-        "popularity": 82,
+        "popularity": 81,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7502,7 +7382,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Easily",
-        "popularity": 59,
+        "popularity": 58,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7547,7 +7427,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "I Like Dirt",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7562,7 +7442,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "This Velvet Glove",
-        "popularity": 59,
+        "popularity": 58,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7607,7 +7487,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Right on Time",
-        "popularity": 49,
+        "popularity": 48,
         "genre": "Funk Rock",
         "album": "Californication",
         "audio_features": {
@@ -7667,7 +7547,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "The Getaway",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7682,7 +7562,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Dark Necessities",
-        "popularity": 74,
+        "popularity": 73,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7697,7 +7577,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "We Turn Red",
-        "popularity": 55,
+        "popularity": 54,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7727,7 +7607,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Goodbye Angels",
-        "popularity": 65,
+        "popularity": 64,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7757,7 +7637,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Go Robot",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7772,7 +7652,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Feasting on the Flowers",
-        "popularity": 55,
+        "popularity": 54,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7817,7 +7697,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Encore",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7847,7 +7727,7 @@
     {
         "artist": "Red Hot Chili Peppers",
         "title": "Dreams of a Samurai",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Pop Rock",
         "album": "The Getaway",
         "audio_features": {
@@ -7922,7 +7802,7 @@
     {
         "artist": "The Beatles",
         "title": "Wild Honey Pie",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -7937,7 +7817,7 @@
     {
         "artist": "The Beatles",
         "title": "The Continuing Story of Bungalow Bill",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -7982,7 +7862,7 @@
     {
         "artist": "The Beatles",
         "title": "Martha My Dear",
-        "popularity": 55,
+        "popularity": 54,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -7997,7 +7877,7 @@
     {
         "artist": "The Beatles",
         "title": "I\u2019m So Tired",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8012,7 +7892,7 @@
     {
         "artist": "The Beatles",
         "title": "Blackbird",
-        "popularity": 75,
+        "popularity": 74,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8027,7 +7907,7 @@
     {
         "artist": "The Beatles",
         "title": "Piggies",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8042,7 +7922,7 @@
     {
         "artist": "The Beatles",
         "title": "Rocky Raccoon",
-        "popularity": 58,
+        "popularity": 57,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8072,7 +7952,7 @@
     {
         "artist": "The Beatles",
         "title": "I Will",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8087,7 +7967,7 @@
     {
         "artist": "The Beatles",
         "title": "Julia",
-        "popularity": 56,
+        "popularity": 55,
         "genre": "Classic Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8102,7 +7982,7 @@
     {
         "artist": "The Beatles",
         "title": "Birthday",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8117,7 +7997,7 @@
     {
         "artist": "The Beatles",
         "title": "Yer Blues",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8132,7 +8012,7 @@
     {
         "artist": "The Beatles",
         "title": "Mother Nature\u2019s Son",
-        "popularity": 54,
+        "popularity": 53,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8146,23 +8026,8 @@
     },
     {
         "artist": "The Beatles",
-        "title": "Everybody\u2019s Got Something to Hide Except Me and My Monkey",
-        "popularity": 50,
-        "genre": "Rock",
-        "album": "The Beatles",
-        "audio_features": {
-            "valence": 0.81,
-            "danceability": 0.523,
-            "energy": 0.731,
-            "tempo": 0.394,
-            "acousticness": 0.0207,
-            "speechiness": 0.0559
-        }
-    },
-    {
-        "artist": "The Beatles",
         "title": "Sexy Sadie",
-        "popularity": 53,
+        "popularity": 52,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8177,7 +8042,7 @@
     {
         "artist": "The Beatles",
         "title": "Helter Skelter",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8192,7 +8057,7 @@
     {
         "artist": "The Beatles",
         "title": "Long, Long, Long",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8222,7 +8087,7 @@
     {
         "artist": "The Beatles",
         "title": "Honey Pie",
-        "popularity": 51,
+        "popularity": 50,
         "genre": "Rock",
         "album": "The Beatles",
         "audio_features": {
@@ -8297,7 +8162,7 @@
     {
         "artist": "The Doors",
         "title": "Break On Through",
-        "popularity": 73,
+        "popularity": 72,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8372,7 +8237,7 @@
     {
         "artist": "The Doors",
         "title": "Love Me Two Times",
-        "popularity": 64,
+        "popularity": 63,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8387,7 +8252,7 @@
     {
         "artist": "The Doors",
         "title": "Alabama Song",
-        "popularity": 58,
+        "popularity": 57,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8402,7 +8267,7 @@
     {
         "artist": "The Doors",
         "title": "Five to One",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8432,7 +8297,7 @@
     {
         "artist": "The Doors",
         "title": "Spanish Caravan",
-        "popularity": 52,
+        "popularity": 51,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8447,7 +8312,7 @@
     {
         "artist": "The Doors",
         "title": "When the Music's Over",
-        "popularity": 57,
+        "popularity": 56,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8462,7 +8327,7 @@
     {
         "artist": "The Doors",
         "title": "Hello, I Love You",
-        "popularity": 63,
+        "popularity": 62,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8477,7 +8342,7 @@
     {
         "artist": "The Doors",
         "title": "Roadhouse Blues",
-        "popularity": 73,
+        "popularity": 72,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8507,7 +8372,7 @@
     {
         "artist": "The Doors",
         "title": "Riders on the Storm",
-        "popularity": 75,
+        "popularity": 74,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8522,7 +8387,7 @@
     {
         "artist": "The Doors",
         "title": "Touch Me",
-        "popularity": 67,
+        "popularity": 66,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8552,7 +8417,7 @@
     {
         "artist": "The Doors",
         "title": "The Unknown Soldier",
-        "popularity": 50,
+        "popularity": 49,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {
@@ -8567,7 +8432,7 @@
     {
         "artist": "The Doors",
         "title": "The End",
-        "popularity": 62,
+        "popularity": 61,
         "genre": "Rock",
         "album": "The Best of The Doors",
         "audio_features": {

@@ -80,7 +80,7 @@ class TFIDFInitializer:
         """
         new_song_list = self.remove_special_characters(self.join_song_data())
         token_list = self.tokenize(new_song_list)
-        token_list_lemmatized = self.lemmanization(token_list)
+        token_list_lemmatized = self.lemmatization(token_list)
         list_with_vectors = self.calculate_tfidf(token_list_lemmatized)
         self.vectors_to_json(list_with_vectors, config_project.PATH_SONG_VECTORS)
 
@@ -120,19 +120,15 @@ class TFIDFInitializer:
             token_list.append({"title": song["title_original"], "tokens": tokens})
         return token_list
 
-    def lemmanization(self, token_list):
+    def lemmatization(self, token_list):
         """
         lemmatizes the tokens. This means reducing words to their base forms,
         e.g. houses -> house or ran -> running
         :param: token_list: returned from tokenize()
-        :return:
         """
         lemmatizer = nltk.stem.WordNetLemmatizer()
         for song in token_list:
-            tokens_lemmatized = []
-            for token in song["tokens"]:
-                tokens_lemmatized.append(lemmatizer.lemmatize(token))
-            song["tokens"] = tokens_lemmatized
+            song["tokens"] = [lemmatizer.lemmatize(token) for token in song["tokens"]]
         return token_list
 
     def calculate_tfidf(self, token_list):
