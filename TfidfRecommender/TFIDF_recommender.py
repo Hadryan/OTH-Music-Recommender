@@ -30,7 +30,7 @@ class TFIDF:
     def update_user_vector(self, song_title):
         song_obj = next((item for item in self.song_vectors if item[0] == song_title), None)
         if not song_obj:
-            print("No matching song found. Please update your tf-idf vectors.")
+            print("No matching song found for: Please update your tf-idf vectors.")
             return
         else:
             self.user_vector += song_obj[1]
@@ -46,7 +46,7 @@ class TFIDF:
         for song in self.song_vectors:
             similarity = np.dot(self.user_vector, song[1]) / (
                     np.linalg.norm(self.user_vector) * np.linalg.norm(song[1]))
-            recommend_list.append({"title": song[0], "rating": similarity})
+            recommend_list.append({"title": song[0], "rating": similarity, "interpreter": song[2]})
         return sorted(recommend_list, key=itemgetter("rating"), reverse=True)
 
     @staticmethod
@@ -91,7 +91,7 @@ class TFIDFInitializer:
             merged_entry = song_entry["title"] + " " + song_entry["artist"].replace(" ", "") + " " + song_entry[
                 "album"].replace(" ", "") + " " + song_entry["date"] + " " + song_entry["genre"].replace(" ", "")
 
-            joined_song_list.append({"title": song_entry["title"], "body": merged_entry})
+            joined_song_list.append({"title": song_entry["title"], "body": merged_entry, "interpreter": song_entry["artist"]})
         return joined_song_list
 
     def remove_special_characters(self, joined_song_list):
@@ -105,7 +105,7 @@ class TFIDFInitializer:
         for song_entry in joined_song_list:
             for punctuation in punctuation_to_remove:
                 song_entry["body"] = str(song_entry["body"]).replace(punctuation, "")
-            new_song_list.append({"title_original": song_entry["title"], "body": song_entry["body"].lower()})
+            new_song_list.append({"title_original": song_entry["title"], "body": song_entry["body"].lower(), "interpreter": song_entry["interpreter"]})
         return new_song_list
 
     def tokenize(self, song_list):
@@ -117,7 +117,7 @@ class TFIDFInitializer:
         for song in song_list:
             tokens = nltk.word_tokenize(song["body"])
             tokens = [x for x in tokens if len(x) > 1]  # Remove single letters
-            token_list.append({"title": song["title_original"], "tokens": tokens})
+            token_list.append({"title": song["title_original"], "tokens": tokens, "interpreter": song["interpreter"]})
         return token_list
 
     def lemmatization(self, token_list):
@@ -178,7 +178,7 @@ class TFIDFInitializer:
     def vectors_to_json(token_list, path_json):
         serializable_list = []
         for song in token_list:
-            serializable_list.append([song["title"], song["vector"].tolist()])
+            serializable_list.append([song["title"], song["vector"].tolist(), song["interpreter"]])
         with open(path_json, "w") as file_obj:
             json.dump(serializable_list, file_obj, indent=4)
 

@@ -53,8 +53,8 @@ def test_complete(with_extraction):
     print("=========")
     print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     recommend_list_tfidf = test_tfidf()
-    print(recommend_list_tfidf[0]["title"], "with a score of:", recommend_list_tfidf[0]["rating"])
-
+    print(recommend_list_tfidf[0]["title"], "by", recommend_list_tfidf[0]["interpreter"], "with a score of:", recommend_list_tfidf[0]["rating"])
+    print(recommend_list_tfidf)
 
 def extract_song_tags():
     tag_extractor.TagExtractor()
@@ -67,12 +67,12 @@ def test_recommender_v1(recommender_object):
 
 def test_tfidf():
     tfidf = TFIDF_recommender.TFIDF()
-    tfidf.update_user_vector("Thing Called Love")
-    tfidf.update_user_vector("Flow (feat. Mr. Woodnote & Flower Fairy)")
-    tfidf.update_user_vector("She Used To Love Me A Lot")
-    tfidf.update_user_vector("People Get Ready")
-    tfidf.update_user_vector("Grind")
-    tfidf.update_user_vector("Too Long / Steam Machine")
+    #tfidf.update_user_vector("Longview")
+    tfidf.update_user_vector("If Eternity Should Fail")
+    tfidf.update_user_vector("Take the Power Back")
+    tfidf.update_user_vector("Know Your Enemy")
+    tfidf.update_user_vector("Kokain")
+    tfidf.update_user_vector("Chewed Alive")
 
     return tfidf.rank_by_cosine_similarity()
 

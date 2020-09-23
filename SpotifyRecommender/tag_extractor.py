@@ -72,8 +72,11 @@ class TagExtractor:
         :return:
         """
         for song in dict_list:
+            old_title = song["title"]
             song["title"] = re.sub("\((.*?)\)", "", song["title"]).strip()
             song["artist"] = re.sub("\((.*?)\)", "", song["artist"]).strip()
+            if old_title != song["title"]:
+                print(old_title)
         return dict_list
 
     def get_similiar_artists(self, spotify_data):
