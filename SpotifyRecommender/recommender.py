@@ -12,6 +12,8 @@ from scipy.spatial import distance
 
 import mpd_connector
 import config_project
+from SpotifyRecommender import tag_extractor
+
 
 WEIGHT_ARTISTS = 0.2  # How strong artists are being factored into the recommendation compared to genres
 WEIGHT_RELATED_ARTISTS = 1
@@ -19,6 +21,10 @@ WEIGHT_RELATED_ARTISTS = 1
 
 class Recommender:
     def __init__(self):
+        if not os.path.exists(config_project.PATH_SONG_DATA):
+            logging.warning(
+                "You need to extract song tags before initializing the recommender! Starting tag extraction now...")
+            tag_extractor.TagExtractor()
         self.json_data = self.read_tags_from_json(config_project.PATH_SONG_DATA)
         self.song_vectors = self.create_song_feature_vectors()  # [(Valence, danceability, energy), title, interpreter]
         self.played_songs_session = []
@@ -26,6 +32,7 @@ class Recommender:
         self.mpd = mpd_connector.MpdConnector(config_project.MPD_IP, config_project.MPD_PORT)
         t = threading.Thread(target=self._update_played_songs, daemon=True)
         t.start()
+
 
     @staticmethod
     def read_tags_from_json(path):
