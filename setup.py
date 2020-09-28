@@ -8,5 +8,5 @@ setuptools.setup(name='OTH Music Recommender',
                  author_email='niko.kalbitzer@st.oth-regensburg.de',
                  packages=setuptools.find_packages(),
                  install_requires=[
-                     'tekore', 'python-mpd2', 'termcolor', 'scipy', 'numpy'
+                     'tekore', 'python-mpd2', 'termcolor', 'scipy', 'numpy', 'nltk'
                  ])

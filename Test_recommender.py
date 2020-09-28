@@ -54,7 +54,6 @@ def test_complete(with_extraction):
     print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     recommend_list_tfidf = test_tfidf()
     print(recommend_list_tfidf[0]["title"], "by", recommend_list_tfidf[0]["interpreter"], "with a score of:", recommend_list_tfidf[0]["rating"])
-    print(recommend_list_tfidf)
 
 def extract_song_tags():
     tag_extractor.TagExtractor()
