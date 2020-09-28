@@ -42,10 +42,10 @@ class Recommender:
 
     def create_song_feature_vectors(self):
         """
-        create a single vector of the tracks features
-        Song Vector: [(Valence, danceability, energy), songname, interpreter]
+        create a vector of the tracks audio features for every song in song_tags.json
+        Song vector: [(Valence, danceability, energy, tempo, acousticness, speechiness), songname, interpreter]
         :param song_data as returned by read_tags_from_json()
-        :return: vector of track features
+        :return: List of Song vectors
         """
         song_vector_list = []
         for song in self.json_data:
@@ -111,9 +111,9 @@ class Recommender:
     def consider_genre_artist(self, distance_list):
         """
         Take into account the genres
-        Take into account the listened artists to slighly increase the chance the user gets a high familiarity high liking song,
+        Take into account the listened artists to slightly increase the chance the user gets a high familiarity high liking song,
         since these will make the user think the recommender understands his/her tastes (human evaluation of music recommender systems)
-        :param: distance_list: eukl. distances of songvectors to the user vector. Created by calling get_eucl_distance_list()
+        :param: distance_list: eukl. distances of song vectors to the user vector. Created by calling get_eucl_distance_list()
         :return: sorted list of songs, ordered from best match to worst
         """
 
@@ -206,11 +206,10 @@ class UserDataContainer:
 class UserDataController:
     """
     THis class controls the user preferences and saves all time preferences and session preferences as UserDataContainer.
-    Genres and Artists can be returned as percentages, because displaying them as vectors would cause the most prevalent
-    genre/artist to always be recommended.
+    Genres and Artists can be returned as percentages.
     Session should be weighted more than overall tastes, since moods can greatly influence music tastes
-    :param path_serialization: path to the json file the user profile is saved in
-    ,  song_vectors: Song vectors red from song_tags.json
+    :param path_serialization: path to the json file the user profile is saved in song_vectors: Song vectors red from
+    song_tags.json
     """
 
     def __init__(self, path_serialization, song_vectors):
@@ -349,6 +348,7 @@ class UserDataController:
 
     def get_artist_percentages(self, scope):
         """
+        Not in use right now.
         :param scope: Can either be "session" or "all_time"
         :return:List of artists with the percentage of how often it was played compared to the total amount of played songs
         """
@@ -431,9 +431,9 @@ class UserDataController:
     def get_session_weight(self):
         """
         weighting the session values according to how long that session is.
-        This is done via the function: - 1/(1 + e^(0.8x -2)) + 0.9 this results in following values:
-        x = 1: 0.13 ; x = 2: 0.3; x = 3: 0.49; x = 6: 0.84; x = 10: 0.89
-        :return: weight_session : {0 <= weight_session <= 1}
+        This is done via the function: - 1/(1 + e^(0.8x -2.19)) + 0.9 this results in following values:
+        x = 1: 0.09 ; x = 2: 0.26; x = 3: 0.45; x = 6: 0.83; x = 20: 0.90
+        :return: weight_session : {0 <= weight_session <= 0.9}
         """
         if self.stats_session.song_count == 0:
             return 0.0
@@ -443,7 +443,7 @@ class UserDataController:
     def get_user_vector(self):
         """
         Calculate the averaged user vector, weighting the session values according to how long that session is.
-        :return: user vector [valence, danceability, energy]
+        :return: user vector
         """
         weight_session = self.get_session_weight()
         weight_all_time = 1 - weight_session

@@ -1,5 +1,4 @@
 from mpd import MPDClient
-from termcolor import colored
 
 
 class MpdConnector:
@@ -31,11 +30,13 @@ class MpdConnector:
         incomplete_metadata = []
         for song in all_songs:
             try:
-                reduced_dict_list.append({"title": song["title"], "artist": song["artist"], "genre": song["genre"], "date": song["date"], "album": song["album"]})
+                reduced_dict_list.append(
+                    {"title": song["title"], "artist": song["artist"], "genre": song["genre"], "date": song["date"],
+                     "album": song["album"]})
             except KeyError:
                 if "directory" not in song:  # filter out directories
                     incomplete_metadata.append(song)
-        print(colored("Incomplete Metadata found for: " + str(len(incomplete_metadata)) + " songs", "yellow"))
+        #print(colored("Incomplete Metadata found for: " + str(len(incomplete_metadata)) + " songs", "yellow"))
         print(len(reduced_dict_list), "songs with complete metadata found in your MPD media library.")
         return reduced_dict_list
 
@@ -44,14 +45,13 @@ class MpdConnector:
         self.client.play()
         self.client.next()
         print("next song playing")
+
     def play_specific_song(self, songname):
         self.client.play(songname)
 
-    def add_all_to_queue(self, folder="Lieder_HighResolutionAudio"):
-        """for testing, adds all songs to play queue"""
-        self.client.add(folder)
     def pause(self):
         self.client.pause()
+
     def update_database(self):
         self.client.update()
         print("updated database")

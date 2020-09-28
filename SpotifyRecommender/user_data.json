@@ -1,48 +1,45 @@
 {
-    "total_songs_played": 180,
+    "total_songs_played": 5,
     "vector_total": [
-        86.00400000000002,
-        86.90400000000018,
-        130.212,
-        59.327999999999975,
-        59.18291999999993,
-        14.57999999999996
+        2.389,
+        2.414,
+        3.617,
+        1.6480000000000001,
+        1.64397,
+        0.405
     ],
     "vector_avg": [
-        0.4778000000000001,
-        0.482800000000001,
-        0.7233999999999999,
-        0.32959999999999984,
-        0.32879399999999964,
-        0.08099999999999977
+        0.47779999999999995,
+        0.4828,
+        0.7234,
+        0.3296,
+        0.328794,
+        0.081
     ],
     "genres_total": {
-        "Rock": 36,
-        "Punk": 36,
-        "Country": 36,
-        "Progressive Rock": 36,
-        "Funk Rock": 36
+        "Rock": 1,
+        "Punk": 1,
+        "Country": 1,
+        "Progressive Rock": 1,
+        "Funk Rock": 1
     },
     "artists_total": {
-        "The Doors": 36,
-        "Billy Idol": 36,
-        "The Cars": 36,
-        "The Romantics": 36,
-        "Men At Work": 36,
-        "Johnny Cash": 36,
-        "The Highwaymen": 36,
-        "Waylon Jennings": 36,
-        "Hank Williams": 36,
-        "Pink Floyd": 36,
-        "David Gilmour": 36,
-        "Roger Waters": 36,
-        "Jethro Tull": 36,
-        "Red Hot Chili Peppers": 36,
-        "Foo Fighters": 36,
-        "Audioslave": 36,
-        "Incubus": 36,
-        "Jim Morrison": 35,
-        "Jefferson Airplane": 35,
-        "Janis Joplin": 35
+        "The Doors": 1,
+        "Billy Idol": 1,
+        "The Cars": 1,
+        "The Romantics": 1,
+        "Men At Work": 1,
+        "Johnny Cash": 1,
+        "The Highwaymen": 1,
+        "Waylon Jennings": 1,
+        "Hank Williams": 1,
+        "Pink Floyd": 1,
+        "David Gilmour": 1,
+        "Roger Waters": 1,
+        "Jethro Tull": 1,
+        "Red Hot Chili Peppers": 1,
+        "Foo Fighters": 1,
+        "Audioslave": 1,
+        "Rage Against The Machine": 1
     }
 }
