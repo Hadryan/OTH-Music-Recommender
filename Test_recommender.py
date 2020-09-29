@@ -49,10 +49,12 @@ def test_complete(with_extraction):
         beautify_list_printing(recommend_list_genre, 10)
     else:
         print("No songs of that genre in media library")
+    """
     print("=========")
     print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     recommend_list_tfidf = test_tfidf()
     print(recommend_list_tfidf[0]["title"], "by", recommend_list_tfidf[0]["interpreter"], "with a score of:", recommend_list_tfidf[0]["rating"])
+    """
 
 def extract_song_tags():
     tag_extractor.TagExtractor()
