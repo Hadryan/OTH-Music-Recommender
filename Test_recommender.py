@@ -1,7 +1,6 @@
 from SpotifyRecommender import recommender, tag_extractor
 from TfidfRecommender import TFIDF_recommender
 import sys
-import matplotlib.pyplot as plt
 import math
 
 """This class is for testing purposes only. It is not required for any functionality of the recommender system"""
