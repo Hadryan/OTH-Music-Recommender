@@ -3,7 +3,7 @@ from TfidfRecommender import TFIDF_recommender
 import sys
 import math
 
-"""This class is for testing purposes only. It is not required for any functionality of the recommender system"""
+"""This class is for testing purposes only. It is not required for any functionality of the recommender system and may include parts that are outdated"""
 
 
 def main():
@@ -49,12 +49,12 @@ def test_complete(with_extraction):
         beautify_list_printing(recommend_list_genre, 10)
     else:
         print("No songs of that genre in media library")
-    """
     print("=========")
     print("Recommend a song using the\033[1m Tf-idf\033[0m Recommender:")
     recommend_list_tfidf = test_tfidf()
-    print(recommend_list_tfidf[0]["title"], "by", recommend_list_tfidf[0]["interpreter"], "with a score of:", recommend_list_tfidf[0]["rating"])
-    """
+    print(recommend_list_tfidf[0]["title"], "by", recommend_list_tfidf[0]["interpreter"], "with a score of:",
+          recommend_list_tfidf[0]["rating"])
+
 
 def extract_song_tags():
     tag_extractor.TagExtractor()
@@ -67,7 +67,7 @@ def test_recommender_v1(recommender_object):
 
 def test_tfidf():
     tfidf = TFIDF_recommender.TFIDF()
-    #tfidf.update_user_vector("Longview")
+    # tfidf.update_user_vector("Longview")
     tfidf.update_user_vector("If Eternity Should Fail")
     tfidf.update_user_vector("Take the Power Back")
     tfidf.update_user_vector("Know Your Enemy")
@@ -92,23 +92,6 @@ def test_updating_user_information(user_controller):
     user_controller.serialize_stats_all_time()
 
 
-def test_session_weighting():
-    y_values = []
-    x_values = []
-    for i in range(20):
-        x_values.append(i)
-        y_values.append(-1 / (1 + math.exp(0.8 * i - 2.19)) + 0.9)
-        print(round(-1 / (1 + math.exp(0.8 * i - 2.19)) + 0.9, 2))
-    plt.figure(figsize=(10, 5))
-    plt.plot(x_values, y_values)
-    plt.axis([0, 20, 0, 1])
-    plt.xlabel("Anzahl Lieder in Session")
-    plt.ylabel("Gewichtung")
-    plt.title("Session Gewichtung")
-    plt.savefig("weighting")
-    plt.show()
-
-
 def test_mood_recommendation_complete(recommender_object):
     def test_mood_recommendation(mood):
         print("recommending", mood, "songs:")
@@ -126,9 +109,16 @@ def test_genre_recommendation(recommender_object, genre):
     print("___")
 
 
+def beautify_list_printing(recommender_list, nbr_entries):
+    for i in range(nbr_entries):
+        print(recommender_list[i]["title"], "by", recommender_list[i]["interpreter"], "with a score of:",
+              round(recommender_list[i]["score"], 4))
+
+
 def get_tempo_range():
     """Used to create a histogram of the BPM in the media library.
-     To get absolute values first disable tempo scaling in tag_extractor"""
+     To get absolute values first disable tempo scaling in tag_extractor
+     Requires matplotlib. Removed that dependency since it was only used to plot a graph for the bachelor thesis"""
 
     tag_extractor.TagExtractor()
     recommender_object = recommender.Recommender()
@@ -143,10 +133,22 @@ def get_tempo_range():
     plt.savefig("Verteilung BPM")
 
 
-def beautify_list_printing(recommender_list, nbr_entries):
-    for i in range(nbr_entries):
-        print(recommender_list[i]["title"], "by", recommender_list[i]["interpreter"], "with a score of:",
-              round(recommender_list[i]["score"], 4))
+def test_session_weighting():
+    """Requires matplotlib. Removed that dependency since it was only used to plot a graph for the bachelor thesis """
+    y_values = []
+    x_values = []
+    for i in range(20):
+        x_values.append(i)
+        y_values.append(-1 / (1 + math.exp(0.8 * i - 2.19)) + 0.9)
+        print(round(-1 / (1 + math.exp(0.8 * i - 2.19)) + 0.9, 2))
+    plt.figure(figsize=(10, 5))
+    plt.plot(x_values, y_values)
+    plt.axis([0, 20, 0, 1])
+    plt.xlabel("Anzahl Lieder in Session")
+    plt.ylabel("Gewichtung")
+    plt.title("Session Gewichtung")
+    plt.savefig("weighting")
+    plt.show()
 
 
 if __name__ == '__main__':
